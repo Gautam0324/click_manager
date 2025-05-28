@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL & Device Management Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        html, body { height: 100%; margin: 0; overflow: hidden; }
+        .dashboard-container { height: 100vh; display: grid; grid-template: "header header" 60px "urls devices" 1fr "used script" 200px / 1fr 1fr; gap: 10px; padding: 10px; }
+        .pulse { animation: pulse 2s infinite; }
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        .fade-in { animation: fadeIn 0.5s; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .theme-dark { background-color: #1f2937; color: #f9fafb; }
+        .theme-dark .bg-white { background-color: #374151; }
+        .theme-dark .text-gray-700 { color: #d1d5db; }
+        .theme-dark .bg-gray-200 { background-color: #4b5563; }
+        .theme-dark .hover\:bg-gray-50:hover { background-color: #4b5563; }
+        .table-container { max-height: calc(100vh - 200px); overflow-y: auto; }
+        .used-devices-container { max-height: 180px; overflow-y: auto; }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans transition-colors duration-300" id="theme-body">
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="bg-white p-4 shadow-md flex justify-between items-center" style="grid-area: header;">
+            <h1 class="text-xl font-bold text-gray-800">Management Dashboard</h1>
+            <button id="theme-toggle" class="bg-gray-300 text-gray-800 px-3 py-1 rounded hover:bg-gray-400 text-sm">Toggle Theme</button>
+        </div>
+
+        <!-- URLs Section -->
+        <div class="bg-white p-4 rounded-lg shadow-md fade-in" style="grid-area: urls;">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">URLs</h2>
+            <button onclick="openAddUrlModal()" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm mb-2">Add URL</button>
+            <form id="selection-form" method="POST">
+                <div class="table-container">
+                    <table class="w-full border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-gray-200 sticky top-0">
+                                <th class="border p-2">Sel</th>
+                                <th class="border p-2">ID</th>
+                                <th class="border p-2">URL</th>
+                                <th class="border p-2">Target</th>
+                                <th class="border p-2">Update</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for url in urls %}
+                            <tr class="hover:bg-gray-50">
+                                <td class="border p-2">
+                                    <input type="checkbox" name="selected_urls" value="{{ url.id }}" {% if url.is_selected %}checked{% endif %}>
+                                </td>
+                                <td class="border p-2">{{ url.id }}</td>
+                                <td class="border p-2 truncate max-w-xs" title="{{ url.url }}">{{ url.url }}</td>
+                                <td class="border p-2">{{ url.target_clicks }}</td>
+                                <td class="border p-2">
+                                    <button type="button" onclick="openUpdateUrlModal({{ url.id }}, '{{ url.url | safe }}', {{ url.target_clicks }}, {{ url.unique_percent }}, {{ url.repeated_percent }}, '{{ url.campaign_name | safe }}')" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600 text-xs">Update</button>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <button type="button" onclick="confirmSelectionUpdate()" class="bg-blue-500 text-white px-3 py-1 rounded mt-2 hover:bg-blue-600 text-sm">Update Selections</button>
+            </form>
+        </div>
+
+        <!-- Devices Section -->
+        <div class="bg-white p-4 rounded-lg shadow-md fade-in" style="grid-area: devices;">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">Devices</h2>
+            <button onclick="openAddDeviceModal()" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm mb-2">Add Device</button>
+            <div class="table-container">
+                <table class="w-full border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-gray-200 sticky top-0">
+                            <th class="border p-2">Sel</th>
+                            <th class="border p-2">ID</th>
+                            <th class="border p-2">ADB ID</th>
+                            <th class="border p-2">State</th>
+                            <th class="border p-2">Update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for device in devices %}
+                        <tr class="hover:bg-gray-50">
+                            <td class="border p-2">
+                                <input type="checkbox" name="selected_devices" value="{{ device.id }}" {% if device.is_selected %}checked{% endif %}>
+                            </td>
+                            <td class="border p-2">{{ device.id }}</td>
+                            <td class="border p-2 truncate max-w-xs" title="{{ device.adb_id }}">{{ device.adb_id }}</td>
+                            <td class="border p-2">{{ device.state }}</td>
+                            <td class="border p-2">
+                                <button type="button" onclick="openUpdateDeviceModal({{ device.id }}, '{{ device.adb_id | safe }}', '{{ device.asset_no | safe }}', '{{ device.state | safe }}')" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600 text-xs">Update</button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Used Devices Section -->
+        <div class="bg-white p-4 rounded-lg shadow-md fade-in" style="grid-area: used;">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">Used Devices</h2>
+            <div id="used-devices" class="used-devices-container text-sm"></div>
+        </div>
+
+        <!-- Script Control Section -->
+        <div class="bg-white p-4 rounded-lg shadow-md fade-in" style="grid-area: script;">
+            <h2 class="text-lg font-semibold text-gray-700 mb-2">Script Control</h2>
+            <div class="flex space-x-2 mb-2">
+                <button onclick="runScript()" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm">Run Script</button>
+                <button onclick="stopScript()" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm">Stop Script</button>
+            </div>
+            <div id="script-message" class="text-xs"></div>
+        </div>
+    </div>
+
+    <script>
+        // Theme Toggle
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.getElementById('theme-body').classList.toggle('theme-dark');
+            localStorage.setItem('theme', document.getElementById('theme-body').classList.contains('theme-dark') ? 'dark' : 'light');
+        });
+        if (localStorage.getItem('theme') === 'dark') {
+            document.getElementById('theme-body').classList.add('theme-dark');
+        }
+
+        // Modal for Adding URL
+        function openAddUrlModal() {
+            Swal.fire({
+                title: 'Add New URL',
+                html: `
+                    <div class="space-y-3 text-sm">
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">URL</label>
+                            <input id="url" type="text" class="border rounded p-1" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Target Clicks</label>
+                            <input id="target" type="number" class="border rounded p-1" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Unique Percent</label>
+                            <input id="unique" type="number" step="0.01" class="border rounded p-1" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Repeated Percent</label>
+                            <input id="repeated" type="number" step="0.01" class="border rounded p-1" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Campaign Name</label>
+                            <input id="campaign_name" type="text" class="border rounded p-1">
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Add URL',
+                preConfirm: () => {
+                    const url = document.getElementById('url').value;
+                    const target = document.getElementById('target').value;
+                    const unique = document.getElementById('unique').value;
+                    const repeated = document.getElementById('repeated').value;
+                    const campaign_name = document.getElementById('campaign_name').value;
+                    if (!url || !target || !unique || !repeated) {
+                        Swal.showValidationMessage('All required fields must be filled');
+                        return false;
+                    }
+                    return { url, target, unique, repeated, campaign_name };
+                }
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const formData = new FormData();
+                    formData.append('url', result.value.url);
+                    formData.append('target', result.value.target);
+                    formData.append('unique', result.value.unique);
+                    formData.append('repeated', result.value.repeated);
+                    formData.append('campaign_name', result.value.campaign_name);
+                    formData.append('add_url', 'true');
+                    fetch('/', {
+                        method: 'POST',
+                        body: formData
+                    }).then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'URL added successfully!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => location.reload());
+                    });
+                }
+            });
+        }
+
+        // Modal for Updating URL
+        function openUpdateUrlModal(id, url, target, unique, repeated, campaign_name) {
+            Swal.fire({
+                title: `Update URL ID: ${id}`,
+                html: `
+                    <div class="space-y-3 text-sm">
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">URL</label>
+                            <input id="url" type="text" class="border rounded p-1" value="${url.replace(/"/g, '&quot;')}" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Target Clicks</label>
+                            <input id="target" type="number" class="border rounded p-1" value="${target}" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Unique Percent</label>
+                            <input id="unique" type="number" step="0.01" class="border rounded p-1" value="${unique}" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Repeated Percent</label>
+                            <input id="repeated" type="number" step="0.01" class="border rounded p-1" value="${repeated}" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Campaign Name</label>
+                            <input id="campaign_name" type="text" class="border rounded p-1" value="${campaign_name.replace(/"/g, '&quot;')}">
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Update URL',
+                preConfirm: () => {
+                    const url = document.getElementById('url').value;
+                    const target = document.getElementById('target').value;
+                    const unique = document.getElementById('unique').value;
+                    const repeated = document.getElementById('repeated').value;
+                    const campaign_name = document.getElementById('campaign_name').value;
+                    if (!url || !target || !unique || !repeated) {
+                        Swal.showValidationMessage('All required fields must be filled');
+                        return false;
+                    }
+                    return { url, target, unique, repeated, campaign_name };
+                }
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const formData = new FormData();
+                    formData.append('url', result.value.url);
+                    formData.append('target', result.value.target);
+                    formData.append('unique', result.value.unique);
+                    formData.append('repeated', result.value.repeated);
+                    formData.append('campaign_name', result.value.campaign_name);
+                    fetch(`/update_url/${id}`, {
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.json()).then(data => {
+                        Swal.fire({
+                            icon: data.message ? 'success' : 'error',
+                            title: data.message || data.error,
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            if (data.message) location.reload();
+                        });
+                    });
+                }
+            });
+        }
+
+        // Modal for Adding Device
+        function openAddDeviceModal() {
+            Swal.fire({
+                title: 'Add New Device',
+                html: `
+                    <div class="space-y-3 text-sm">
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">ADB ID</label>
+                            <input id="adb_id" type="text" class="border rounded p-1" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Asset No</label>
+                            <input id="asset_no" type="text" class="border rounded p-1" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">State</label>
+                            <input id="state" type="text" class="border rounded p-1" required>
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Add Device',
+                preConfirm: () => {
+                    const adb_id = document.getElementById('adb_id').value;
+                    const asset_no = document.getElementById('asset_no').value;
+                    const state = document.getElementById('state').value;
+                    if (!adb_id || !asset_no || !state) {
+                        Swal.showValidationMessage('All required fields must be filled');
+                        return false;
+                    }
+                    return { adb_id, asset_no, state };
+                }
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const formData = new FormData();
+                    formData.append('adb_id', result.value.adb_id);
+                    formData.append('asset_no', result.value.asset_no);
+                    formData.append('state', result.value.state);
+                    formData.append('add_device', 'true');
+                    fetch('/', {
+                        method: 'POST',
+                        body: formData
+                    }).then(() => {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Device added successfully!',
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => location.reload());
+                    });
+                }
+            });
+        }
+
+        // Modal for Updating Device
+        function openUpdateDeviceModal(id, adb_id, asset_no, state) {
+            Swal.fire({
+                title: `Update Device ID: ${id}`,
+                html: `
+                    <div class="space-y-3 text-sm">
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">ADB ID</label>
+                            <input id="adb_id" type="text" class="border rounded p-1" value="${adb_id.replace(/"/g, '&quot;')}" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">Asset No</label>
+                            <input id="asset_no" type="text" class="border rounded p-1" value="${asset_no.replace(/"/g, '&quot;')}" required>
+                        </div>
+                        <div class="flex flex-col">
+                            <label class="text-gray-600">State</label>
+                            <input id="state" type="text" class="border rounded p-1" value="${state.replace(/"/g, '&quot;')}" required>
+                        </div>
+                    </div>
+                `,
+                showCancelButton: true,
+                confirmButtonText: 'Update Device',
+                preConfirm: () => {
+                    const adb_id = document.getElementById('adb_id').value;
+                    const asset_no = document.getElementById('asset_no').value;
+                    const state = document.getElementById('state').value;
+                    if (!adb_id || !asset_no || !state) {
+                        Swal.showValidationMessage('All required fields must be filled');
+                        return false;
+                    }
+                    return { adb_id, asset_no, state };
+                }
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const formData = new FormData();
+                    formData.append('adb_id', result.value.adb_id);
+                    formData.append('asset_no', result.value.asset_no);
+                    formData.append('state', result.value.state);
+                    fetch(`/update_device/${id}`, {
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.json()).then(data => {
+                        Swal.fire({
+                            icon: data.message ? 'success' : 'error',
+                            title: data.message || data.error,
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            if (data.message) location.reload();
+                        });
+                    });
+                }
+            });
+        }
+
+        // Confirm Selection Update
+        function confirmSelectionUpdate() {
+            Swal.fire({
+                title: 'Confirm Selection Update',
+                text: 'Are you sure you want to update the selected URLs and devices? Unchecked items will be deselected.',
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonText: 'Update'
+            }).then(result => {
+                if (result.isConfirmed) {
+                    const formData = new FormData(document.getElementById('selection-form'));
+                    formData.append('update_selection', 'true');
+                    fetch('/', {
+                        method: 'POST',
+                        body: formData
+                    }).then(response => response.json()).then(data => {
+                        Swal.fire({
+                            icon: data.message ? 'success' : 'error',
+                            title: data.message || data.error,
+                            showConfirmButton: false,
+                            timer: 1500
+                        }).then(() => {
+                            if (data.message) location.reload();
+                        });
+                    }).catch(error => {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error updating selections',
+                            text: error.message,
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    });
+                }
+            });
+        }
+
+        // Script Control
+        function runScript() {
+            fetch('/run-script', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    Swal.fire({
+                        icon: data.message.includes('successfully') ? 'success' : 'error',
+                        title: data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    document.getElementById('script-message').innerHTML = `<span class="${data.message.includes('successfully') ? 'text-green-500' : 'text-red-500'}">${data.message}</span>`;
+                });
+        }
+
+        function stopScript() {
+            fetch('/stop-script', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    Swal.fire({
+                        icon: data.message.includes('successfully') ? 'success' : 'error',
+                        title: data.message,
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    document.getElementById('script-message').innerHTML = `<span class="${data.message.includes('successfully') ? 'text-green-500' : 'text-red-500'}">${data.message}</span>`;
+                });
+        }
+
+        // Fetch Used Devices
+        function fetchUsedDevices() {
+            fetch('/used_devices')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('used-devices');
+                    if (data.error) {
+                        container.innerHTML = `<p class="text-red-500 text-xs text-center">${data.error}</p>`;
+                        return;
+                    }
+                    container.innerHTML = data.length ? data.map(device => `
+                        <div class="bg-gray-100 p-2 rounded flex items-center space-x-2 fade-in text-xs">
+                            <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
+                            <div>
+                                <p><strong>ADB ID:</strong> ${device.adb_id}</p>
+                                <p><strong>Asset:</strong> ${device.asset_no}</p>
+                                <p><strong>State:</strong> <span class="${device.state === 'active' ? 'text-green-500' : 'text-gray-500'}">${device.state}</span></p>
+                            </div>
+                        </div>
+                    `).join('') : '<p class="text-gray-500 text-xs text-center">No devices in use.</p>';
+                    if (data.length) {
+                        Swal.fire({
+                            title: `${data.length} Device${data.length > 1 ? 's' : ''} Active`,
+                            html: data.map(device => `
+                                <div class="flex items-center space-x-2 text-xs">
+                                    <div class="w-2 h-2 bg-green-500 rounded-full pulse"></div>
+                                    <p>ADB ID: ${device.adb_id}, State: ${device.state}</p>
+                                </div>
+                            `).join(''),
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 3000,
+                            position: 'top-end',
+                            toast: true
+                        });
+                    }
+                });
+        }
+
+        // Fetch used devices initially and every 10 seconds
+        fetchUsedDevices();
+        setInterval(fetchUsedDevices, 10000);
+    </script>
+</body>
+</html>

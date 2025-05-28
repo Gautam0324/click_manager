@@ -1,0 +1,136 @@
+2025-05-28 14:21:40,863 INFO: package: mysql.connector.plugins
+2025-05-28 14:21:40,864 INFO: plugin_name: mysql_native_password
+2025-05-28 14:21:40,867 INFO: AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-28 14:21:42,181 INFO: Database tables checked/created successfully
+2025-05-28 14:21:44,507 INFO: Cleaned up old IPs
+2025-05-28 14:21:45,806 INFO: Found 1 selected devices: ['fc1dd4500621']
+2025-05-28 14:21:45,808 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 14:21:46,715 INFO: Found 1 selected URLs
+2025-05-28 14:21:46,716 INFO: Skipping http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: Target clicks reached
+2025-05-28 14:21:52,422 INFO: Found 1 selected devices: ['fc1dd4500621']
+2025-05-28 14:21:52,424 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 14:21:52,989 INFO: Found 1 selected URLs
+2025-05-28 14:21:52,990 INFO: Skipping http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: Target clicks reached
+2025-05-28 14:21:59,117 INFO: Found 1 selected devices: ['fc1dd4500621']
+2025-05-28 14:21:59,118 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 14:21:59,465 INFO: Found 1 selected URLs
+2025-05-28 14:21:59,466 INFO: Skipping http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: Target clicks reached
+2025-05-28 14:22:05,362 INFO: Found 1 selected devices: ['fc1dd4500621']
+2025-05-28 14:22:05,364 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 14:22:06,580 INFO: Found 1 selected URLs
+2025-05-28 14:22:06,581 INFO: Skipping http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: Target clicks reached
+2025-05-28 16:16:53,469 INFO: package: mysql.connector.plugins
+2025-05-28 16:16:53,470 INFO: plugin_name: mysql_native_password
+2025-05-28 16:16:53,472 INFO: AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-28 16:16:53,735 INFO: Database tables checked/created successfully
+2025-05-28 16:16:53,984 INFO: Cleaned up old IPs
+2025-05-28 16:16:54,227 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:16:54,228 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:16:54,467 INFO: Found 0 selected URLs
+2025-05-28 16:16:54,468 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:16:54,468 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:16:54,725 INFO: Found 0 selected URLs
+2025-05-28 16:16:54,726 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:16:59,940 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:16:59,940 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:00,153 INFO: Found 0 selected URLs
+2025-05-28 16:17:00,155 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:00,155 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:00,346 INFO: Found 0 selected URLs
+2025-05-28 16:17:00,347 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:05,538 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:05,540 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:05,760 INFO: Found 0 selected URLs
+2025-05-28 16:17:05,762 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:05,780 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:06,018 INFO: Found 0 selected URLs
+2025-05-28 16:17:06,021 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:11,251 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:11,254 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:11,503 INFO: Found 0 selected URLs
+2025-05-28 16:17:11,506 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:11,508 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:11,721 INFO: Found 0 selected URLs
+2025-05-28 16:17:11,724 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:17,137 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:17,138 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:17,545 INFO: Found 0 selected URLs
+2025-05-28 16:17:17,546 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:17,548 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:17,953 INFO: Found 0 selected URLs
+2025-05-28 16:17:17,954 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:23,188 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:23,190 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:23,443 INFO: Found 0 selected URLs
+2025-05-28 16:17:23,445 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:23,446 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:23,696 INFO: Found 0 selected URLs
+2025-05-28 16:17:23,703 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:28,956 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:28,957 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:29,184 INFO: Found 0 selected URLs
+2025-05-28 16:17:29,186 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:29,188 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:29,423 INFO: Found 0 selected URLs
+2025-05-28 16:17:29,423 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:34,679 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:34,680 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:34,969 INFO: Found 0 selected URLs
+2025-05-28 16:17:34,971 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:34,972 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:35,235 INFO: Found 0 selected URLs
+2025-05-28 16:17:35,237 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:40,527 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:40,528 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:40,797 INFO: Found 0 selected URLs
+2025-05-28 16:17:40,798 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:40,799 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:41,051 INFO: Found 0 selected URLs
+2025-05-28 16:17:41,052 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:46,314 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:46,314 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:46,525 INFO: Found 0 selected URLs
+2025-05-28 16:17:46,526 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:46,526 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:46,797 INFO: Found 0 selected URLs
+2025-05-28 16:17:46,798 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:52,055 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:52,056 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:52,278 INFO: Found 0 selected URLs
+2025-05-28 16:17:52,279 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:52,279 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:52,498 INFO: Found 0 selected URLs
+2025-05-28 16:17:52,499 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:57,748 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:17:57,749 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:17:57,952 INFO: Found 0 selected URLs
+2025-05-28 16:17:57,953 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:17:57,953 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:17:58,135 INFO: Found 0 selected URLs
+2025-05-28 16:17:58,136 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:18:03,419 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:18:03,419 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:18:03,648 INFO: Found 0 selected URLs
+2025-05-28 16:18:03,649 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:18:03,650 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:18:03,910 INFO: Found 0 selected URLs
+2025-05-28 16:18:03,911 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:18:09,109 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:18:09,110 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:18:09,303 INFO: Found 0 selected URLs
+2025-05-28 16:18:09,304 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:18:09,305 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:18:09,512 INFO: Found 0 selected URLs
+2025-05-28 16:18:09,515 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:18:14,728 INFO: Found 2 selected devices: ['irylmfo755vosshi', 'fc1dd4500621']
+2025-05-28 16:18:14,728 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-28 16:18:14,957 INFO: Found 0 selected URLs
+2025-05-28 16:18:14,958 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:18:14,958 INFO: \U0001f504 Starting process for fc1dd4500621...
+2025-05-28 16:18:15,247 INFO: Found 0 selected URLs
+2025-05-28 16:18:15,248 INFO: \u2139\ufe0f No selected URLs to process
+2025-05-28 16:34:54,803 INFO: package: mysql.connector.plugins
+2025-05-28 16:34:54,805 INFO: plugin_name: mysql_native_password
+2025-05-28 16:34:54,811 INFO: AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-28 16:34:55,072 INFO: Database tables checked/created successfully
+2025-05-28 16:34:55,334 INFO: Cleaned up old IPs
