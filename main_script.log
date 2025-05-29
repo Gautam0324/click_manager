@@ -1,0 +1,169 @@
+2025-05-29 13:42:30,069 INFO: package: mysql.connector.plugins
+2025-05-29 13:42:30,069 INFO: plugin_name: mysql_native_password
+2025-05-29 13:42:30,069 INFO: AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 13:42:30,346 INFO: Database tables checked/created successfully
+2025-05-29 13:42:30,650 INFO: Cleaned up old IPs
+2025-05-29 13:42:30,890 INFO: Found 1 selected devices: ['irylmfo755vosshi']
+2025-05-29 13:42:30,892 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-05-29 13:42:31,165 INFO: Found 1 selected URLs
+2025-05-29 13:42:32,916 WARNING: Error sending stats to Plausible: error sending request for url (https://plausible.io/api/event)
+2025-05-29 13:42:38,276 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:42:38,902 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=48, repeated=13, total=61
+2025-05-29 13:42:38,902 INFO: \u23f3 Sleeping for 1.31 seconds
+2025-05-29 13:42:46,101 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:42:46,808 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=48, repeated=14, total=62
+2025-05-29 13:42:46,808 INFO: \u23f3 Sleeping for 1.32 seconds
+2025-05-29 13:42:48,339 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:42:49,472 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:42:50,602 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:42:52,617 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:42:53,297 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:42:54,807 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:42:55,271 INFO: Fetched public IP: 106.219.68.160
+2025-05-29 13:42:56,270 INFO: Inserted IP info for device irylmfo755vosshi
+2025-05-29 13:43:02,802 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:43:03,364 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=49, repeated=14, total=63
+2025-05-29 13:43:03,620 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:43:04,634 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:43:04,634 INFO: \u23f3 Sleeping for 1.05 seconds
+2025-05-29 13:43:05,990 INFO: \u274c Error connecting to database: 2003: Can't connect to MySQL server on '82.180.144.17:3306' (Errno 10053: An established connection was aborted by the software in your host machine)
+2025-05-29 13:43:06,072 INFO: \u274c Error fetching old IP: 2003: Can't connect to MySQL server on '82.180.144.17:3306' (Errno 10053: An established connection was aborted by the software in your host machine)
+2025-05-29 13:43:06,109 INFO: No old IPs available for repeated click
+2025-05-29 13:43:06,237 INFO: \u274c ADB error on irylmfo755vosshi: adb.exe: device 'irylmfo755vosshi' not found
+2025-05-29 13:43:07,348 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:43:08,469 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:43:10,482 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:43:10,967 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:43:12,477 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:43:12,815 INFO: Fetched public IP: 106.219.68.160
+2025-05-29 13:43:13,346 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:43:14,359 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:43:14,359 INFO: IP 106.219.68.160 recently used, skipping
+2025-05-29 13:43:14,359 INFO: \u23f3 Sleeping for 3.47 seconds
+2025-05-29 13:43:17,908 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:43:19,008 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:43:20,077 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:43:22,087 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:43:22,471 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:43:23,980 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:43:24,395 INFO: Fetched public IP: 106.206.190.108
+2025-05-29 13:43:25,425 INFO: Inserted IP info for device irylmfo755vosshi
+2025-05-29 13:43:30,035 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:43:30,570 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=50, repeated=14, total=64
+2025-05-29 13:43:30,855 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:43:31,913 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:43:31,929 INFO: \u23f3 Sleeping for 1.63 seconds
+2025-05-29 13:43:33,680 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:43:34,791 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:43:35,880 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:43:37,891 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:43:38,422 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:43:39,924 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:43:40,363 INFO: Fetched public IP: 171.79.145.148
+2025-05-29 13:43:41,368 INFO: Inserted IP info for device irylmfo755vosshi
+2025-05-29 13:43:51,567 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:43:52,181 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=51, repeated=14, total=65
+2025-05-29 13:43:52,447 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:43:53,494 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:43:53,516 INFO: \u23f3 Sleeping for 1.02 seconds
+2025-05-29 13:43:54,671 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:43:55,808 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:43:56,942 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:43:58,952 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:43:59,534 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:44:01,038 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:44:01,510 INFO: Fetched public IP: 106.206.142.123
+2025-05-29 13:44:02,158 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:44:03,168 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:44:03,168 INFO: IP 106.206.142.123 recently used, skipping
+2025-05-29 13:44:03,169 INFO: \u23f3 Sleeping for 3.32 seconds
+2025-05-29 13:44:15,195 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:44:15,964 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=51, repeated=15, total=66
+2025-05-29 13:44:15,964 INFO: \u23f3 Sleeping for 1.99 seconds
+2025-05-29 13:44:25,272 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:44:25,862 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=51, repeated=16, total=67
+2025-05-29 13:44:25,862 INFO: \u23f3 Sleeping for 1.37 seconds
+2025-05-29 13:44:27,354 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:44:28,474 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:44:29,595 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:44:31,602 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:44:32,013 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:44:33,538 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:44:34,004 INFO: Fetched public IP: 106.206.190.126
+2025-05-29 13:44:34,612 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:44:35,622 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:44:35,622 INFO: IP 106.206.190.126 recently used, skipping
+2025-05-29 13:44:35,622 INFO: \u23f3 Sleeping for 3.66 seconds
+2025-05-29 13:44:39,379 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:44:40,473 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:44:41,747 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:44:43,758 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:44:44,231 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:44:45,737 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:44:46,248 INFO: Fetched public IP: 106.219.68.160
+2025-05-29 13:44:47,107 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:44:48,108 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:44:48,108 INFO: IP 106.219.68.160 recently used, skipping
+2025-05-29 13:44:48,109 INFO: \u23f3 Sleeping for 3.12 seconds
+2025-05-29 13:44:57,009 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:44:57,598 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=51, repeated=17, total=68
+2025-05-29 13:44:57,598 INFO: \u23f3 Sleeping for 1.36 seconds
+2025-05-29 13:45:04,107 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:45:04,600 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=51, repeated=18, total=69
+2025-05-29 13:45:04,600 INFO: \u23f3 Sleeping for 1.22 seconds
+2025-05-29 13:45:05,949 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:45:07,048 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:45:08,182 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:45:10,188 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:45:10,754 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:45:12,262 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:45:12,667 INFO: Fetched public IP: 223.233.121.226
+2025-05-29 13:45:13,496 INFO: Inserted IP info for device irylmfo755vosshi
+2025-05-29 13:45:21,721 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:45:22,123 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=52, repeated=18, total=70
+2025-05-29 13:45:22,397 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:45:23,400 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:45:23,400 INFO: \u23f3 Sleeping for 1.52 seconds
+2025-05-29 13:45:33,622 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:45:34,093 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=52, repeated=19, total=71
+2025-05-29 13:45:34,094 INFO: \u23f3 Sleeping for 1.25 seconds
+2025-05-29 13:45:40,914 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:45:41,488 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=52, repeated=20, total=72
+2025-05-29 13:45:41,489 INFO: \u23f3 Sleeping for 1.66 seconds
+2025-05-29 13:45:43,263 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:45:44,398 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:45:45,515 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:45:47,516 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:45:47,846 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:45:49,350 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:45:49,763 INFO: Fetched public IP: 106.206.158.127
+2025-05-29 13:45:50,800 INFO: Inserted IP info for device irylmfo755vosshi
+2025-05-29 13:45:56,868 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:45:57,417 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=53, repeated=20, total=73
+2025-05-29 13:45:57,671 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:45:58,706 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:45:58,716 INFO: \u23f3 Sleeping for 1.36 seconds
+2025-05-29 13:46:00,159 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:46:01,265 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:46:02,440 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:46:04,442 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:46:04,899 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:46:06,434 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:46:06,865 INFO: Fetched public IP: 223.185.232.75
+2025-05-29 13:46:07,816 INFO: Inserted IP info for device irylmfo755vosshi
+2025-05-29 13:46:18,204 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:46:18,661 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=54, repeated=20, total=74
+2025-05-29 13:46:18,923 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:46:19,933 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:46:19,934 INFO: \u23f3 Sleeping for 1.56 seconds
+2025-05-29 13:46:21,600 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-05-29 13:46:22,701 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-05-29 13:46:23,833 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 13:46:25,833 INFO: Rotated IP for irylmfo755vosshi
+2025-05-29 13:46:26,188 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:46:27,690 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-05-29 13:46:28,980 INFO: Fetched public IP: 223.185.232.75
+2025-05-29 13:46:29,720 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-05-29 13:46:30,736 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-05-29 13:46:30,741 INFO: IP 223.185.232.75 recently used, skipping
+2025-05-29 13:46:30,748 INFO: \u23f3 Sleeping for 4.85 seconds

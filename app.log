@@ -1,351 +1,41 @@
-2025-05-29 09:46:20,577 - INFO - package: mysql.connector.plugins
-2025-05-29 09:46:20,590 - INFO - plugin_name: mysql_native_password
-2025-05-29 09:46:20,593 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 09:46:21,694 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-05-29 13:41:01,677 - INFO - package: mysql.connector.plugins
+2025-05-29 13:41:01,677 - INFO - plugin_name: mysql_native_password
+2025-05-29 13:41:01,693 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 13:41:03,713 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://192.168.0.127:5000
-2025-05-29 09:46:21,694 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-29 09:46:21,698 - INFO -  * Restarting with stat
-2025-05-29 09:46:23,509 - INFO - package: mysql.connector.plugins
-2025-05-29 09:46:23,509 - INFO - plugin_name: mysql_native_password
-2025-05-29 09:46:23,509 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 09:46:26,454 - WARNING -  * Debugger is active!
-2025-05-29 09:46:26,454 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 09:46:49,982 - ERROR - 127.0.0.1 - - [29/May/2025 09:46:49] code 400, message Bad request version ('\x97iO§Es\x02\x90ã')
-2025-05-29 09:46:49,983 - INFO - 127.0.0.1 - - [29/May/2025 09:46:49] "[31m[1m\x16\x03\x01\x07\x00\x01\x00\x06ü\x03\x035OåØ<\x9f\x04\x98kºÈÞËÑrãõ<Z[?êË\x91EÞ_*ÜÈ¨, \x81ø\x15$©\x87Ùµµ\x1d\x0c\x87v\x1cd®ìdÄ´wàå¾\x9b·ï\x03\x0eF1s\x00 ÚÚ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06\x93ÊÊ\x00\x00ÿ\x01\x00\x01\x00\x003\x04ï\x04íÊÊ\x00\x01\x00\x11ì\x04ÀHx¼\x00ÍÆ\x09)\x81O\x8b¬5\x9aZ\x85\x9aL\x00°Rý*\x96$\x94IÜan»\x99S\x16J\x03\x1dS\x15\x85\x04)µë\x83¢;%\x1b\x88\x8d\x9cäFJ·.iç%&A\x18ÅÌ \x18ÂF­\x93¡\x82irõº'\x1fÀ¹\x0d&[\x1d\x97iO§Es\x02\x90ã[0m" 400 -
-2025-05-29 09:46:49,983 - ERROR - 127.0.0.1 - - [29/May/2025 09:46:49] code 400, message Bad request version ('JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06s\x9a\x9a\x00\x00\x00\x17\x00\x00\x003\x04ï\x04í')
-2025-05-29 09:46:49,984 - INFO - 127.0.0.1 - - [29/May/2025 09:46:49] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03\\/mì¨\x8a*ëþe\x08¶OÞ¬Õù\x91rï2|·\x80;\x93ù\x08~?rÛ \x18½,> \x9f`P\x9d\x90\x1bc16oÎ\x87\x1d²­Â¿¼ß´%o\x84h\x82\x08G\x00 JJ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06s\x9a\x9a\x00\x00\x00\x17\x00\x00\x003\x04ï\x04í[0m" 400 -
-2025-05-29 09:46:49,987 - ERROR - 127.0.0.1 - - [29/May/2025 09:46:49] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03oOíÕð[®G\x02\x98[¹¢\x81°Å.nP²\x1af\x057\x93#Úò«Pg\x0f')
-2025-05-29 09:46:49,987 - INFO - 127.0.0.1 - - [29/May/2025 09:46:49] "[31m[1m\x16\x03\x01\x06À\x01\x00\x06¼\x03\x03oOíÕð[®G\x02\x98[¹¢\x81°Å.nP²\x1af\x057\x93#Úò«Pg\x0f \x04\x1b[0m" 400 -
-2025-05-29 09:46:49,989 - ERROR - 127.0.0.1 - - [29/May/2025 09:46:49] code 400, message Bad request version ('Ëº\x90\x87!q·°\x13\x86\x81wª\x86³\x8f1Ø\x95·')
-2025-05-29 09:46:49,990 - INFO - 127.0.0.1 - - [29/May/2025 09:46:49] "[31m[1m\x16\x03\x01\x06à\x01\x00\x06Ü\x03\x03¡\x91\x05óøªZD%nú°çcxÚS\x1a\x8cP\x10Vb\x98×\x8cÝ!\x163ða ½¹\x8bæõµ4prz\x8c\x8d{\x10IÄ\x8cK-¦ÉY\x88sÑÜ\x88.Yn)y\x00 ÊÊ\x13\x01\x13\x02\x13\x03À+À/À,À0Ì©Ì¨À\x13À\x14\x00\x9c\x00\x9d\x00/\x005\x01\x00\x06sºº\x00\x00\x00+\x00\x07\x06\x1a\x1a\x03\x04\x03\x03\x00\x17\x00\x00\x003\x04ï\x04í\x8a\x8a\x00\x01\x00\x11ì\x04ÀùKW<\x95ª?Ã\x1f´\x9a\x08Î0\x1cÊ\x1b''X\x11þbgåÙ6\x9a\x85¯~,Ì\x1eÖ:(|\x1aF´\x08\x0cV\x1f~Ì?0\x8aEäÌ©+ò\x17R#Q¡#\x0bÓP[ÒøbôÂ\x8f*hXu+¶¹z\x16ÞÇ\x07\x81cI[Æ`«aÄw§:\x87g\x8eA\x00\x00ÙL\x032e`hA\x07àÇ¼@8\x0f\x94¼\x06\x03@l®\x9bx\x18z>;\x97T±»§ò\x9c¹\x9d9T\x18 \x80Ä+\x00ZK o\x04Eé1\x91\x9cóH´s\x9f§d¼æ\x98\x17\x1e&\x01!õz\x8b%OÔ\x13µ\x00«\x7f>¤ËF<ATñ3i!¢\x99l£\x88BPÄ[1]\x14\x14*ÈzÄò âwV¥U ËT\x07\x0bzÆ\x1cû§ÌäDô\x16¦À\x93SÍÆ\x14´\x12£\x00T\x1f<Ä¤ZË`[µ\x87\x1f\x0b­¸\x03d\x9er\x06ªK¦¸°\x08?\x81[\x1d¨6\x96Ì7½"k#\x87\x1dé\x85)\x9eQ\x17Ú\x09Ëº\x90\x87!q·°\x13\x86\x81wª\x86³\x8f1Ø\x95·[0m" 400 -
-2025-05-29 09:47:48,148 - INFO - 127.0.0.1 - - [29/May/2025 09:47:48] "GET / HTTP/1.1" 200 -
-2025-05-29 09:47:48,821 - INFO - 127.0.0.1 - - [29/May/2025 09:47:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-2025-05-29 09:47:49,258 - INFO - 127.0.0.1 - - [29/May/2025 09:47:49] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:47:56,500 - INFO - 127.0.0.1 - - [29/May/2025 09:47:56] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:47:57,169 - INFO - 127.0.0.1 - - [29/May/2025 09:47:57] "GET / HTTP/1.1" 200 -
-2025-05-29 09:47:59,166 - INFO - 127.0.0.1 - - [29/May/2025 09:47:59] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:48:03,302 - INFO - 127.0.0.1 - - [29/May/2025 09:48:03] "GET / HTTP/1.1" 200 -
-2025-05-29 09:48:03,789 - INFO - 127.0.0.1 - - [29/May/2025 09:48:03] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:48:11,352 - INFO - 127.0.0.1 - - [29/May/2025 09:48:11] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:48:11,985 - INFO - 127.0.0.1 - - [29/May/2025 09:48:11] "GET / HTTP/1.1" 200 -
-2025-05-29 09:48:13,757 - INFO - 127.0.0.1 - - [29/May/2025 09:48:13] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:48:23,736 - INFO - 127.0.0.1 - - [29/May/2025 09:48:23] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:48:34,417 - INFO - 127.0.0.1 - - [29/May/2025 09:48:34] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:48:44,409 - INFO - 127.0.0.1 - - [29/May/2025 09:48:44] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:48:54,450 - INFO - 127.0.0.1 - - [29/May/2025 09:48:54] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:49:04,408 - INFO - 127.0.0.1 - - [29/May/2025 09:49:04] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:49:14,627 - INFO - 127.0.0.1 - - [29/May/2025 09:49:14] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:49:24,565 - INFO - 127.0.0.1 - - [29/May/2025 09:49:24] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:49:33,769 - INFO - 127.0.0.1 - - [29/May/2025 09:49:33] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:49:43,786 - INFO - 127.0.0.1 - - [29/May/2025 09:49:43] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:49:53,826 - INFO - 127.0.0.1 - - [29/May/2025 09:49:53] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:50:03,754 - INFO - 127.0.0.1 - - [29/May/2025 09:50:03] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:50:13,761 - INFO - 127.0.0.1 - - [29/May/2025 09:50:13] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:50:18,976 - INFO - 127.0.0.1 - - [29/May/2025 09:50:18] "GET / HTTP/1.1" 200 -
-2025-05-29 09:50:32,888 - INFO - 127.0.0.1 - - [29/May/2025 09:50:32] "GET / HTTP/1.1" 200 -
-2025-05-29 09:50:45,324 - INFO - 127.0.0.1 - - [29/May/2025 09:50:45] "GET / HTTP/1.1" 200 -
-2025-05-29 09:50:45,806 - INFO - 127.0.0.1 - - [29/May/2025 09:50:45] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:50:51,801 - INFO - 127.0.0.1 - - [29/May/2025 09:50:51] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:50:52,379 - INFO - 127.0.0.1 - - [29/May/2025 09:50:52] "GET / HTTP/1.1" 200 -
-2025-05-29 09:50:55,808 - INFO - 127.0.0.1 - - [29/May/2025 09:50:55] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:50:57,580 - INFO - 127.0.0.1 - - [29/May/2025 09:50:57] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:50:58,135 - INFO - 127.0.0.1 - - [29/May/2025 09:50:58] "GET / HTTP/1.1" 200 -
-2025-05-29 09:51:05,784 - INFO - 127.0.0.1 - - [29/May/2025 09:51:05] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:51:16,646 - INFO - 127.0.0.1 - - [29/May/2025 09:51:16] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:51:26,015 - INFO - 127.0.0.1 - - [29/May/2025 09:51:26] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:51:36,526 - INFO - 127.0.0.1 - - [29/May/2025 09:51:36] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:51:46,513 - INFO - 127.0.0.1 - - [29/May/2025 09:51:46] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:51:56,541 - INFO - 127.0.0.1 - - [29/May/2025 09:51:56] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:52:06,511 - INFO - 127.0.0.1 - - [29/May/2025 09:52:06] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:52:16,472 - INFO - 127.0.0.1 - - [29/May/2025 09:52:16] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:52:26,432 - INFO - 127.0.0.1 - - [29/May/2025 09:52:26] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:53:06,524 - INFO - 127.0.0.1 - - [29/May/2025 09:53:06] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:53:15,784 - INFO - 127.0.0.1 - - [29/May/2025 09:53:15] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:53:25,764 - INFO - 127.0.0.1 - - [29/May/2025 09:53:25] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:53:35,800 - INFO - 127.0.0.1 - - [29/May/2025 09:53:35] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:53:45,801 - INFO - 127.0.0.1 - - [29/May/2025 09:53:45] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:53:55,773 - INFO - 127.0.0.1 - - [29/May/2025 09:53:55] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:54:05,764 - INFO - 127.0.0.1 - - [29/May/2025 09:54:05] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:54:15,900 - INFO - 127.0.0.1 - - [29/May/2025 09:54:15] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:54:25,957 - INFO - 127.0.0.1 - - [29/May/2025 09:54:25] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:54:35,810 - INFO - 127.0.0.1 - - [29/May/2025 09:54:35] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:54:45,852 - INFO - 127.0.0.1 - - [29/May/2025 09:54:45] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:54:55,757 - INFO - 127.0.0.1 - - [29/May/2025 09:54:55] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:55:05,858 - INFO - 127.0.0.1 - - [29/May/2025 09:55:05] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:55:13,685 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
-2025-05-29 09:55:13,817 - INFO -  * Restarting with stat
-2025-05-29 09:55:14,776 - INFO - package: mysql.connector.plugins
-2025-05-29 09:55:14,776 - INFO - plugin_name: mysql_native_password
-2025-05-29 09:55:14,776 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 09:55:15,798 - WARNING -  * Debugger is active!
-2025-05-29 09:55:15,798 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 09:55:16,514 - INFO - 127.0.0.1 - - [29/May/2025 09:55:16] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:55:27,878 - INFO - package: mysql.connector.plugins
-2025-05-29 09:55:27,880 - INFO - plugin_name: mysql_native_password
-2025-05-29 09:55:27,886 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 09:55:28,844 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5000
- * Running on http://192.168.0.127:5000
-2025-05-29 09:55:28,845 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-29 09:55:28,848 - INFO -  * Restarting with stat
-2025-05-29 09:55:29,590 - INFO - package: mysql.connector.plugins
-2025-05-29 09:55:29,590 - INFO - plugin_name: mysql_native_password
-2025-05-29 09:55:29,592 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 09:55:30,458 - WARNING -  * Debugger is active!
-2025-05-29 09:55:30,462 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 09:55:35,868 - INFO - 127.0.0.1 - - [29/May/2025 09:55:35] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:55:38,217 - INFO - 127.0.0.1 - - [29/May/2025 09:55:38] "GET / HTTP/1.1" 200 -
-2025-05-29 09:55:38,749 - INFO - 127.0.0.1 - - [29/May/2025 09:55:38] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:55:46,414 - INFO - 127.0.0.1 - - [29/May/2025 09:55:46] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:55:47,106 - INFO - 127.0.0.1 - - [29/May/2025 09:55:47] "GET / HTTP/1.1" 200 -
-2025-05-29 09:55:48,718 - INFO - 127.0.0.1 - - [29/May/2025 09:55:48] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:55:54,275 - INFO - 127.0.0.1 - - [29/May/2025 09:55:54] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:55:54,842 - INFO - 127.0.0.1 - - [29/May/2025 09:55:54] "GET / HTTP/1.1" 200 -
-2025-05-29 09:55:58,617 - INFO - 127.0.0.1 - - [29/May/2025 09:55:58] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:56:08,756 - INFO - 127.0.0.1 - - [29/May/2025 09:56:08] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:56:19,455 - INFO - 127.0.0.1 - - [29/May/2025 09:56:19] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:56:29,499 - INFO - 127.0.0.1 - - [29/May/2025 09:56:29] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:56:39,714 - INFO - 127.0.0.1 - - [29/May/2025 09:56:39] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:56:40,989 - INFO - 127.0.0.1 - - [29/May/2025 09:56:40] "GET / HTTP/1.1" 200 -
-2025-05-29 09:57:09,662 - INFO - 127.0.0.1 - - [29/May/2025 09:57:09] "GET / HTTP/1.1" 200 -
-2025-05-29 09:57:14,928 - INFO - 127.0.0.1 - - [29/May/2025 09:57:14] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:57:15,444 - INFO - 127.0.0.1 - - [29/May/2025 09:57:15] "GET / HTTP/1.1" 200 -
-2025-05-29 09:57:16,529 - INFO - 127.0.0.1 - - [29/May/2025 09:57:16] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:57:16,896 - INFO - 127.0.0.1 - - [29/May/2025 09:57:16] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:57:16,975 - INFO - 127.0.0.1 - - [29/May/2025 09:57:16] "GET / HTTP/1.1" 200 -
-2025-05-29 09:57:17,104 - INFO - 127.0.0.1 - - [29/May/2025 09:57:17] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:57:17,376 - INFO - 127.0.0.1 - - [29/May/2025 09:57:17] "GET / HTTP/1.1" 200 -
-2025-05-29 09:57:17,626 - INFO - 127.0.0.1 - - [29/May/2025 09:57:17] "GET / HTTP/1.1" 200 -
-2025-05-29 09:57:21,100 - INFO - 127.0.0.1 - - [29/May/2025 09:57:21] "[32mPOST / HTTP/1.1[0m" 302 -
-2025-05-29 09:57:21,548 - INFO - 127.0.0.1 - - [29/May/2025 09:57:21] "GET / HTTP/1.1" 200 -
-2025-05-29 09:57:22,961 - INFO - 127.0.0.1 - - [29/May/2025 09:57:22] "GET / HTTP/1.1" 200 -
-2025-05-29 09:57:36,787 - INFO - 127.0.0.1 - - [29/May/2025 09:57:36] "GET / HTTP/1.1" 200 -
-2025-05-29 09:57:37,203 - INFO - 127.0.0.1 - - [29/May/2025 09:57:37] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:57:47,338 - INFO - 127.0.0.1 - - [29/May/2025 09:57:47] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:57:49,683 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
-2025-05-29 09:57:49,760 - INFO -  * Restarting with stat
-2025-05-29 09:57:50,689 - INFO - package: mysql.connector.plugins
-2025-05-29 09:57:50,690 - INFO - plugin_name: mysql_native_password
-2025-05-29 09:57:50,701 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 09:57:51,614 - WARNING -  * Debugger is active!
-2025-05-29 09:57:51,614 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 09:57:57,397 - INFO - 127.0.0.1 - - [29/May/2025 09:57:57] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:58:07,250 - INFO - 127.0.0.1 - - [29/May/2025 09:58:07] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:58:17,649 - INFO - 127.0.0.1 - - [29/May/2025 09:58:17] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:58:27,549 - INFO - 127.0.0.1 - - [29/May/2025 09:58:27] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:58:37,572 - INFO - 127.0.0.1 - - [29/May/2025 09:58:37] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:58:47,572 - INFO - 127.0.0.1 - - [29/May/2025 09:58:47] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:58:57,687 - INFO - 127.0.0.1 - - [29/May/2025 09:58:57] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 09:59:07,464 - INFO - 127.0.0.1 - - [29/May/2025 09:59:07] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:00:03,974 - INFO - 127.0.0.1 - - [29/May/2025 10:00:03] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:00:05,570 - INFO - 127.0.0.1 - - [29/May/2025 10:00:05] "GET / HTTP/1.1" 200 -
-2025-05-29 10:00:11,884 - INFO - Device id 1 selection toggled to selected
-2025-05-29 10:00:12,135 - INFO - 127.0.0.1 - - [29/May/2025 10:00:12] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
-2025-05-29 10:00:13,331 - INFO - Device id 2 selection toggled to selected
-2025-05-29 10:00:13,543 - INFO - 127.0.0.1 - - [29/May/2025 10:00:13] "POST /toggle_device_selection/2 HTTP/1.1" 200 -
-2025-05-29 10:05:50,701 - INFO - 127.0.0.1 - - [29/May/2025 10:05:50] "GET / HTTP/1.1" 200 -
-2025-05-29 10:05:50,968 - INFO - 127.0.0.1 - - [29/May/2025 10:05:50] "[33mGET /used_urls HTTP/1.1[0m" 404 -
-2025-05-29 10:05:51,464 - INFO - 127.0.0.1 - - [29/May/2025 10:05:51] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:06:04,085 - INFO - URL id 1 selection toggled to deselected
-2025-05-29 10:06:04,304 - INFO - 127.0.0.1 - - [29/May/2025 10:06:04] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
-2025-05-29 10:06:04,312 - INFO - 127.0.0.1 - - [29/May/2025 10:06:04] "[33mGET /used_urls HTTP/1.1[0m" 404 -
-2025-05-29 10:06:04,639 - INFO - 127.0.0.1 - - [29/May/2025 10:06:04] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:06:19,295 - INFO - URL id 2 selection toggled to deselected
-2025-05-29 10:06:19,587 - INFO - 127.0.0.1 - - [29/May/2025 10:06:19] "POST /toggle_url_selection/2 HTTP/1.1" 200 -
-2025-05-29 10:06:19,599 - INFO - 127.0.0.1 - - [29/May/2025 10:06:19] "[33mGET /used_urls HTTP/1.1[0m" 404 -
-2025-05-29 10:06:20,011 - INFO - 127.0.0.1 - - [29/May/2025 10:06:20] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:06:21,561 - INFO - 127.0.0.1 - - [29/May/2025 10:06:21] "GET / HTTP/1.1" 200 -
-2025-05-29 10:06:21,760 - INFO - 127.0.0.1 - - [29/May/2025 10:06:21] "[33mGET /used_urls HTTP/1.1[0m" 404 -
-2025-05-29 10:06:22,092 - INFO - 127.0.0.1 - - [29/May/2025 10:06:22] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:06:27,451 - INFO - Device id 1 selection toggled to deselected
-2025-05-29 10:06:27,719 - INFO - 127.0.0.1 - - [29/May/2025 10:06:27] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
-2025-05-29 10:06:27,727 - INFO - 127.0.0.1 - - [29/May/2025 10:06:27] "[33mGET /used_urls HTTP/1.1[0m" 404 -
-2025-05-29 10:06:28,127 - INFO - 127.0.0.1 - - [29/May/2025 10:06:28] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:06:31,062 - INFO - Device id 2 selection toggled to deselected
-2025-05-29 10:06:31,342 - INFO - 127.0.0.1 - - [29/May/2025 10:06:31] "POST /toggle_device_selection/2 HTTP/1.1" 200 -
-2025-05-29 10:06:31,347 - INFO - 127.0.0.1 - - [29/May/2025 10:06:31] "[33mGET /used_urls HTTP/1.1[0m" 404 -
-2025-05-29 10:06:31,654 - INFO - 127.0.0.1 - - [29/May/2025 10:06:31] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:06:35,637 - INFO - URL id 1 selection toggled to selected
-2025-05-29 10:06:35,930 - INFO - 127.0.0.1 - - [29/May/2025 10:06:35] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
-2025-05-29 10:06:35,939 - INFO - 127.0.0.1 - - [29/May/2025 10:06:35] "[33mGET /used_urls HTTP/1.1[0m" 404 -
-2025-05-29 10:06:36,358 - INFO - 127.0.0.1 - - [29/May/2025 10:06:36] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:06:42,586 - INFO - 127.0.0.1 - - [29/May/2025 10:06:42] "GET / HTTP/1.1" 200 -
-2025-05-29 10:06:42,858 - INFO - 127.0.0.1 - - [29/May/2025 10:06:42] "[33mGET /used_urls HTTP/1.1[0m" 404 -
-2025-05-29 10:06:43,205 - INFO - 127.0.0.1 - - [29/May/2025 10:06:43] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:07:07,167 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
-2025-05-29 10:07:07,244 - INFO -  * Restarting with stat
-2025-05-29 10:07:08,064 - INFO - package: mysql.connector.plugins
-2025-05-29 10:07:08,064 - INFO - plugin_name: mysql_native_password
-2025-05-29 10:07:08,067 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 10:07:09,077 - WARNING -  * Debugger is active!
-2025-05-29 10:07:09,084 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 10:07:12,923 - INFO - 127.0.0.1 - - [29/May/2025 10:07:12] "GET / HTTP/1.1" 200 -
-2025-05-29 10:07:13,461 - INFO - 127.0.0.1 - - [29/May/2025 10:07:13] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:07:13,501 - INFO - 127.0.0.1 - - [29/May/2025 10:07:13] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:12:33,871 - INFO - Updated URL id 1: http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
-2025-05-29 10:12:34,121 - INFO - 127.0.0.1 - - [29/May/2025 10:12:34] "POST /update_url/1 HTTP/1.1" 200 -
-2025-05-29 10:12:35,726 - INFO - 127.0.0.1 - - [29/May/2025 10:12:35] "GET / HTTP/1.1" 200 -
-2025-05-29 10:12:36,290 - INFO - 127.0.0.1 - - [29/May/2025 10:12:36] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:12:36,291 - INFO - 127.0.0.1 - - [29/May/2025 10:12:36] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:13:14,989 - INFO - 127.0.0.1 - - [29/May/2025 10:13:14] "GET / HTTP/1.1" 200 -
-2025-05-29 10:13:15,716 - INFO - 127.0.0.1 - - [29/May/2025 10:13:15] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:13:15,765 - INFO - 127.0.0.1 - - [29/May/2025 10:13:15] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:19:16,734 - INFO - 127.0.0.1 - - [29/May/2025 10:19:16] "GET / HTTP/1.1" 200 -
-2025-05-29 10:19:17,288 - INFO - 127.0.0.1 - - [29/May/2025 10:19:17] "[33mGET /urls HTTP/1.1[0m" 404 -
-2025-05-29 10:19:17,290 - INFO - 127.0.0.1 - - [29/May/2025 10:19:17] "[33mGET /devices HTTP/1.1[0m" 404 -
-2025-05-29 10:19:17,864 - INFO - 127.0.0.1 - - [29/May/2025 10:19:17] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:19:18,200 - INFO - 127.0.0.1 - - [29/May/2025 10:19:18] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:20:37,401 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
-2025-05-29 10:20:37,554 - INFO -  * Restarting with stat
-2025-05-29 10:20:39,457 - INFO - package: mysql.connector.plugins
-2025-05-29 10:20:39,457 - INFO - plugin_name: mysql_native_password
-2025-05-29 10:20:39,459 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 10:20:40,402 - WARNING -  * Debugger is active!
-2025-05-29 10:20:40,409 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 10:21:13,771 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
-2025-05-29 10:21:13,914 - INFO -  * Restarting with stat
-2025-05-29 10:21:14,747 - INFO - package: mysql.connector.plugins
-2025-05-29 10:21:14,748 - INFO - plugin_name: mysql_native_password
-2025-05-29 10:21:14,753 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 10:21:15,640 - WARNING -  * Debugger is active!
-2025-05-29 10:21:15,644 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 10:24:13,866 - INFO - package: mysql.connector.plugins
-2025-05-29 10:24:13,866 - INFO - plugin_name: mysql_native_password
-2025-05-29 10:24:13,868 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 10:24:14,747 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on all addresses (0.0.0.0)
- * Running on http://127.0.0.1:5000
- * Running on http://192.168.0.127:5000
-2025-05-29 10:24:14,747 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-29 10:24:14,750 - INFO -  * Restarting with stat
-2025-05-29 10:24:16,000 - INFO - package: mysql.connector.plugins
-2025-05-29 10:24:16,002 - INFO - plugin_name: mysql_native_password
-2025-05-29 10:24:16,007 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 10:24:16,969 - WARNING -  * Debugger is active!
-2025-05-29 10:24:16,973 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 10:24:18,982 - INFO - 127.0.0.1 - - [29/May/2025 10:24:18] "GET / HTTP/1.1" 200 -
-2025-05-29 10:24:19,304 - INFO - 127.0.0.1 - - [29/May/2025 10:24:19] "[33mGET /urls HTTP/1.1[0m" 404 -
-2025-05-29 10:24:19,306 - INFO - 127.0.0.1 - - [29/May/2025 10:24:19] "[33mGET /devices HTTP/1.1[0m" 404 -
-2025-05-29 10:24:19,676 - INFO - 127.0.0.1 - - [29/May/2025 10:24:19] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:24:19,720 - INFO - 127.0.0.1 - - [29/May/2025 10:24:19] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:24:33,203 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
-2025-05-29 10:24:33,271 - INFO -  * Restarting with stat
-2025-05-29 10:24:34,452 - INFO - package: mysql.connector.plugins
-2025-05-29 10:24:34,452 - INFO - plugin_name: mysql_native_password
-2025-05-29 10:24:34,456 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 10:24:35,402 - WARNING -  * Debugger is active!
-2025-05-29 10:24:35,407 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 10:24:36,696 - INFO - 127.0.0.1 - - [29/May/2025 10:24:36] "GET / HTTP/1.1" 200 -
-2025-05-29 10:24:37,316 - INFO - 127.0.0.1 - - [29/May/2025 10:24:37] "GET /urls HTTP/1.1" 200 -
-2025-05-29 10:24:37,411 - INFO - 127.0.0.1 - - [29/May/2025 10:24:37] "GET /devices HTTP/1.1" 200 -
-2025-05-29 10:24:37,449 - INFO - 127.0.0.1 - - [29/May/2025 10:24:37] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:24:37,497 - INFO - 127.0.0.1 - - [29/May/2025 10:24:37] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:24:37,938 - INFO - 127.0.0.1 - - [29/May/2025 10:24:37] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:24:37,989 - INFO - 127.0.0.1 - - [29/May/2025 10:24:37] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:24:38,521 - INFO - 127.0.0.1 - - [29/May/2025 10:24:38] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:24:38,660 - INFO - 127.0.0.1 - - [29/May/2025 10:24:38] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:24:43,477 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
-2025-05-29 10:24:43,541 - INFO -  * Restarting with stat
-2025-05-29 10:24:44,473 - INFO - package: mysql.connector.plugins
-2025-05-29 10:24:44,474 - INFO - plugin_name: mysql_native_password
-2025-05-29 10:24:44,475 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 10:24:45,760 - WARNING -  * Debugger is active!
-2025-05-29 10:24:45,765 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 10:25:13,191 - INFO - 127.0.0.1 - - [29/May/2025 10:25:13] "GET / HTTP/1.1" 200 -
-2025-05-29 10:25:19,259 - INFO - URL id 2 selection toggled to selected
-2025-05-29 10:25:19,579 - INFO - 127.0.0.1 - - [29/May/2025 10:25:19] "POST /toggle_url_selection/2 HTTP/1.1" 200 -
-2025-05-29 10:25:28,734 - INFO - 127.0.0.1 - - [29/May/2025 10:25:28] "GET / HTTP/1.1" 200 -
-2025-05-29 10:25:29,290 - INFO - 127.0.0.1 - - [29/May/2025 10:25:29] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:25:29,373 - INFO - 127.0.0.1 - - [29/May/2025 10:25:29] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:29:25,469 - INFO - 127.0.0.1 - - [29/May/2025 10:29:25] "GET / HTTP/1.1" 200 -
-2025-05-29 10:29:25,998 - INFO - 127.0.0.1 - - [29/May/2025 10:29:25] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:29:26,000 - INFO - 127.0.0.1 - - [29/May/2025 10:29:25] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:29:32,685 - INFO - URL id 1 selection toggled to deselected
-2025-05-29 10:29:32,926 - INFO - 127.0.0.1 - - [29/May/2025 10:29:32] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
-2025-05-29 10:29:33,259 - INFO - 127.0.0.1 - - [29/May/2025 10:29:33] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:29:33,303 - INFO - 127.0.0.1 - - [29/May/2025 10:29:33] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:29:34,723 - INFO - URL id 2 selection toggled to deselected
-2025-05-29 10:29:34,958 - INFO - 127.0.0.1 - - [29/May/2025 10:29:34] "POST /toggle_url_selection/2 HTTP/1.1" 200 -
-2025-05-29 10:29:35,346 - INFO - 127.0.0.1 - - [29/May/2025 10:29:35] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:29:35,390 - INFO - 127.0.0.1 - - [29/May/2025 10:29:35] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:29:36,793 - INFO - URL id 1 selection toggled to selected
-2025-05-29 10:29:37,042 - INFO - 127.0.0.1 - - [29/May/2025 10:29:37] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
-2025-05-29 10:29:37,385 - INFO - 127.0.0.1 - - [29/May/2025 10:29:37] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:29:37,465 - INFO - 127.0.0.1 - - [29/May/2025 10:29:37] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:29:40,498 - INFO - 127.0.0.1 - - [29/May/2025 10:29:40] "GET / HTTP/1.1" 200 -
-2025-05-29 10:29:41,092 - INFO - 127.0.0.1 - - [29/May/2025 10:29:41] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:29:41,167 - INFO - 127.0.0.1 - - [29/May/2025 10:29:41] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:29:47,741 - INFO - Device id 1 selection toggled to selected
-2025-05-29 10:29:47,998 - INFO - 127.0.0.1 - - [29/May/2025 10:29:47] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
-2025-05-29 10:29:48,369 - INFO - 127.0.0.1 - - [29/May/2025 10:29:48] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:29:48,403 - INFO - 127.0.0.1 - - [29/May/2025 10:29:48] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:29:48,819 - INFO - Device id 2 selection toggled to selected
-2025-05-29 10:29:49,070 - INFO - 127.0.0.1 - - [29/May/2025 10:29:49] "POST /toggle_device_selection/2 HTTP/1.1" 200 -
-2025-05-29 10:29:49,468 - INFO - 127.0.0.1 - - [29/May/2025 10:29:49] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:29:49,501 - INFO - 127.0.0.1 - - [29/May/2025 10:29:49] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:30:25,721 - INFO - 127.0.0.1 - - [29/May/2025 10:30:25] "GET / HTTP/1.1" 200 -
-2025-05-29 10:30:26,303 - INFO - 127.0.0.1 - - [29/May/2025 10:30:26] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:30:26,417 - INFO - 127.0.0.1 - - [29/May/2025 10:30:26] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:30:31,986 - INFO - URL id 2 selection toggled to selected
-2025-05-29 10:30:32,267 - INFO - 127.0.0.1 - - [29/May/2025 10:30:32] "POST /toggle_url_selection/2 HTTP/1.1" 200 -
-2025-05-29 10:30:32,673 - INFO - 127.0.0.1 - - [29/May/2025 10:30:32] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:30:32,703 - INFO - 127.0.0.1 - - [29/May/2025 10:30:32] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:31:40,269 - INFO - 127.0.0.1 - - [29/May/2025 10:31:40] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
-2025-05-29 10:32:32,950 - INFO - 127.0.0.1 - - [29/May/2025 10:32:32] "GET / HTTP/1.1" 200 -
-2025-05-29 10:32:33,050 - INFO - 127.0.0.1 - - [29/May/2025 10:32:33] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
-2025-05-29 10:32:33,684 - INFO - 127.0.0.1 - - [29/May/2025 10:32:33] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:32:33,715 - INFO - 127.0.0.1 - - [29/May/2025 10:32:33] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:37:48,419 - INFO - 127.0.0.1 - - [29/May/2025 10:37:48] "GET / HTTP/1.1" 200 -
-2025-05-29 10:37:48,504 - INFO - 127.0.0.1 - - [29/May/2025 10:37:48] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
-2025-05-29 10:39:34,810 - INFO - 127.0.0.1 - - [29/May/2025 10:39:34] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
-2025-05-29 10:40:47,500 - INFO - 127.0.0.1 - - [29/May/2025 10:40:47] "GET / HTTP/1.1" 200 -
-2025-05-29 10:40:47,554 - INFO - 127.0.0.1 - - [29/May/2025 10:40:47] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
-2025-05-29 10:40:48,276 - INFO - 127.0.0.1 - - [29/May/2025 10:40:48] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:40:48,311 - INFO - 127.0.0.1 - - [29/May/2025 10:40:48] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:41:08,335 - INFO - URL id 2 selection toggled to deselected
-2025-05-29 10:41:08,623 - INFO - 127.0.0.1 - - [29/May/2025 10:41:08] "POST /toggle_url_selection/2 HTTP/1.1" 200 -
-2025-05-29 10:41:09,043 - INFO - 127.0.0.1 - - [29/May/2025 10:41:09] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:41:09,087 - INFO - 127.0.0.1 - - [29/May/2025 10:41:09] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:41:09,385 - INFO - URL id 1 selection toggled to deselected
-2025-05-29 10:41:09,644 - INFO - 127.0.0.1 - - [29/May/2025 10:41:09] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
-2025-05-29 10:41:10,057 - INFO - 127.0.0.1 - - [29/May/2025 10:41:10] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:41:10,107 - INFO - 127.0.0.1 - - [29/May/2025 10:41:10] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:41:15,322 - INFO - Device id 1 selection toggled to deselected
-2025-05-29 10:41:15,595 - INFO - 127.0.0.1 - - [29/May/2025 10:41:15] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
-2025-05-29 10:41:16,022 - INFO - 127.0.0.1 - - [29/May/2025 10:41:16] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:41:16,054 - INFO - 127.0.0.1 - - [29/May/2025 10:41:16] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:41:17,522 - INFO - Device id 2 selection toggled to deselected
-2025-05-29 10:41:17,774 - INFO - 127.0.0.1 - - [29/May/2025 10:41:17] "POST /toggle_device_selection/2 HTTP/1.1" 200 -
-2025-05-29 10:41:18,159 - INFO - 127.0.0.1 - - [29/May/2025 10:41:18] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:41:18,189 - INFO - 127.0.0.1 - - [29/May/2025 10:41:18] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:44:49,446 - INFO - 127.0.0.1 - - [29/May/2025 10:44:49] "GET / HTTP/1.1" 200 -
-2025-05-29 10:44:50,174 - INFO - 127.0.0.1 - - [29/May/2025 10:44:50] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:44:50,197 - INFO - 127.0.0.1 - - [29/May/2025 10:44:50] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:44:55,242 - INFO - 127.0.0.1 - - [29/May/2025 10:44:55] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
-2025-05-29 10:45:36,496 - INFO - 127.0.0.1 - - [29/May/2025 10:45:36] "GET / HTTP/1.1" 200 -
-2025-05-29 10:45:36,595 - INFO - 127.0.0.1 - - [29/May/2025 10:45:36] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
-2025-05-29 10:45:37,308 - INFO - 127.0.0.1 - - [29/May/2025 10:45:37] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:45:37,338 - INFO - 127.0.0.1 - - [29/May/2025 10:45:37] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:47:44,989 - INFO - 127.0.0.1 - - [29/May/2025 10:47:44] "GET / HTTP/1.1" 200 -
-2025-05-29 10:47:45,561 - INFO - 127.0.0.1 - - [29/May/2025 10:47:45] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:47:45,584 - INFO - 127.0.0.1 - - [29/May/2025 10:47:45] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:47:56,445 - INFO - 127.0.0.1 - - [29/May/2025 10:47:56] "GET / HTTP/1.1" 200 -
-2025-05-29 10:47:56,888 - INFO - 127.0.0.1 - - [29/May/2025 10:47:56] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:47:56,939 - INFO - 127.0.0.1 - - [29/May/2025 10:47:56] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:48:32,106 - INFO - Deleted device id 2: irylmfo755vosshi
-2025-05-29 10:48:32,337 - INFO - 127.0.0.1 - - [29/May/2025 10:48:32] "POST /delete_device/2 HTTP/1.1" 200 -
-2025-05-29 10:48:34,053 - INFO - 127.0.0.1 - - [29/May/2025 10:48:34] "GET / HTTP/1.1" 200 -
-2025-05-29 10:48:34,642 - INFO - 127.0.0.1 - - [29/May/2025 10:48:34] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:48:34,666 - INFO - 127.0.0.1 - - [29/May/2025 10:48:34] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:49:32,560 - INFO - 127.0.0.1 - - [29/May/2025 10:49:32] "GET / HTTP/1.1" 200 -
-2025-05-29 10:49:33,152 - INFO - 127.0.0.1 - - [29/May/2025 10:49:33] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:49:33,191 - INFO - 127.0.0.1 - - [29/May/2025 10:49:33] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:49:40,411 - INFO - 127.0.0.1 - - [29/May/2025 10:49:40] "GET / HTTP/1.1" 200 -
-2025-05-29 10:49:40,942 - INFO - 127.0.0.1 - - [29/May/2025 10:49:40] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:49:41,010 - INFO - 127.0.0.1 - - [29/May/2025 10:49:41] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 10:49:49,024 - INFO - 127.0.0.1 - - [29/May/2025 10:49:49] "GET / HTTP/1.1" 200 -
-2025-05-29 10:49:49,658 - INFO - 127.0.0.1 - - [29/May/2025 10:49:49] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 10:49:49,712 - INFO - 127.0.0.1 - - [29/May/2025 10:49:49] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 13:41:03,713 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-29 13:41:03,713 - INFO -  * Restarting with stat
+2025-05-29 13:41:11,270 - INFO - package: mysql.connector.plugins
+2025-05-29 13:41:11,270 - INFO - plugin_name: mysql_native_password
+2025-05-29 13:41:11,270 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 13:41:12,364 - WARNING -  * Debugger is active!
+2025-05-29 13:41:12,380 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 13:41:43,163 - INFO - 127.0.0.1 - - [29/May/2025 13:41:43] "GET / HTTP/1.1" 200 -
+2025-05-29 13:41:43,769 - INFO - 127.0.0.1 - - [29/May/2025 13:41:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-29 13:41:44,053 - INFO - 127.0.0.1 - - [29/May/2025 13:41:44] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 13:41:44,181 - INFO - 127.0.0.1 - - [29/May/2025 13:41:44] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 13:41:57,913 - INFO - Updated URL id 1: http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-05-29 13:41:58,278 - INFO - 127.0.0.1 - - [29/May/2025 13:41:58] "POST /update_url/1 HTTP/1.1" 200 -
+2025-05-29 13:42:00,045 - INFO - 127.0.0.1 - - [29/May/2025 13:42:00] "GET / HTTP/1.1" 200 -
+2025-05-29 13:42:00,690 - INFO - 127.0.0.1 - - [29/May/2025 13:42:00] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 13:42:00,748 - INFO - 127.0.0.1 - - [29/May/2025 13:42:00] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 13:42:06,748 - INFO - URL id 1 selection toggled to selected
+2025-05-29 13:42:07,066 - INFO - 127.0.0.1 - - [29/May/2025 13:42:07] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 13:42:07,346 - INFO - 127.0.0.1 - - [29/May/2025 13:42:07] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 13:42:07,480 - INFO - 127.0.0.1 - - [29/May/2025 13:42:07] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 13:42:11,394 - INFO - Device id 1 selection toggled to selected
+2025-05-29 13:42:11,677 - INFO - 127.0.0.1 - - [29/May/2025 13:42:11] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
+2025-05-29 13:42:12,050 - INFO - 127.0.0.1 - - [29/May/2025 13:42:12] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 13:42:12,130 - INFO - 127.0.0.1 - - [29/May/2025 13:42:12] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 13:42:28,033 - INFO - Script started
+2025-05-29 13:42:28,033 - INFO - 127.0.0.1 - - [29/May/2025 13:42:28] "POST /run-script HTTP/1.1" 200 -
+2025-05-29 13:42:54,201 - INFO - 127.0.0.1 - - [29/May/2025 13:42:54] "GET / HTTP/1.1" 200 -
+2025-05-29 13:42:55,003 - INFO - 127.0.0.1 - - [29/May/2025 13:42:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-29 13:42:55,375 - INFO - 127.0.0.1 - - [29/May/2025 13:42:55] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 13:42:55,432 - INFO - 127.0.0.1 - - [29/May/2025 13:42:55] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 13:46:00,530 - INFO - 127.0.0.1 - - [29/May/2025 13:46:00] "GET / HTTP/1.1" 200 -
+2025-05-29 13:46:01,101 - INFO - 127.0.0.1 - - [29/May/2025 13:46:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-29 13:46:01,575 - INFO - 127.0.0.1 - - [29/May/2025 13:46:01] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 13:46:01,575 - INFO - 127.0.0.1 - - [29/May/2025 13:46:01] "GET /used_devices HTTP/1.1" 200 -

@@ -407,13 +407,13 @@ def main():
         devices = get_active_devices()
         if not devices:
             log("ℹ️ No selected devices found, waiting...")
-            time.sleep(10)
+            time.sleep(1)
             continue
         for device in devices:
             process_device(device)
         if not LOOP_FOREVER:
             break
-        time.sleep(5)  # Avoid excessive CPU usage
+        time.sleep(1)  # Avoid excessive CPU usage
 
 if __name__ == "__main__":
     main()

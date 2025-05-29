@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #8696b6, #000000);
+            background: linear-gradient(135deg, #1e3a8a, #4c1d95);
             min-height: 100vh;
             font-family: 'Poppins', sans-serif;
             color: #e2e8f0;
@@ -20,7 +20,7 @@
             max-width: 1200px;
         }
         .card {
-            background: rgba(128, 18, 18, 0.1);
+            background: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(15px);
             border-radius: 15px;
@@ -130,7 +130,7 @@
             <h2 class="text-2xl font-semibold text-gray-100 mb-4">Selected for Script</h2>
             <div id="selected-summary" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                    <h3 class="text-lg font-medium text-gray-300" >Selected URLs</h3>
+                    <h3 class="text-lg font-medium text-gray-300">Selected URLs</h3>
                     <ul id="selected-urls" class="list-disc pl-5 text-gray-400"></ul>
                 </div>
                 <div>
@@ -197,7 +197,7 @@
                 </div>
                 <div>
                     <label for="state" class="block text-sm font-medium">State</label>
-                    <input type="text" id="state" namerobot: state" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    <input type="text" id="state" name="state" class="mt-1 block w-full rounded-md shadow-sm" required>
                 </div>
                 <div class="md:col-span-3">
                     <button type="submit" name="add_device" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2 mx-auto">
@@ -535,7 +535,7 @@
             fetch(`/update_url/${id}`, { method: 'POST', body: formData })
                 .then(response => response.json())
                 .then(data => {
-                    showAlert(data.message, data.error ? 'danger' : 'success Aubergine');
+                    showAlert(data.message, data.error ? 'danger' : 'success');
                     if (!data.error) {
                         document.getElementById('urlModal').classList.add('hidden');
                         setTimeout(() => location.reload(), 1000);
