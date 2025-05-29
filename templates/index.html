@@ -1,250 +1,431 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL & Device Management</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Add Font Awesome CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- Google Fonts for Poppins -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Automation Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body {
-            background: linear-gradient(135deg, #1e3a8a, #4c1d95);
-            min-height: 100vh;
+        :root {
+            --primary: #4361ee;
+            --secondary: #3f37c9;
+            --accent: #4895ef;
+            --dark: #1b263b;
+            --light: #f8f9fa;
+            --success: #4cc9f0;
+            --danger: #f72585;
+            --warning: #f8961e;
+            --info: #560bad;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: 'Poppins', sans-serif;
-            color: #e2e8f0;
         }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark);
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(15px);
-            border-radius: 15px;
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .control-panel {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
             transition: all 0.3s ease;
-            animation: fadeIn 0.6s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            border-color: #a855f7;
-        }
-        .selected-row {
-            background-color: rgba(59, 130, 246, 0.2);
-        }
+
         .btn-primary {
-            background: linear-gradient(90deg, #a855f7, #ec4899);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+            background-color: var(--primary);
+            color: white;
         }
+
         .btn-primary:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(168, 85, 247, 0.8);
+            background-color: var(--secondary);
         }
+
         .btn-danger {
-            background: linear-gradient(90deg, #ef4444, #b91c1c);
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+            background-color: var(--danger);
+            color: white;
         }
+
         .btn-danger:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(239, 68, 68, 0.8);
+            background-color: #d1145a;
         }
-        .alert {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            animation: slideInRight 0.5s ease-in-out;
+
+        .btn-success {
+            background-color: var(--success);
+            color: white;
         }
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .btn-success:hover {
+            background-color: #3aa8d8;
         }
-        @keyframes slideInRight {
-            from { opacity: 0; transform: translateX(50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateX(-20px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        tr {
-            animation: slideInLeft 0.5s ease-in-out;
-        }
-        .action-btn {
-            transition: all 0.3s ease;
-        }
-        .action-btn:hover {
-            transform: scale(1.2);
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-        }
-        .modal-content {
-            animation: popIn 0.3s ease-in-out;
-        }
-        input, select {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #e2e8f0;
-            transition: all 0.3s ease;
-        }
-        input:focus, select:focus {
-            border-color: #a855f7;
-            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
-        }
-        label {
-            color: #a0aec0;
-        }
-        table {
-            background: rgba(255, 255, 255, 0.05);
+
+        .panel {
+            background-color: white;
             border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 30px;
         }
-        th, td {
-            border-color: rgba(255, 255, 255, 0.1);
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
         }
-        thead {
-            background: rgba(255, 255, 255, 0.1);
+
+        .panel-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .add-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .add-btn:hover {
+            background-color: #3a7bc8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #555;
+            text-transform: capitalize;
+            font-size: 13px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .status-active {
+            background-color: #e3faf2;
+            color: #20c997;
+        }
+
+        .status-inactive {
+            background-color: #fff3bf;
+            color: #f08c00;
+        }
+
+        .action-btn {
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+
+        .edit-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+        }
+
+        .edit-btn:hover {
+            background-color: #3a7bc8;
+        }
+
+        .delete-btn {
+            background-color: var(--danger);
+            color: white;
+            border: none;
+        }
+
+        .delete-btn:hover {
+            background-color: #d1145a;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .toggle-btn.active {
+            color: var(--success);
+        }
+
+        .toggle-btn.inactive {
+            color: #ccc;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            border-radius: 10px;
+            width: 500px;
+            max-width: 90%;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: #777;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid #e0e0e0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+            color: #777;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .panel-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .control-panel {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
     </style>
 </head>
-<body class="py-8">
-    <div class="container mx-auto px-4">
-        <h1 class="text-4xl font-bold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 animate-pulse">
-            URL & Device Management System
-        </h1>
 
-        <!-- Alert -->
-        <div id="alert" class="hidden fixed top-4 right-4 z-50 p-4 rounded-lg text-white alert">
-            <span id="alert-message"></span>
-            <button onclick="this.parentElement.classList.add('hidden')" class="ml-4 text-white">×</button>
-        </div>
-
-        <!-- Selected Items Summary -->
-        <div class="card shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Selected for Script</h2>
-            <div id="selected-summary" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <h3 class="text-lg font-medium text-gray-300">Selected URLs</h3>
-                    <ul id="selected-urls" class="list-disc pl-5 text-gray-400"></ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-medium text-gray-300">Selected Devices</h3>
-                    <ul id="selected-devices" class="list-disc pl-5 text-gray-400"></ul>
-                </div>
-            </div>
-            <div class="mt-4 flex space-x-4">
-                <button class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2" onclick="runScript()">
-                    <i class="fas fa-play"></i>
-                    <span>Run Script</span>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">Automation Dashboard</div>
+            <div class="control-panel">
+                <button id="runScriptBtn" class="btn btn-success">
+                    <i class="fas fa-play"></i> Start Script
                 </button>
-                <button class="btn-danger text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2" onclick="stopScript()">
-                    <i class="fas fa-stop"></i>
-                    <span>Stop Script</span>
+                <button id="stopScriptBtn" class="btn btn-danger">
+                    <i class="fas fa-stop"></i> Stop Script
                 </button>
             </div>
+        </header>
+
+        <div class="tabs">
+            <div class="tab active" data-tab="urls">URL Management</div>
+            <div class="tab" data-tab="devices">Device Management</div>
         </div>
 
-        <!-- Add URL Form -->
-        <div class="card shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Add New URL</h2>
-            <form id="url-form" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                    <label for="url" class="block text-sm font-medium">URL</label>
-                    <input type="text" id="url" name="url" class="mt-1 block w-full rounded-md shadow-sm" required>
-                </div>
-                <div>
-                    <label for="target" class="block text-sm font-medium">Target Clicks</label>
-                    <input type="number" id="target" name="target" class="mt-1 block w-full rounded-md shadow-sm" required>
-                </div>
-                <div>
-                    <label for="unique" class="block text-sm font-medium">Unique Percent</label>
-                    <input type="number" step="0.01" id="unique" name="unique" class="mt-1 block w-full rounded-md shadow-sm" required>
-                </div>
-                <div>
-                    <label for="repeated" class="block text-sm font-medium">Repeated Percent</label>
-                    <input type="number" step="0.01" id="repeated" name="repeated" class="mt-1 block w-full rounded-md shadow-sm" required>
-                </div>
-                <div>
-                    <label for="campaign_name" class="block text-sm font-medium">Campaign Name</label>
-                    <input type="text" id="campaign_name" name="campaign_name" class="mt-1 block w-full rounded-md shadow-sm">
-                </div>
-                <div class="md:col-span-2">
-                    <button type="submit" name="add_url" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2 mx-auto">
-                        <i class="fas fa-plus"></i>
-                        <span>Add URL</span>
+        <div class="tab-content active" id="urls-tab">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">URL List</h2>
+                    <button id="addUrlBtn" class="add-btn">
+                        <i class="fas fa-plus"></i> Add URL
                     </button>
                 </div>
-            </form>
-        </div>
-
-        <!-- Add Device Form -->
-        <div class="card shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Add New Device</h2>
-            <form id="device-form" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div>
-                    <label for="adb_id" class="block text-sm font-medium">ADB ID</label>
-                    <input type="text" id="adb_id" name="adb_id" class="mt-1 block w-full rounded-md shadow-sm" required>
-                </div>
-                <div>
-                    <label for="asset_no" class="block text-sm font-medium">Asset Number</label>
-                    <input type="text" id="asset_no" name="asset_no" class="mt-1 block w-full rounded-md shadow-sm" required>
-                </div>
-                <div>
-                    <label for="state" class="block text-sm font-medium">State</label>
-                    <input type="text" id="state" name="state" class="mt-1 block w-full rounded-md shadow-sm" required>
-                </div>
-                <div class="md:col-span-3">
-                    <button type="submit" name="add_device" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2 mx-auto">
-                        <i class="fas fa-plus"></i>
-                        <span>Add Device</span>
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <!-- URLs Table -->
-        <div class="card shadow-lg p-6 mb-8">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4">URLs</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
+                <table id="urlTable">
                     <thead>
                         <tr>
-                            <th class="p-3 text-sm font-semibold text-gray-300">ID</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 36%;">URL</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">Target Clicks</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">Unique %</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">Repeated %</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">Campaign</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">Selected</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">Actions</th>
+                            <th>Select</th>
+                            <th>Campaign</th>
+                            <th style="width: 36%;">URL</th>
+                            <th>Target Clicks</th>
+                            <th>Unique %</th>
+                            <th>Repeated %</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="urls-table">
+                    <tbody>
                         {% for url in urls %}
-                        <tr class="{% if url.is_selected %}selected-row{% endif %}">
-                            <td class="p-3 text-gray-400">{{ url.id }}</td>
-                            <td class="p-3 text-gray-400">{{ url.url }}</td>
-                            <td class="p-3 text-gray-400">{{ url.target_clicks }}</td>
-                            <td class="p-3 text-gray-400">{{ url.unique_percent }}</td>
-                            <td class="p-3 text-gray-400">{{ url.repeated_percent }}</td>
-                            <td class="p-3 text-gray-400">{{ url.campaign_name }}</td>
-                            <td class="p-3">
-                                <input type="checkbox" onchange="toggleUrlSelection({{ url.id }}, this)" {% if url.is_selected %}checked{% endif %}>
-                            </td>
-                            <td class="p-3">
-                                <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
-                                        onclick="openUrlModal({{ url.id }}, '{{ url.url | safe }}', {{ url.target_clicks }}, {{ url.unique_percent }}, {{ url.repeated_percent }}, '{{ url.campaign_name | safe }}')">
-                                    <i class="fas fa-edit"></i>
+                        <tr data-id="{{ url.id }}">
+                            <td>
+                                <button class="toggle-btn {% if url.is_selected %}active{% else %}inactive{% endif %}"
+                                    onclick="toggleUrlSelection({{ url.id }}, this)">
+                                    <i class="fas fa-power-off"></i>
                                 </button>
-                                <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
-                                        onclick="deleteUrl({{ url.id }})">
-                                    <i class="fas fa-trash"></i>
+                            </td>
+                            <td>{{ url.campaign_name or '-' }}</td>
+                            <td>{{ url.url }}</td>
+                            <td>{{ url.target_clicks }}</td>
+                            <td>{{ url.unique_percent }}%</td>
+                            <td>{{ url.repeated_percent }}%</td>
+                            <td>
+                                <button class="action-btn edit-btn" onclick="editUrl({{ url.id }})">
+                                    <i class="fas fa-edit"></i> 
+                                </button>
+                                <button class="action-btn delete-btn" onclick="deleteUrl({{ url.id }})">
+                                    <i class="fas fa-trash"></i> 
                                 </button>
                             </td>
                         </tr>
@@ -254,39 +435,48 @@
             </div>
         </div>
 
-        <!-- Devices Table -->
-        <div class="card shadow-lg p-6">
-            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Devices</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
+        <div class="tab-content" id="devices-tab">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Device List</h2>
+                    <button id="addDeviceBtn" class="add-btn">
+                        <i class="fas fa-plus"></i> Add Device
+                    </button>
+                </div>
+                <table id="deviceTable">
                     <thead>
                         <tr>
-                            <th class="p-3 text-sm font-semibold text-gray-300">ID</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">ADB ID</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">Asset No</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">State</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">Selected</th>
-                            <th class="p-3 text-sm font-semibold text-gray-300">Actions</th>
+                            <th>Select</th>
+                            <th>ADB ID</th>
+                            <th>Asset No</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody id="devices-table">
+                    <tbody>
                         {% for device in devices %}
-                        <tr class="{% if device.is_selected %}selected-row{% endif %}">
-                            <td class="p-3 text-gray-400">{{ device.id }}</td>
-                            <td class="p-3 text-gray-400">{{ device.adb_id }}</td>
-                            <td class="p-3 text-gray-400">{{ device.asset_no }}</td>
-                            <td class="p-3 text-gray-400">{{ device.state }}</td>
-                            <td class="p-3">
-                                <input type="checkbox" onchange="toggleDeviceSelection({{ device.id }}, this)" {% if device.is_selected %}checked{% endif %}>
-                            </td>
-                            <td class="p-3">
-                                <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
-                                        onclick="openDeviceModal({{ device.id }}, '{{ device.adb_id | safe }}', '{{ device.asset_no | safe }}', '{{ device.state | safe }}')">
-                                    <i class="fas fa-edit"></i>
+                        <tr data-id="{{ device.id }}">
+                            <td>
+                                <button
+                                    class="toggle-btn {% if device.is_selected %}active{% else %}inactive{% endif %}"
+                                    onclick="toggleDeviceSelection({{ device.id }}, this)">
+                                    <i class="fas fa-power-off"></i>
                                 </button>
-                                <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
-                                        onclick="deleteDevice({{ device.id }})">
-                                    <i class="fas fa-trash"></i>
+                            </td>
+                            <td>{{ device.adb_id }}</td>
+                            <td>{{ device.asset_no or '-' }}</td>
+                            <td>
+                                <span
+                                    class="status {% if device.state == 'active' %}status-active{% else %}status-inactive{% endif %}">
+                                    {{ device.state or 'inactive' }}
+                                </span>
+                            </td>
+                            <td>
+                                <button class="action-btn edit-btn" onclick="editDevice({{ device.id }})">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="action-btn delete-btn" onclick="deleteDevice({{ device.id }})">
+                                    <i class="fas fa-trash"></i> Delete
                                 </button>
                             </td>
                         </tr>
@@ -295,303 +485,337 @@
                 </table>
             </div>
         </div>
+    </div>
 
-        <!-- URL Update Modal -->
-        <div class="fixed inset-0 bg-black bg-opacity-70 hidden" id="urlModal">
-            <div class="modal-content bg-gray-800 rounded-lg p-6 max-w-lg mx-auto mt-20">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-semibold text-gray-100">Update URL</h2>
-                    <button onclick="document.getElementById('urlModal').classList.add('hidden')" class="text-gray-400 hover:text-gray-200">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <form id="update-url-form">
-                    <input type="hidden" id="update-url-id" name="id">
-                    <div class="mb-4">
-                        <label for="update-url" class="block text-sm font-medium text-gray-300">URL</label>
-                        <input type="text" id="update-url" name="url" class="mt-1 block w-full rounded-md shadow-sm" required>
+    <!-- URL Modal -->
+    <div id="urlModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="urlModalTitle">Add New URL</h3>
+                <button class="close-btn" onclick="closeModal('urlModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="urlForm">
+                    <input type="hidden" id="urlId">
+                    <div class="form-group">
+                        <label for="url">URL</label>
+                        <input type="text" id="url" class="form-control" required>
                     </div>
-                    <div class="mb-4">
-                        <label for="update-target" class="block text-sm font-medium text-gray-300">Target Clicks</label>
-                        <input type="number" id="update-target" name="target" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    <div class="form-group">
+                        <label for="campaign_name">Campaign Name (Optional)</label>
+                        <input type="text" id="campaign_name" class="form-control">
                     </div>
-                    <div class="mb-4">
-                        <label for="update-unique" class="block text-sm font-medium text-gray-300">Unique Percent</label>
-                        <input type="number" step="0.01" id="update-unique" name="unique" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    <div class="form-group">
+                        <label for="target">Target Clicks</label>
+                        <input type="number" id="target" class="form-control" required>
                     </div>
-                    <div class="mb-4">
-                        <label for="update-repeated" class="block text-sm font-medium text-gray-300">Repeated Percent</label>
-                        <input type="number" step="0.01" id="update-repeated" name="repeated" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    <div class="form-group">
+                        <label for="unique">Unique Percentage</label>
+                        <input type="number" step="0.1" id="unique" class="form-control" required>
                     </div>
-                    <div class="mb-4">
-                        <label for="update-campaign_name" class="block text-sm font-medium text-gray-300">Campaign Name</label>
-                        <input type="text" id="update-campaign_name" name="campaign_name" class="mt-1 block w-full rounded-md shadow-sm">
+                    <div class="form-group">
+                        <label for="repeated">Repeated Percentage</label>
+                        <input type="number" step="0.1" id="repeated" class="form-control" required>
                     </div>
-                    <button type="submit" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2">
-                        <i class="fas fa-save"></i>
-                        <span>Update URL</span>
-                    </button>
                 </form>
             </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('urlModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="saveUrl()">Save</button>
+            </div>
         </div>
+    </div>
 
-        <!-- Device Update Modal -->
-        <div class="fixed inset-0 bg-black bg-opacity-70 hidden" id="deviceModal">
-            <div class="modal-content bg-gray-800 rounded-lg p-6 max-w-lg mx-auto mt-20">
-                <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-xl font-semibold text-gray-100">Update Device</h2>
-                    <button onclick="document.getElementById('deviceModal').classList.add('hidden')" class="text-gray-400 hover:text-gray-200">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-                <form id="update-device-form">
-                    <input type="hidden" id="update-device-id" name="id">
-                    <div class="mb-4">
-                        <label for="update-adb_id" class="block text-sm font-medium text-gray-300">ADB ID</label>
-                        <input type="text" id="update-adb_id" name="adb_id" class="mt-1 block w-full rounded-md shadow-sm" required>
+    <!-- Device Modal -->
+    <div id="deviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="deviceModalTitle">Add New Device</h3>
+                <button class="close-btn" onclick="closeModal('deviceModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="deviceForm">
+                    <input type="hidden" id="deviceId">
+                    <div class="form-group">
+                        <label for="adb_id">ADB ID</label>
+                        <input type="text" id="adb_id" class="form-control" required>
                     </div>
-                    <div class="mb-4">
-                        <label for="update-asset_no" class="block text-sm font-medium text-gray-300">Asset Number</label>
-                        <input type="text" id="update-asset_no" name="asset_no" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    <div class="form-group">
+                        <label for="asset_no">Asset Number</label>
+                        <input type="text" id="asset_no" class="form-control" required>
                     </div>
-                    <div class="mb-4">
-                        <label for="update-state" class="block text-sm font-medium text-gray-300">State</label>
-                        <input type="text" id="update-state" name="state" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    <div class="form-group">
+                        <label for="state">Status</label>
+                        <select id="state" class="form-control" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
                     </div>
-                    <button type="submit" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2">
-                        <i class="fas fa-save"></i>
-                        <span>Update Device</span>
-                    </button>
                 </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" onclick="closeModal('deviceModal')">Cancel</button>
+                <button class="btn btn-primary" onclick="saveDevice()">Save</button>
             </div>
         </div>
     </div>
 
     <script>
-        function showAlert(message, type) {
-            const alert = document.getElementById('alert');
-            const alertMessage = document.getElementById('alert-message');
-            alert.className = `fixed top-4 right-4 z-50 p-4 rounded-lg text-white alert bg-${type === 'success' ? 'green' : 'red'}-600`;
-            alertMessage.textContent = message;
-            alert.classList.remove('hidden');
-            setTimeout(() => alert.classList.add('hidden'), 3000);
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(`${tab.dataset.tab}-tab`).classList.add('active');
+            });
+        });
+
+        // Modal functions
+        function openModal(modalId, title = '') {
+            const modal = document.getElementById(modalId);
+            if (title && modal.querySelector('.modal-title')) {
+                modal.querySelector('.modal-title').textContent = title;
+            }
+            modal.style.display = 'flex';
         }
 
-        function updateSelectedSummary() {
-            fetch('/used_devices')
-                .then(response => response.json())
-                .then(devices => {
-                    const selectedDevices = document.getElementById('selected-devices');
-                    selectedDevices.innerHTML = devices.length ? devices.map(d => `<li>${d.asset_no}</li>`).join('') : '<li>No devices selected</li>';
-                });
-            fetch('/used_urls')
-                .then(response => response.json())
-                .then(urls => {
-                    const selectedUrls = document.getElementById('selected-urls');
-                    selectedUrls.innerHTML = urls.length ? urls.map(u => `<li>${u.campaign_name || 'No campaign'}</li>`).join('') : '<li>No URLs selected</li>';
-                });
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
         }
 
-        function toggleUrlSelection(id, checkbox) {
-            fetch(`/toggle_url_selection/${id}`, { method: 'POST' })
+        // URL functions
+        document.getElementById('addUrlBtn').addEventListener('click', () => {
+            document.getElementById('urlForm').reset();
+            document.getElementById('urlId').value = '';
+            document.getElementById('urlModalTitle').textContent = 'Add New URL';
+            openModal('urlModal');
+        });
+
+        function editUrl(id) {
+            fetch(`/get_url/${id}`)
                 .then(response => response.json())
                 .then(data => {
-                    showAlert(data.message, data.error ? 'danger' : 'success');
-                    if (!data.error) {
-                        const row = checkbox.closest('tr');
-                        if (checkbox.checked) {
-                            row.classList.add('selected-row');
-                        } else {
-                            row.classList.remove('selected-row');
-                        }
-                        updateSelectedSummary();
+                    document.getElementById('urlId').value = data.id;
+                    document.getElementById('url').value = data.url;
+                    document.getElementById('campaign_name').value = data.campaign_name || '';
+                    document.getElementById('target').value = data.target_clicks;
+                    document.getElementById('unique').value = data.unique_percent;
+                    document.getElementById('repeated').value = data.repeated_percent;
+                    document.getElementById('urlModalTitle').textContent = 'Edit URL';
+                    openModal('urlModal');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to fetch URL details');
+                });
+        }
+
+        function saveUrl() {
+            const id = document.getElementById('urlId').value;
+            const url = document.getElementById('url').value;
+            const campaign_name = document.getElementById('campaign_name').value;
+            const target = document.getElementById('target').value;
+            const unique = document.getElementById('unique').value;
+            const repeated = document.getElementById('repeated').value;
+
+            const endpoint = id ? `/update_url/${id}` : '/';
+            const method = id ? 'POST' : 'POST';
+
+            const formData = new FormData();
+            if (id) formData.append('id', id);
+            formData.append('url', url);
+            formData.append('campaign_name', campaign_name);
+            formData.append('target', target);
+            formData.append('unique', unique);
+            formData.append('repeated', repeated);
+            formData.append(id ? 'update_url' : 'add_url', '1');
+
+            fetch(endpoint, {
+                method: method,
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.reload();
                     } else {
-                        checkbox.checked = !checkbox.checked;
+                        return response.json().then(data => {
+                            throw new Error(data.error || 'Failed to save URL');
+                        });
                     }
                 })
                 .catch(error => {
-                    checkbox.checked = !checkbox.checked;
-                    showAlert('Error toggling URL selection', 'danger');
-                    console.error(error);
-                });
-        }
-
-        function toggleDeviceSelection(id, checkbox) {
-            fetch(`/toggle_device_selection/${id}`, { method: 'POST' })
-                .then(response => response.json())
-                .then(data => {
-                    showAlert(data.message, data.error ? 'danger' : 'success');
-                    if (!data.error) {
-                        const row = checkbox.closest('tr');
-                        if (checkbox.checked) {
-                            row.classList.add('selected-row');
-                        } else {
-                            row.classList.remove('selected-row');
-                        }
-                        updateSelectedSummary();
-                    } else {
-                        checkbox.checked = !checkbox.checked;
-                    }
-                })
-                .catch(error => {
-                    checkbox.checked = !checkbox.checked;
-                    showAlert('Error toggling device selection', 'danger');
-                    console.error(error);
+                    console.error('Error:', error);
+                    alert(error.message);
                 });
         }
 
         function deleteUrl(id) {
             if (confirm('Are you sure you want to delete this URL?')) {
-                fetch(`/delete_url/${id}`, { method: 'POST' })
-                    .then(response => response.json())
-                    .then(data => {
-                        showAlert(data.message, data.error ? 'danger' : 'success');
-                        if (!data.error) {
-                            setTimeout(() => location.reload(), 1000);
+                fetch(`/delete_url/${id}`, {
+                    method: 'POST'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.reload();
+                        } else {
+                            throw new Error('Failed to delete URL');
                         }
                     })
                     .catch(error => {
-                        showAlert('Error deleting URL', 'danger');
-                        console.error(error);
+                        console.error('Error:', error);
+                        alert(error.message);
                     });
             }
+        }
+
+        function toggleUrlSelection(id, button) {
+            fetch(`/toggle_url_selection/${id}`, {
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        button.classList.toggle('active');
+                        button.classList.toggle('inactive');
+                    } else {
+                        throw new Error(data.error || 'Failed to toggle selection');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(error.message);
+                });
+        }
+
+        // Device functions
+        document.getElementById('addDeviceBtn').addEventListener('click', () => {
+            document.getElementById('deviceForm').reset();
+            document.getElementById('deviceId').value = '';
+            document.getElementById('deviceModalTitle').textContent = 'Add New Device';
+            openModal('deviceModal');
+        });
+
+        function editDevice(id) {
+            fetch(`/get_device/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('deviceId').value = data.id;
+                    document.getElementById('adb_id').value = data.adb_id;
+                    document.getElementById('asset_no').value = data.asset_no || '';
+                    document.getElementById('state').value = data.state || 'inactive';
+                    document.getElementById('deviceModalTitle').textContent = 'Edit Device';
+                    openModal('deviceModal');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to fetch device details');
+                });
+        }
+
+        function saveDevice() {
+            const id = document.getElementById('deviceId').value;
+            const adb_id = document.getElementById('adb_id').value;
+            const asset_no = document.getElementById('asset_no').value;
+            const state = document.getElementById('state').value;
+
+            const endpoint = id ? `/update_device/${id}` : '/';
+            const method = id ? 'POST' : 'POST';
+
+            const formData = new FormData();
+            if (id) formData.append('id', id);
+            formData.append('adb_id', adb_id);
+            formData.append('asset_no', asset_no);
+            formData.append('state', state);
+            formData.append(id ? 'update_device' : 'add_device', '1');
+
+            fetch(endpoint, {
+                method: method,
+                body: formData
+            })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.reload();
+                    } else {
+                        return response.json().then(data => {
+                            throw new Error(data.error || 'Failed to save device');
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert(error.message);
+                });
         }
 
         function deleteDevice(id) {
             if (confirm('Are you sure you want to delete this device?')) {
-                fetch(`/delete_device/${id}`, { method: 'POST' })
-                    .then(response => response.json())
-                    .then(data => {
-                        showAlert(data.message, data.error ? 'danger' : 'success');
-                        if (!data.error) {
-                            setTimeout(() => location.reload(), 1000);
+                fetch(`/delete_device/${id}`, {
+                    method: 'POST'
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            window.location.reload();
+                        } else {
+                            throw new Error('Failed to delete device');
                         }
                     })
                     .catch(error => {
-                        showAlert('Error deleting device', 'danger');
-                        console.error(error);
+                        console.error('Error:', error);
+                        alert(error.message);
                     });
             }
         }
 
-        function openUrlModal(id, url, target, unique, repeated, campaign_name) {
-            document.getElementById('update-url-id').value = id;
-            document.getElementById('update-url').value = url;
-            document.getElementById('update-target').value = target;
-            document.getElementById('update-unique').value = unique;
-            document.getElementById('update-repeated').value = repeated;
-            document.getElementById('update-campaign_name').value = campaign_name;
-            document.getElementById('urlModal').classList.remove('hidden');
-        }
-
-        function openDeviceModal(id, adb_id, asset_no, state) {
-            document.getElementById('update-device-id').value = id;
-            document.getElementById('update-adb_id').value = adb_id;
-            document.getElementById('update-asset_no').value = asset_no;
-            document.getElementById('update-state').value = state;
-            document.getElementById('deviceModal').classList.remove('hidden');
-        }
-
-        document.getElementById('url-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            fetch('/', { method: 'POST', body: formData })
-                .then(response => {
-                    if (response.ok) {
-                        showAlert('URL added successfully!', 'success');
-                        setTimeout(() => location.reload(), 1000);
+        function toggleDeviceSelection(id, button) {
+            fetch(`/toggle_device_selection/${id}`, {
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.message) {
+                        button.classList.toggle('active');
+                        button.classList.toggle('inactive');
                     } else {
-                        return response.json().then(data => { throw new Error(data.error); });
+                        throw new Error(data.error || 'Failed to toggle selection');
                     }
                 })
                 .catch(error => {
-                    showAlert(error.message || 'Error adding URL', 'danger');
-                    console.error(error);
-                });
-        });
-
-        document.getElementById('device-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const formData = new FormData(this);
-            fetch('/', { method: 'POST', body: formData })
-                .then(response => {
-                    if (response.ok) {
-                        showAlert('Device added successfully!', 'success');
-                        setTimeout(() => location.reload(), 1000);
-                    } else {
-                        return response.json().then(data => { throw new Error(data.error); });
-                    }
-                })
-                .catch(error => {
-                    showAlert(error.message || 'Error adding device', 'danger');
-                    console.error(error);
-                });
-        });
-
-        document.getElementById('update-url-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const id = document.getElementById('update-url-id').value;
-            const formData = new FormData(this);
-            fetch(`/update_url/${id}`, { method: 'POST', body: formData })
-                .then(response => response.json())
-                .then(data => {
-                    showAlert(data.message, data.error ? 'danger' : 'success');
-                    if (!data.error) {
-                        document.getElementById('urlModal').classList.add('hidden');
-                        setTimeout(() => location.reload(), 1000);
-                    }
-                })
-                .catch(error => {
-                    showAlert('Error updating URL', 'danger');
-                    console.error(error);
-                });
-        });
-
-        document.getElementById('update-device-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const id = document.getElementById('update-device-id').value;
-            const formData = new FormData(this);
-            fetch(`/update_device/${id}`, { method: 'POST', body: formData })
-                .then(response => response.json())
-                .then(data => {
-                    showAlert(data.message, data.error ? 'danger' : 'success');
-                    if (!data.error) {
-                        document.getElementById('deviceModal').classList.add('hidden');
-                        setTimeout(() => location.reload(), 1000);
-                    }
-                })
-                .catch(error => {
-                    showAlert('Error updating device', 'danger');
-                    console.error(error);
-                });
-        });
-
-        function runScript() {
-            fetch('/run-script', { method: 'POST' })
-                .then(response => response.json())
-                .then(data => {
-                    showAlert(data.message, data.message.includes('Failed') ? 'danger' : 'success');
-                })
-                .catch(error => {
-                    showAlert('Error running script', 'danger');
-                    console.error(error);
+                    console.error('Error:', error);
+                    alert(error.message);
                 });
         }
 
-        function stopScript() {
-            fetch('/stop-script', { method: 'POST' })
+        // Script control functions
+        document.getElementById('runScriptBtn').addEventListener('click', () => {
+            fetch('/run-script', {
+                method: 'POST'
+            })
                 .then(response => response.json())
                 .then(data => {
-                    showAlert(data.message, data.message.includes('Failed') ? 'danger' : 'success');
+                    alert(data.message);
                 })
                 .catch(error => {
-                    showAlert('Error stopping script', 'danger');
-                    console.error(error);
+                    console.error('Error:', error);
+                    alert('Failed to start script');
                 });
-        }
+        });
 
-        // Initialize selected summary on page load
-        document.addEventListener('DOMContentLoaded', updateSelectedSummary);
+        document.getElementById('stopScriptBtn').addEventListener('click', () => {
+            fetch('/stop-script', {
+                method: 'POST'
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Failed to stop script');
+                });
+        });
     </script>
 </body>
+
 </html>

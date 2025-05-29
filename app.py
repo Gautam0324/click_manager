@@ -240,6 +240,50 @@ def update_device(id):
         if conn and conn.is_connected():
             conn.close()
 
+@app.route('/get_url/<int:id>', methods=['GET'])
+def get_url(id):
+    conn = None
+    cursor = None
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM url_clicks WHERE id = %s", (id,))
+        url = cursor.fetchone()
+        if not url:
+            app.logger.warning(f"URL id {id} not found")
+            return jsonify({'error': 'URL not found'}), 404
+        return jsonify(url)
+    except Error as e:
+        app.logger.error(f"Database error fetching URL id {id}: {str(e)}")
+        return jsonify({'error': 'Database error occurred'}), 500
+    finally:
+        if cursor:
+            cursor.close()
+        if conn and conn.is_connected():
+            conn.close()
+
+@app.route('/get_device/<int:id>', methods=['GET'])
+def get_device(id):
+    conn = None
+    cursor = None
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM device WHERE id = %s", (id,))
+        device = cursor.fetchone()
+        if not device:
+            app.logger.warning(f"Device id {id} not found")
+            return jsonify({'error': 'Device not found'}), 404
+        return jsonify(device)
+    except Error as e:
+        app.logger.error(f"Database error fetching device id {id}: {str(e)}")
+        return jsonify({'error': 'Database error occurred'}), 500
+    finally:
+        if cursor:
+            cursor.close()
+        if conn and conn.is_connected():
+            conn.close()
+
 @app.route('/used_devices', methods=['GET'])
 def used_devices():
     conn = None

@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL & Device Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #1e3a8a, #4c1d95);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #e2e8f0;
+        }
+        .container {
+            max-width: 1200px;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-color: #a855f7;
+        }
+        .selected-row {
+            background-color: rgba(59, 130, 246, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #a855f7, #ec4899);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.8);
+        }
+        .btn-danger {
+            background: linear-gradient(90deg, #ef4444, #b91c1c);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+        }
+        .btn-danger:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.8);
+        }
+        .alert {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: slideInRight 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        tr {
+            animation: slideInLeft 0.5s ease-in-out;
+        }
+        .action-btn {
+            transition: all 0.3s ease;
+        }
+        .action-btn:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .modal-content {
+            animation: popIn 0.3s ease-in-out;
+        }
+        input, select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            border-color: #a855f7;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+        }
+        label {
+            color: #a0aec0;
+        }
+        table {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        th, td {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        thead {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            margin-left: 8px;
+        }
+        .table-loading {
+            position: relative;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+        .table-loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #a855f7;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spin 1s linear infinite;
+            transform: translate(-50%, -50%);
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="py-8">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 animate-pulse">
+            URL & Device Management System
+        </h1>
+
+        <!-- Alert -->
+        <div id="alert" class="hidden fixed top-4 right-4 z-50 p-4 rounded-lg text-white alert">
+            <span id="alert-message"></span>
+            <button onclick="this.parentElement.classList.add('hidden')" class="ml-4 text-white" aria-label="Close Alert">×</button>
+        </div>
+
+        <!-- Selected Items Summary -->
+        <div class="card shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Selected for Script</h2>
+            <div id="selected-summary" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="text-lg font-medium text-gray-300">Selected URLs</h3>
+                    <ul id="selected-urls" class="list-disc pl-5 text-gray-400"></ul>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-300">Selected Devices</h3>
+                    <ul id="selected-devices" class="list-disc pl-5 text-gray-400"></ul>
+                </div>
+            </div>
+            <div class="mt-4 flex space-x-4 justify-center">
+                <button id="run-script-btn" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2">
+                    <i class="fas fa-play"></i>
+                    <span>Run Script</span>
+                </button>
+                <button id="stop-script-btn" class="btn-danger text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2">
+                    <i class="fas fa-stop"></i>
+                    <span>Stop Script</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Add URL Form -->
+        <div class="card shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Add New URL</h2>
+            <form id="url-form" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="url" class="block text-sm font-medium">URL</label>
+                    <input type="text" id="url" name="url" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="url-error">
+                    <p id="url-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="target" class="block text-sm font-medium">Target Clicks</label>
+                    <input type="number" id="target" name="target" min="1" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="target-error">
+                    <p id="target-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="unique" class="block text-sm font-medium">Unique Percent</label>
+                    <input type="number" step="0.01" id="unique" name="unique" min="0" max="100" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="percent-error">
+                    <p id="percent-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="repeated" class="block text-sm font-medium">Repeated Percent</label>
+                    <input type="number" step="0.01" id="repeated" name="repeated" min="0" max="100" class="mt-1 block w-full rounded-md shadow-sm" required>
+                </div>
+                <div>
+                    <label for="campaign_name" class="block text-sm font-medium">Campaign Name</label>
+                    <input type="text" id="campaign_name" name="campaign_name" class="mt-1 block w-full rounded-md shadow-sm">
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" name="add_url" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2 mx-auto">
+                        <i class="fas fa-plus"></i>
+                        <span>Add URL</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Add Device Form -->
+        <div class="card shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Add New Device</h2>
+            <form id="device-form" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label for="adb_id" class="block text-sm font-medium">ADB ID</label>
+                    <input type="text" id="adb_id" name="adb_id" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="adb_id-error">
+                    <p id="adb_id-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="asset_no" class="block text-sm font-medium">Asset Number</label>
+                    <input type="text" id="asset_no" name="asset_no" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="asset_no-error">
+                    <p id="asset_no-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                </div>
+                <div>
+                    <label for="state" class="block text-sm font-medium">State</label>
+                    <select id="state" name="state" class="mt-1 block w-full rounded-md shadow-sm" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <div class="md:col-span-3">
+                    <button type="submit" name="add_device" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2 mx-auto">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Device</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- URLs Table -->
+        <div class="card shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">URLs</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 5%;">ID</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 30%;">URL</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 10%;">Target Clicks</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 10%;">Unique %</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 10%;">Repeated %</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 15%;">Campaign</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 10%;">Selected</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 10%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="urls-table">
+                        {% for url in urls %}
+                        <tr class="{% if url.is_selected %}selected-row{% endif %}" data-id="{{ url.id }}">
+                            <td class="p-3 text-gray-400">{{ url.id }}</td>
+                            <td class="p-3 text-gray-400">{{ url.url }}</td>
+                            <td class="p-3 text-gray-400">{{ url.target_clicks }}</td>
+                            <td class="p-3 text-gray-400">{{ url.unique_percent }}</td>
+                            <td class="p-3 text-gray-400">{{ url.repeated_percent }}</td>
+                            <td class="p-3 text-gray-400">{{ url.campaign_name }}</td>
+                            <td class="p-3">
+                                <input type="checkbox" onchange="toggleUrlSelection({{ url.id }}, this)" {% if url.is_selected %}checked{% endif %} aria-label="Select URL {{ url.id }}">
+                            </td>
+                            <td class="p-3">
+                                <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
+                                        onclick="openUrlModal({{ url.id }}, '{{ url.url | safe }}', {{ url.target_clicks }}, {{ url.unique_percent }}, {{ url.repeated_percent }}, '{{ url.campaign_name | safe }}')"
+                                        aria-label="Edit URL {{ url.id }}">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
+                                        onclick="deleteUrl({{ url.id }})"
+                                        aria-label="Delete URL {{ url.id }}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Devices Table -->
+        <div class="card shadow-lg p-6">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Devices</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 5%;">ID</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 20%;">ADB ID</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 20%;">Asset No</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 20%;">State</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 15%;">Selected</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 20%;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="devices-table">
+                        {% for device in devices %}
+                        <tr class="{% if device.is_selected %}selected-row{% endif %}" data-id="{{ device.id }}">
+                            <td class="p-3 text-gray-400">{{ device.id }}</td>
+                            <td class="p-3 text-gray-400">{{ device.adb_id }}</td>
+                            <td class="p-3 text-gray-400">{{ device.asset_no }}</td>
+                            <td class="p-3 text-gray-400">{{ device.state }}</td>
+                            <td class="p-3">
+                                <input type="checkbox" onchange="toggleDeviceSelection({{ device.id }}, this)" {% if device.is_selected %}checked{% endif %} aria-label="Select Device {{ device.id }}">
+                            </td>
+                            <td class="p-3">
+                                <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
+                                        onclick="openDeviceModal({{ device.id }}, '{{ device.adb_id | safe }}', '{{ device.asset_no | safe }}', '{{ device.state | safe }}')"
+                                        aria-label="Edit Device {{ device.id }}">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
+                                        onclick="deleteDevice({{ device.id }})"
+                                        aria-label="Delete Device {{ device.id }}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- URL Update Modal -->
+        <div class="fixed inset-0 bg-black bg-opacity-70 hidden" id="urlModal" role="dialog" aria-labelledby="urlModalLabel">
+            <div class="modal-content bg-gray-800 rounded-lg p-6 max-w-lg mx-auto mt-20">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 id="urlModalLabel" class="text-xl font-semibold text-gray-100">Update URL</h2>
+                    <button onclick="document.getElementById('urlModal').classList.add('hidden')" class="text-gray-400 hover:text-gray-200" aria-label="Close URL Modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="update-url-form">
+                    <input type="hidden" id="update-url-id" name="id">
+                    <div class="mb-4">
+                        <label for="update-url" class="block text-sm font-medium text-gray-300">URL</label>
+                        <input type="text" id="update-url" name="url" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="update-url-error">
+                        <p id="update-url-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-target" class="block text-sm font-medium text-gray-300">Target Clicks</label>
+                        <input type="number" id="update-target" name="target" min="1" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="update-target-error">
+                        <p id="update-target-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-unique" class="block text-sm font-medium text-gray-300">Unique Percent</label>
+                        <input type="number" step="0.01" id="update-unique" name="unique" min="0" max="100" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="update-percent-error">
+                        <p id="update-percent-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-repeated" class="block text-sm font-medium text-gray-300">Repeated Percent</label>
+                        <input type="number" step="0.01" id="update-repeated" name="repeated" min="0" max="100" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-campaign_name" class="block text-sm font-medium text-gray-300">Campaign Name</label>
+                        <input type="text" id="update-campaign_name" name="campaign_name" class="mt-1 block w-full rounded-md shadow-sm">
+                    </div>
+                    <button type="submit" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2">
+                        <i class="fas fa-save"></i>
+                        <span>Update URL</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Device Update Modal -->
+        <div class="fixed inset-0 bg-black bg-opacity-70 hidden" id="deviceModal" role="dialog" aria-labelledby="deviceModalLabel">
+            <div class="modal-content bg-gray-800 rounded-lg p-6 max-w-lg mx-auto mt-20">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 id="deviceModalLabel" class="text-xl font-semibold text-gray-100">Update Device</h2>
+                    <button onclick="document.getElementById('deviceModal').classList.add('hidden')" class="text-gray-400 hover:text-gray-200" aria-label="Close Device Modal">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="update-device-form">
+                    <input type="hidden" id="update-device-id" name="id">
+                    <div class="mb-4">
+                        <label for="update-adb_id" class="block text-sm font-medium text-gray-300">ADB ID</label>
+                        <input type="text" id="update-adb_id" name="adb_id" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="update-adb_id-error">
+                        <p id="update-adb_id-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-asset_no" class="block text-sm font-medium text-gray-300">Asset Number</label>
+                        <input type="text" id="update-asset_no" name="asset_no" class="mt-1 block w-full rounded-md shadow-sm" required aria-describedby="update-asset_no-error">
+                        <p id="update-asset_no-error" class="text-red-400 text-sm mt-1 hidden"></p>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-state" class="block text-sm font-medium text-gray-300">State</label>
+                        <select id="update-state" name="state" class="mt-1 block w-full rounded-md shadow-sm" required>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2">
+                        <i class="fas fa-save"></i>
+                        <span>Update Device</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Utility function to escape HTML to prevent XSS
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, 
+                tag => ({
+                    '&': '&amp;',
+                    '<': '&lt;',
+                    '>': '&gt;',
+                    "'": '&#39;',
+                    '"': '&quot;'
+                }[tag] || tag));
+        }
+
+        // Utility function to check if response is JSON
+        async function parseResponse(response) {
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                const text = await response.text();
+                throw new Error('Server returned an unexpected response: ' + text.substring(0, 50));
+            }
+            return response.json();
+        }
+
+        // Validation function for URLs
+        function validateUrl(url) {
+            const urlPattern = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w-./?%&=]*)?$/i;
+            return urlPattern.test(url);
+        }
+
+        // Validation function for percentages
+        function validatePercentages(unique, repeated) {
+            const sum = parseFloat(unique) + parseFloat(repeated);
+            return Math.abs(sum - 100) < 0.01; // Allow small float precision errors
+        }
+
+        // Show error message
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.classList.remove('hidden');
+        }
+
+        // Clear error message
+        function clearError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = '';
+            errorElement.classList.add('hidden');
+        }
+
+        // Show alert
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            const alertMessage = document.getElementById('alert-message');
+            alert.className = `fixed top-4 right-4 z-50 p-4 rounded-lg text-white alert bg-${type === 'success' ? 'green' : 'red'}-600`;
+            alertMessage.textContent = message;
+            alert.classList.remove('hidden');
+            setTimeout(() => alert.classList.add('hidden'), 3000);
+        }
+
+        // Toggle button loading state
+        function toggleButtonLoading(button, isLoading) {
+            if (isLoading) {
+                button.disabled = true;
+                button.classList.add('loading');
+            } else {
+                button.disabled = false;
+                button.classList.remove('loading');
+            }
+        }
+
+        // Toggle table loading state
+        function toggleTableLoading(tableId, isLoading) {
+            const table = document.getElementById(tableId);
+            if (isLoading) {
+                table.classList.add('table-loading');
+            } else {
+                table.classList.remove('table-loading');
+            }
+        }
+
+        // Update selected summary
+        async function updateSelectedSummary() {
+            try {
+                const [devicesResponse, urlsResponse] = await Promise.all([
+                    fetch('/used_devices').then(parseResponse),
+                    fetch('/used_urls').then(parseResponse)
+                ]);
+                const selectedDevices = document.getElementById('selected-devices');
+                selectedDevices.innerHTML = devicesResponse.length 
+                    ? devicesResponse.map(d => `<li>${escapeHTML(d.asset_no)} (ADB ID: ${escapeHTML(d.adb_id)})</li>`).join('')
+                    : '<li>No devices selected</li>';
+                const selectedUrls = document.getElementById('selected-urls');
+                selectedUrls.innerHTML = urlsResponse.length 
+                    ? urlsResponse.map(u => `<li>${escapeHTML(u.url)} (${escapeHTML(u.campaign_name || 'No campaign')})</li>`).join('')
+                    : '<li>No URLs selected</li>';
+            } catch (error) {
+                showAlert('Error fetching selected items', 'danger');
+                console.error('Error in updateSelectedSummary:', error);
+            }
+        }
+
+        // Toggle URL selection
+        async function toggleUrlSelection(id, checkbox) {
+            toggleTableLoading('urls-table', true);
+            try {
+                const response = await fetch(`/toggle_url_selection/${id}`, { method: 'POST' });
+                const data = await parseResponse(response);
+                showAlert(data.message, data.error ? 'danger' : 'success');
+                if (!data.error) {
+                    const row = checkbox.closest('tr');
+                    row.classList.toggle('selected-row', checkbox.checked);
+                    await updateSelectedSummary();
+                } else {
+                    checkbox.checked = !checkbox.checked;
+                }
+            } catch (error) {
+                checkbox.checked = !checkbox.checked;
+                showAlert('Error toggling URL selection', 'danger');
+                console.error('Error in toggleUrlSelection:', error);
+            } finally {
+                toggleTableLoading('urls-table', false);
+            }
+        }
+
+        // Toggle Device selection
+        async function toggleDeviceSelection(id, checkbox) {
+            toggleTableLoading('devices-table', true);
+            try {
+                const response = await fetch(`/toggle_device_selection/${id}`, { method: 'POST' });
+                const data = await parseResponse(response);
+                showAlert(data.message, data.error ? 'danger' : 'success');
+                if (!data.error) {
+                    const row = checkbox.closest('tr');
+                    row.classList.toggle('selected-row', checkbox.checked);
+                    await updateSelectedSummary();
+                } else {
+                    checkbox.checked = !checkbox.checked;
+                }
+            } catch (error) {
+                checkbox.checked = !checkbox.checked;
+                showAlert('Error toggling device selection', 'danger');
+                console.error('Error in toggleDeviceSelection:', error);
+            } finally {
+                toggleTableLoading('devices-table', false);
+            }
+        }
+
+        // Delete URL
+        async function deleteUrl(id) {
+            if (!confirm('Are you sure you want to delete this URL?')) return;
+            toggleTableLoading('urls-table', true);
+            try {
+                const response = await fetch(`/delete_url/${id}`, { method: 'POST' });
+                const data = await parseResponse(response);
+                showAlert(data.message, data.error ? 'danger' : 'success');
+                if (!data.error) {
+                    const row = document.querySelector(`#urls-table tr[data-id="${id}"]`);
+                    row.remove();
+                    await updateSelectedSummary();
+                }
+            } catch (error) {
+                showAlert('Error deleting URL', 'danger');
+                console.error('Error in deleteUrl:', error);
+            } finally {
+                toggleTableLoading('urls-table', false);
+            }
+        }
+
+        // Delete Device
+        async function deleteDevice(id) {
+            if (!confirm('Are you sure you want to delete this device?')) return;
+            toggleTableLoading('devices-table', true);
+            try {
+                const response = await fetch(`/delete_device/${id}`, { method: 'POST' });
+                const data = await parseResponse(response);
+                showAlert(data.message, data.error ? 'danger' : 'success');
+                if (!data.error) {
+                    const row = document.querySelector(`#devices-table tr[data-id="${id}"]`);
+                    row.remove();
+                    await updateSelectedSummary();
+                }
+            } catch (error) {
+                showAlert('Error deleting device', 'danger');
+                console.error('Error in deleteDevice:', error);
+            } finally {
+                toggleTableLoading('devices-table', false);
+            }
+        }
+
+        // Open URL modal
+        function openUrlModal(id, url, target, unique, repeated, campaign_name) {
+            document.getElementById('update-url-id').value = id;
+            document.getElementById('update-url').value = url;
+            document.getElementById('update-target').value = target;
+            document.getElementById('update-unique').value = unique;
+            document.getElementById('update-repeated').value = repeated;
+            document.getElementById('update-campaign_name').value = campaign_name || '';
+            document.getElementById('urlModal').classList.remove('hidden');
+        }
+
+        // Open Device modal
+        function openDeviceModal(id, adb_id, asset_no, state) {
+            document.getElementById('update-device-id').value = id;
+            document.getElementById('update-adb_id').value = adb_id;
+            document.getElementById('update-asset_no').value = asset_no;
+            document.getElementById('update-state').value = state;
+            document.getElementById('deviceModal').classList.remove('hidden');
+        }
+
+        // Add URL form submission
+        document.getElementById('url-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const url = document.getElementById('url').value.trim();
+            const target = document.getElementById('target').value;
+            const unique = document.getElementById('unique').value;
+            const repeated = document.getElementById('repeated').value;
+            const campaign_name = document.getElementById('campaign_name').value.trim();
+            const button = this.querySelector('button[type="submit"]');
+
+            // Clear previous errors
+            clearError('url-error');
+            clearError('target-error');
+            clearError('percent-error');
+
+            // Validate inputs
+            let isValid = true;
+            if (!validateUrl(url)) {
+                showError('url-error', 'Please enter a valid URL');
+                isValid = false;
+            }
+            if (target < 1) {
+                showError('target-error', 'Target clicks must be at least 1');
+                isValid = false;
+            }
+            if (!validatePercentages(unique, repeated)) {
+                showError('percent-error', 'Unique and Repeated percentages must sum to 100');
+                isValid = false;
+            }
+            if (!isValid) return;
+
+            toggleButtonLoading(button, true);
+            toggleTableLoading('urls-table', true);
+            try {
+                const formData = new FormData(this);
+                const response = await fetch('/', { method: 'POST', body: formData });
+                const data = await parseResponse(response);
+                showAlert('URL added successfully!', 'success');
+
+                // Add new row to table
+                const newUrl = {
+                    id: data.id,
+                    url: formData.get('url'),
+                    target_clicks: formData.get('target'),
+                    unique_percent: formData.get('unique'),
+                    repeated_percent: formData.get('repeated'),
+                    campaign_name: formData.get('campaign_name') || '',
+                    is_selected: false
+                };
+                const table = document.getElementById('urls-table');
+                const row = document.createElement('tr');
+                row.dataset.id = newUrl.id;
+                row.innerHTML = `
+                    <td class="p-3 text-gray-400">${newUrl.id}</td>
+                    <td class="p-3 text-gray-400">${escapeHTML(newUrl.url)}</td>
+                    <td class="p-3 text-gray-400">${newUrl.target_clicks}</td>
+                    <td class="p-3 text-gray-400">${newUrl.unique_percent}</td>
+                    <td class="p-3 text-gray-400">${newUrl.repeated_percent}</td>
+                    <td class="p-3 text-gray-400">${escapeHTML(newUrl.campaign_name)}</td>
+                    <td class="p-3">
+                        <input type="checkbox" onchange="toggleUrlSelection(${newUrl.id}, this)" aria-label="Select URL ${newUrl.id}">
+                    </td>
+                    <td class="p-3">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
+                                onclick="openUrlModal(${newUrl.id}, '${escapeHTML(newUrl.url)}', ${newUrl.target_clicks}, ${newUrl.unique_percent}, ${newUrl.repeated_percent}, '${escapeHTML(newUrl.campaign_name)}')"
+                                aria-label="Edit URL ${newUrl.id}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
+                                onclick="deleteUrl(${newUrl.id})"
+                                aria-label="Delete URL ${newUrl.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                table.prepend(row);
+                this.reset();
+                await updateSelectedSummary();
+            } catch (error) {
+                showAlert(error.message || 'Error adding URL', 'danger');
+                console.error('Error in url-form submission:', error);
+            } finally {
+                toggleButtonLoading(button, false);
+                toggleTableLoading('urls-table', false);
+            }
+        });
+
+        // Add Device form submission
+        document.getElementById('device-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const adb_id = document.getElementById('adb_id').value.trim();
+            const asset_no = document.getElementById('asset_no').value.trim();
+            const state = document.getElementById('state').value;
+            const button = this.querySelector('button[type="submit"]');
+
+            // Clear previous errors
+            clearError('adb_id-error');
+            clearError('asset_no-error');
+
+            // Validate inputs
+            let isValid = true;
+            if (!adb_id) {
+                showError('adb_id-error', 'ADB ID is required');
+                isValid = false;
+            }
+            if (!asset_no) {
+                showError('asset_no-error', 'Asset Number is required');
+                isValid = false;
+            }
+            if (!isValid) return;
+
+            toggleButtonLoading(button, true);
+            toggleTableLoading('devices-table', true);
+            try {
+                const formData = new FormData(this);
+                const response = await fetch('/', { method: 'POST', body: formData });
+                const data = await parseResponse(response);
+                showAlert('Device added successfully!', 'success');
+
+                // Add new row to table
+                const newDevice = {
+                    id: data.id,
+                    adb_id: formData.get('adb_id'),
+                    asset_no: formData.get('asset_no'),
+                    state: formData.get('state'),
+                    is_selected: false
+                };
+                const table = document.getElementById('devices-table');
+                const row = document.createElement('tr');
+                row.dataset.id = newDevice.id;
+                row.innerHTML = `
+                    <td class="p-3 text-gray-400">${newDevice.id}</td>
+                    <td class="p-3 text-gray-400">${escapeHTML(newDevice.adb_id)}</td>
+                    <td class="p-3 text-gray-400">${escapeHTML(newDevice.asset_no)}</td>
+                    <td class="p-3 text-gray-400">${escapeHTML(newDevice.state)}</td>
+                    <td class="p-3">
+                        <input type="checkbox" onchange="toggleDeviceSelection(${newDevice.id}, this)" aria-label="Select Device ${newDevice.id}">
+                    </td>
+                    <td class="p-3">
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
+                                onclick="openDeviceModal(${newDevice.id}, '${escapeHTML(newDevice.adb_id)}', '${escapeHTML(newDevice.asset_no)}', '${escapeHTML(newDevice.state)}')"
+                                aria-label="Edit Device ${newDevice.id}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
+                                onclick="deleteDevice(${newDevice.id})"
+                                aria-label="Delete Device ${newDevice.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                table.prepend(row);
+                this.reset();
+                await updateSelectedSummary();
+            } catch (error) {
+                showAlert(error.message || 'Error adding device', 'danger');
+                console.error('Error in device-form submission:', error);
+            } finally {
+                toggleButtonLoading(button, false);
+                toggleTableLoading('devices-table', false);
+            }
+        });
+
+        // Update URL form submission
+        document.getElementById('update-url-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const id = document.getElementById('update-url-id').value;
+            const url = document.getElementById('update-url').value.trim();
+            const target = document.getElementById('update-target').value;
+            const unique = document.getElementById('update-unique').value;
+            const repeated = document.getElementById('update-repeated').value;
+            const campaign_name = document.getElementById('update-campaign_name').value.trim();
+            const button = this.querySelector('button[type="submit"]');
+
+            // Clear previous errors
+            clearError('update-url-error');
+            clearError('update-target-error');
+            clearError('update-percent-error');
+
+            // Validate inputs
+            let isValid = true;
+            if (!validateUrl(url)) {
+                showError('update-url-error', 'Please enter a valid URL');
+                isValid = false;
+            }
+            if (target < 1) {
+                showError('update-target-error', 'Target clicks must be at least 1');
+                isValid = false;
+            }
+            if (!validatePercentages(unique, repeated)) {
+                showError('update-percent-error', 'Unique and Repeated percentages must sum to 100');
+                isValid = false;
+            }
+            if (!isValid) return;
+
+            toggleButtonLoading(button, true);
+            toggleTableLoading('urls-table', true);
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(`/update_url/${id}`, { method: 'POST', body: formData });
+                const data = await parseResponse(response);
+                showAlert(data.message, data.error ? 'danger' : 'success');
+                if (!data.error) {
+                    // Update table row
+                    const row = document.querySelector(`#urls-table tr[data-id="${id}"]`);
+                    row.innerHTML = `
+                        <td class="p-3 text-gray-400">${id}</td>
+                        <td class="p-3 text-gray-400">${escapeHTML(formData.get('url'))}</td>
+                        <td class="p-3 text-gray-400">${formData.get('target')}</td>
+                        <td class="p-3 text-gray-400">${formData.get('unique')}</td>
+                        <td class="p-3 text-gray-400">${formData.get('repeated')}</td>
+                        <td class="p-3 text-gray-400">${escapeHTML(formData.get('campaign_name') || '')}</td>
+                        <td class="p-3">
+                            <input type="checkbox" onchange="toggleUrlSelection(${id}, this)" ${data.is_selected ? 'checked' : ''} aria-label="Select URL ${id}">
+                        </td>
+                        <td class="p-3">
+                            <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
+                                    onclick="openUrlModal(${id}, '${escapeHTML(formData.get('url'))}', ${formData.get('target')}, ${formData.get('unique')}, ${formData.get('repeated')}, '${escapeHTML(formData.get('campaign_name') || '')}')"
+                                    aria-label="Edit URL ${id}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
+                                    onclick="deleteUrl(${id})"
+                                    aria-label="Delete URL ${id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    row.classList.toggle('selected-row', data.is_selected);
+                    document.getElementById('urlModal').classList.add('hidden');
+                    await updateSelectedSummary();
+                }
+            } catch (error) {
+                showAlert(error.message || 'Error updating URL', 'danger');
+                console.error('Error in update-url-form submission:', error);
+            } finally {
+                toggleButtonLoading(button, false);
+                toggleTableLoading('urls-table', false);
+            }
+        });
+
+        // Update Device form submission
+        document.getElementById('update-device-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const id = document.getElementById('update-device-id').value;
+            const adb_id = document.getElementById('update-adb_id').value.trim();
+            const asset_no = document.getElementById('update-asset_no').value.trim();
+            const state = document.getElementById('update-state').value;
+            const button = this.querySelector('button[type="submit"]');
+
+            // Clear previous errors
+            clearError('update-adb_id-error');
+            clearError('update-asset_no-error');
+
+            // Validate inputs
+            let isValid = true;
+            if (!adb_id) {
+                showError('update-adb_id-error', 'ADB ID is required');
+                isValid = false;
+            }
+            if (!asset_no) {
+                showError('update-asset_no-error', 'Asset Number is required');
+                isValid = false;
+            }
+            if (!isValid) return;
+
+            toggleButtonLoading(button, true);
+            toggleTableLoading('devices-table', true);
+            try {
+                const formData = new FormData(this);
+                const response = await fetch(`/update_device/${id}`, { method: 'POST', body: formData });
+                const data = await parseResponse(response);
+                showAlert(data.message, data.error ? 'danger' : 'success');
+                if (!data.error) {
+                    // Update table row
+                    const row = document.querySelector(`#devices-table tr[data-id="${id}"]`);
+                    row.innerHTML = `
+                        <td class="p-3 text-gray-400">${id}</td>
+                        <td class="p-3 text-gray-400">${escapeHTML(formData.get('adb_id'))}</td>
+                        <td class="p-3 text-gray-400">${escapeHTML(formData.get('asset_no'))}</td>
+                        <td class="p-3 text-gray-400">${escapeHTML(formData.get('state'))}</td>
+                        <td class="p-3">
+                            <input type="checkbox" onchange="toggleDeviceSelection(${id}, this)" ${data.is_selected ? 'checked' : ''} aria-label="Select Device ${id}">
+                        </td>
+                        <td class="p-3">
+                            <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
+                                    onclick="openDeviceModal(${id}, '${escapeHTML(formData.get('adb_id'))}', '${escapeHTML(formData.get('asset_no'))}', '${escapeHTML(formData.get('state'))}')"
+                                    aria-label="Edit Device ${id}">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
+                                    onclick="deleteDevice(${id})"
+                                    aria-label="Delete Device ${id}">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    `;
+                    row.classList.toggle('selected-row', data.is_selected);
+                    document.getElementById('deviceModal').classList.add('hidden');
+                    await updateSelectedSummary();
+                }
+            } catch (error) {
+                showAlert(error.message || 'Error updating device', 'danger');
+                console.error('Error in update-device-form submission:', error);
+            } finally {
+                toggleButtonLoading(button, false);
+                toggleTableLoading('devices-table', false);
+            }
+        });
+
+        // Run Script
+        document.getElementById('run-script-btn').addEventListener('click', async function() {
+            toggleButtonLoading(this, true);
+            try {
+                const response = await fetch('/run-script', { method: 'POST' });
+                const data = await parseResponse(response);
+                showAlert(data.message, data.message.includes('Failed') ? 'danger' : 'success');
+            } catch (error) {
+                showAlert('Error running script', 'danger');
+                console.error('Error in run-script:', error);
+            } finally {
+                toggleButtonLoading(this, false);
+            }
+        });
+
+        // Stop Script
+        document.getElementById('stop-script-btn').addEventListener('click', async function() {
+            toggleButtonLoading(this, true);
+            try {
+                const response = await fetch('/stop-script', { method: 'POST' });
+                const data = await parseResponse(response);
+                showAlert(data.message, data.message.includes('Failed') ? 'danger' : 'success');
+            } catch (error) {
+                showAlert('Error stopping script', 'danger');
+                console.error('Error in stop-script:', error);
+            } finally {
+                toggleButtonLoading(this, false);
+            }
+        });
+
+        // Initialize selected summary on page load
+        document.addEventListener('DOMContentLoaded', updateSelectedSummary);
+    </script>
+</body>
+</html>

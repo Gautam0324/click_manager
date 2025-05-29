@@ -1,41 +1,391 @@
-2025-05-29 13:41:01,677 - INFO - package: mysql.connector.plugins
-2025-05-29 13:41:01,677 - INFO - plugin_name: mysql_native_password
-2025-05-29 13:41:01,693 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 13:41:03,713 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+2025-05-29 14:23:41,472 - DEBUG - Starting authorization phase
+2025-05-29 14:23:41,472 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:41,472 - INFO - package: mysql.connector.plugins
+2025-05-29 14:23:41,472 - INFO - plugin_name: mysql_native_password
+2025-05-29 14:23:41,487 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 14:23:41,519 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:41,656 - DEBUG - Starting authorization phase
+2025-05-29 14:23:41,656 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:41,671 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:41,838 - DEBUG - Starting authorization phase
+2025-05-29 14:23:41,838 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:41,890 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:42,053 - DEBUG - Starting authorization phase
+2025-05-29 14:23:42,053 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:42,100 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:42,241 - DEBUG - Starting authorization phase
+2025-05-29 14:23:42,241 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:42,283 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:42,370 - INFO - Database connection pool initialized successfully
+2025-05-29 14:23:42,458 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://192.168.0.127:5000
-2025-05-29 13:41:03,713 - INFO - [33mPress CTRL+C to quit[0m
-2025-05-29 13:41:03,713 - INFO -  * Restarting with stat
-2025-05-29 13:41:11,270 - INFO - package: mysql.connector.plugins
-2025-05-29 13:41:11,270 - INFO - plugin_name: mysql_native_password
-2025-05-29 13:41:11,270 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
-2025-05-29 13:41:12,364 - WARNING -  * Debugger is active!
-2025-05-29 13:41:12,380 - INFO -  * Debugger PIN: 235-029-131
-2025-05-29 13:41:43,163 - INFO - 127.0.0.1 - - [29/May/2025 13:41:43] "GET / HTTP/1.1" 200 -
-2025-05-29 13:41:43,769 - INFO - 127.0.0.1 - - [29/May/2025 13:41:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-2025-05-29 13:41:44,053 - INFO - 127.0.0.1 - - [29/May/2025 13:41:44] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 13:41:44,181 - INFO - 127.0.0.1 - - [29/May/2025 13:41:44] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 13:41:57,913 - INFO - Updated URL id 1: http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
-2025-05-29 13:41:58,278 - INFO - 127.0.0.1 - - [29/May/2025 13:41:58] "POST /update_url/1 HTTP/1.1" 200 -
-2025-05-29 13:42:00,045 - INFO - 127.0.0.1 - - [29/May/2025 13:42:00] "GET / HTTP/1.1" 200 -
-2025-05-29 13:42:00,690 - INFO - 127.0.0.1 - - [29/May/2025 13:42:00] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 13:42:00,748 - INFO - 127.0.0.1 - - [29/May/2025 13:42:00] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 13:42:06,748 - INFO - URL id 1 selection toggled to selected
-2025-05-29 13:42:07,066 - INFO - 127.0.0.1 - - [29/May/2025 13:42:07] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
-2025-05-29 13:42:07,346 - INFO - 127.0.0.1 - - [29/May/2025 13:42:07] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 13:42:07,480 - INFO - 127.0.0.1 - - [29/May/2025 13:42:07] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 13:42:11,394 - INFO - Device id 1 selection toggled to selected
-2025-05-29 13:42:11,677 - INFO - 127.0.0.1 - - [29/May/2025 13:42:11] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
-2025-05-29 13:42:12,050 - INFO - 127.0.0.1 - - [29/May/2025 13:42:12] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 13:42:12,130 - INFO - 127.0.0.1 - - [29/May/2025 13:42:12] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 13:42:28,033 - INFO - Script started
-2025-05-29 13:42:28,033 - INFO - 127.0.0.1 - - [29/May/2025 13:42:28] "POST /run-script HTTP/1.1" 200 -
-2025-05-29 13:42:54,201 - INFO - 127.0.0.1 - - [29/May/2025 13:42:54] "GET / HTTP/1.1" 200 -
-2025-05-29 13:42:55,003 - INFO - 127.0.0.1 - - [29/May/2025 13:42:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-2025-05-29 13:42:55,375 - INFO - 127.0.0.1 - - [29/May/2025 13:42:55] "GET /used_devices HTTP/1.1" 200 -
-2025-05-29 13:42:55,432 - INFO - 127.0.0.1 - - [29/May/2025 13:42:55] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 13:46:00,530 - INFO - 127.0.0.1 - - [29/May/2025 13:46:00] "GET / HTTP/1.1" 200 -
-2025-05-29 13:46:01,101 - INFO - 127.0.0.1 - - [29/May/2025 13:46:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-2025-05-29 13:46:01,575 - INFO - 127.0.0.1 - - [29/May/2025 13:46:01] "GET /used_urls HTTP/1.1" 200 -
-2025-05-29 13:46:01,575 - INFO - 127.0.0.1 - - [29/May/2025 13:46:01] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 14:23:42,458 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-29 14:23:42,458 - INFO -  * Restarting with stat
+2025-05-29 14:23:43,188 - DEBUG - Starting authorization phase
+2025-05-29 14:23:43,188 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:43,188 - INFO - package: mysql.connector.plugins
+2025-05-29 14:23:43,188 - INFO - plugin_name: mysql_native_password
+2025-05-29 14:23:43,188 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 14:23:43,219 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:43,329 - DEBUG - Starting authorization phase
+2025-05-29 14:23:43,329 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:43,373 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:43,484 - DEBUG - Starting authorization phase
+2025-05-29 14:23:43,484 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:43,500 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:43,641 - DEBUG - Starting authorization phase
+2025-05-29 14:23:43,641 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:43,703 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:43,939 - DEBUG - Starting authorization phase
+2025-05-29 14:23:43,939 - DEBUG - The provided initial strategy is mysql_native_password
+2025-05-29 14:23:44,002 - DEBUG - mysql_native_password completed succesfully
+2025-05-29 14:23:44,111 - INFO - Database connection pool initialized successfully
+2025-05-29 14:23:44,158 - WARNING -  * Debugger is active!
+2025-05-29 14:23:44,174 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 14:25:02,934 - DEBUG - Database connection acquired
+2025-05-29 14:25:03,152 - DEBUG - Database schema verified/updated
+2025-05-29 14:25:03,506 - DEBUG - Database connection closed
+2025-05-29 14:25:03,509 - INFO - 127.0.0.1 - - [29/May/2025 14:25:03] "GET / HTTP/1.1" 200 -
+2025-05-29 14:25:04,088 - INFO - 127.0.0.1 - - [29/May/2025 14:25:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-29 14:25:20,656 - DEBUG - Database connection acquired
+2025-05-29 14:25:20,926 - DEBUG - Database schema verified/updated
+2025-05-29 14:25:21,221 - DEBUG - Database connection closed
+2025-05-29 14:25:21,221 - INFO - 127.0.0.1 - - [29/May/2025 14:25:21] "GET / HTTP/1.1" 200 -
+2025-05-29 14:25:33,592 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
+2025-05-29 14:25:33,755 - INFO -  * Restarting with stat
+2025-05-29 14:25:34,654 - INFO - package: mysql.connector.plugins
+2025-05-29 14:25:34,654 - INFO - plugin_name: mysql_native_password
+2025-05-29 14:25:34,654 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 14:25:35,555 - WARNING -  * Debugger is active!
+2025-05-29 14:25:35,559 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 14:25:36,158 - INFO - 127.0.0.1 - - [29/May/2025 14:25:36] "GET / HTTP/1.1" 200 -
+2025-05-29 14:25:36,658 - INFO - 127.0.0.1 - - [29/May/2025 14:25:36] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 14:25:36,703 - INFO - 127.0.0.1 - - [29/May/2025 14:25:36] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 14:25:40,535 - INFO - URL id 1 selection toggled to selected
+2025-05-29 14:25:40,787 - INFO - 127.0.0.1 - - [29/May/2025 14:25:40] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 14:25:41,105 - INFO - 127.0.0.1 - - [29/May/2025 14:25:41] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 14:25:41,154 - INFO - 127.0.0.1 - - [29/May/2025 14:25:41] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 14:25:42,905 - INFO - URL id 2 selection toggled to selected
+2025-05-29 14:25:43,127 - INFO - 127.0.0.1 - - [29/May/2025 14:25:43] "POST /toggle_url_selection/2 HTTP/1.1" 200 -
+2025-05-29 14:25:43,548 - INFO - 127.0.0.1 - - [29/May/2025 14:25:43] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 14:25:43,660 - INFO - 127.0.0.1 - - [29/May/2025 14:25:43] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 14:25:45,822 - INFO - URL id 1 selection toggled to deselected
+2025-05-29 14:25:46,046 - INFO - 127.0.0.1 - - [29/May/2025 14:25:46] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 14:25:46,440 - INFO - 127.0.0.1 - - [29/May/2025 14:25:46] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 14:25:46,509 - INFO - 127.0.0.1 - - [29/May/2025 14:25:46] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 14:25:50,383 - INFO - URL id 2 selection toggled to deselected
+2025-05-29 14:25:50,686 - INFO - 127.0.0.1 - - [29/May/2025 14:25:50] "POST /toggle_url_selection/2 HTTP/1.1" 200 -
+2025-05-29 14:25:51,024 - INFO - 127.0.0.1 - - [29/May/2025 14:25:51] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 14:25:51,107 - INFO - 127.0.0.1 - - [29/May/2025 14:25:51] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 14:40:34,684 - INFO - 127.0.0.1 - - [29/May/2025 14:40:34] "GET / HTTP/1.1" 200 -
+2025-05-29 14:40:52,652 - INFO - Added new device: asdfghj,
+2025-05-29 14:40:52,926 - INFO - 127.0.0.1 - - [29/May/2025 14:40:52] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-29 14:40:53,787 - INFO - 127.0.0.1 - - [29/May/2025 14:40:53] "GET / HTTP/1.1" 200 -
+2025-05-29 14:41:17,471 - INFO - Deleted device id 4: asdfghj,
+2025-05-29 14:41:17,676 - INFO - 127.0.0.1 - - [29/May/2025 14:41:17] "POST /delete_device/4 HTTP/1.1" 200 -
+2025-05-29 14:41:23,255 - INFO - 127.0.0.1 - - [29/May/2025 14:41:23] "GET / HTTP/1.1" 200 -
+2025-05-29 14:41:26,867 - INFO - URL id 1 selection toggled to selected
+2025-05-29 14:41:27,183 - INFO - 127.0.0.1 - - [29/May/2025 14:41:27] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 14:41:34,844 - INFO - Device id 1 selection toggled to selected
+2025-05-29 14:41:35,120 - INFO - 127.0.0.1 - - [29/May/2025 14:41:35] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
+2025-05-29 14:41:37,684 - INFO - Script started
+2025-05-29 14:41:37,685 - INFO - 127.0.0.1 - - [29/May/2025 14:41:37] "POST /run-script HTTP/1.1" 200 -
+2025-05-29 14:47:01,455 - INFO - package: mysql.connector.plugins
+2025-05-29 14:47:01,455 - INFO - plugin_name: mysql_native_password
+2025-05-29 14:47:01,457 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 14:47:02,306 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.127:5000
+2025-05-29 14:47:02,306 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-29 14:47:02,308 - INFO -  * Restarting with stat
+2025-05-29 14:47:03,074 - INFO - package: mysql.connector.plugins
+2025-05-29 14:47:03,074 - INFO - plugin_name: mysql_native_password
+2025-05-29 14:47:03,074 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 14:47:03,955 - WARNING -  * Debugger is active!
+2025-05-29 14:47:03,955 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 14:47:07,122 - INFO - 127.0.0.1 - - [29/May/2025 14:47:07] "GET / HTTP/1.1" 200 -
+2025-05-29 14:47:41,141 - INFO - Added new URL: hello.google.com with campaign: HELLO
+2025-05-29 14:47:41,412 - INFO - 127.0.0.1 - - [29/May/2025 14:47:41] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-29 14:47:42,132 - INFO - 127.0.0.1 - - [29/May/2025 14:47:42] "GET / HTTP/1.1" 200 -
+2025-05-29 14:47:46,897 - INFO - URL id 3 selection toggled to selected
+2025-05-29 14:47:47,178 - INFO - 127.0.0.1 - - [29/May/2025 14:47:47] "POST /toggle_url_selection/3 HTTP/1.1" 200 -
+2025-05-29 14:47:50,186 - INFO - Updated URL id 3: hello.google.com
+2025-05-29 14:47:50,528 - INFO - 127.0.0.1 - - [29/May/2025 14:47:50] "POST /update_url/3 HTTP/1.1" 200 -
+2025-05-29 14:47:54,979 - INFO - 127.0.0.1 - - [29/May/2025 14:47:54] "GET / HTTP/1.1" 200 -
+2025-05-29 14:48:03,574 - INFO - Script started
+2025-05-29 14:48:03,574 - INFO - 127.0.0.1 - - [29/May/2025 14:48:03] "POST /run-script HTTP/1.1" 200 -
+2025-05-29 14:48:35,000 - INFO - package: mysql.connector.plugins
+2025-05-29 14:48:35,000 - INFO - plugin_name: mysql_native_password
+2025-05-29 14:48:35,000 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 14:48:36,042 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.127:5000
+2025-05-29 14:48:36,043 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-29 14:48:36,045 - INFO -  * Restarting with stat
+2025-05-29 14:48:37,052 - INFO - package: mysql.connector.plugins
+2025-05-29 14:48:37,052 - INFO - plugin_name: mysql_native_password
+2025-05-29 14:48:37,053 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 14:48:38,406 - WARNING -  * Debugger is active!
+2025-05-29 14:48:38,406 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 14:55:03,849 - INFO - Script started
+2025-05-29 14:55:03,850 - INFO - 127.0.0.1 - - [29/May/2025 14:55:03] "POST /run-script HTTP/1.1" 200 -
+2025-05-29 14:55:11,646 - INFO - 127.0.0.1 - - [29/May/2025 14:55:11] "GET / HTTP/1.1" 200 -
+2025-05-29 14:55:29,058 - INFO - Updated URL id 3: hello.google.com
+2025-05-29 14:55:29,428 - INFO - 127.0.0.1 - - [29/May/2025 14:55:29] "POST /update_url/3 HTTP/1.1" 200 -
+2025-05-29 14:55:35,759 - INFO - 127.0.0.1 - - [29/May/2025 14:55:35] "GET / HTTP/1.1" 200 -
+2025-05-29 14:55:39,170 - INFO - Updated URL id 3: hello.google.com
+2025-05-29 14:55:39,628 - INFO - 127.0.0.1 - - [29/May/2025 14:55:39] "POST /update_url/3 HTTP/1.1" 200 -
+2025-05-29 14:57:28,459 - INFO - 127.0.0.1 - - [29/May/2025 14:57:28] "GET / HTTP/1.1" 200 -
+2025-05-29 14:57:30,956 - INFO - Updated URL id 3: hello.google.com
+2025-05-29 14:57:31,187 - INFO - 127.0.0.1 - - [29/May/2025 14:57:31] "POST /update_url/3 HTTP/1.1" 200 -
+2025-05-29 14:57:38,256 - INFO - 127.0.0.1 - - [29/May/2025 14:57:38] "GET / HTTP/1.1" 200 -
+2025-05-29 14:57:48,981 - INFO - URL id 2 selection toggled to selected
+2025-05-29 14:57:49,270 - INFO - 127.0.0.1 - - [29/May/2025 14:57:49] "POST /toggle_url_selection/2 HTTP/1.1" 200 -
+2025-05-29 14:57:54,116 - INFO - Updated URL id 3: hello.google.com
+2025-05-29 14:57:54,539 - INFO - 127.0.0.1 - - [29/May/2025 14:57:54] "POST /update_url/3 HTTP/1.1" 200 -
+2025-05-29 14:57:56,139 - INFO - Updated URL id 3: hello.google.com
+2025-05-29 14:57:56,506 - INFO - 127.0.0.1 - - [29/May/2025 14:57:56] "POST /update_url/3 HTTP/1.1" 200 -
+2025-05-29 14:58:47,095 - INFO - package: mysql.connector.plugins
+2025-05-29 14:58:47,095 - INFO - plugin_name: mysql_native_password
+2025-05-29 14:58:47,097 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 14:58:48,348 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.207.170:5000
+2025-05-29 14:58:48,348 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-29 14:58:48,348 - INFO -  * Restarting with stat
+2025-05-29 14:58:49,118 - INFO - package: mysql.connector.plugins
+2025-05-29 14:58:49,134 - INFO - plugin_name: mysql_native_password
+2025-05-29 14:58:49,134 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 14:58:50,279 - WARNING -  * Debugger is active!
+2025-05-29 14:58:50,279 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 14:58:54,348 - INFO - 127.0.0.1 - - [29/May/2025 14:58:54] "GET / HTTP/1.1" 200 -
+2025-05-29 14:58:57,131 - INFO - Updated URL id 3: hello.google.com
+2025-05-29 14:58:57,737 - INFO - 127.0.0.1 - - [29/May/2025 14:58:57] "POST /update_url/3 HTTP/1.1" 200 -
+2025-05-29 14:59:07,181 - INFO - 127.0.0.1 - - [29/May/2025 14:59:07] "GET / HTTP/1.1" 200 -
+2025-05-29 14:59:10,905 - INFO - Deleted URL id 3: hello.google.com
+2025-05-29 14:59:11,198 - INFO - 127.0.0.1 - - [29/May/2025 14:59:11] "POST /delete_url/3 HTTP/1.1" 200 -
+2025-05-29 14:59:15,900 - INFO - 127.0.0.1 - - [29/May/2025 14:59:15] "GET / HTTP/1.1" 200 -
+2025-05-29 14:59:39,167 - INFO - 127.0.0.1 - - [29/May/2025 14:59:39] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-29 14:59:39,342 - INFO - 127.0.0.1 - - [29/May/2025 14:59:39] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-29 14:59:39,356 - INFO - 127.0.0.1 - - [29/May/2025 14:59:39] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-29 14:59:39,407 - INFO - 127.0.0.1 - - [29/May/2025 14:59:39] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=zeTXENEe0NbMfZML0Hyf HTTP/1.1" 200 -
+2025-05-29 14:59:39,422 - INFO - 127.0.0.1 - - [29/May/2025 14:59:39] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-05-29 15:00:33,174 - INFO - 127.0.0.1 - - [29/May/2025 15:00:33] "GET / HTTP/1.1" 200 -
+2025-05-29 15:00:33,941 - INFO - 127.0.0.1 - - [29/May/2025 15:00:33] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:00:34,061 - INFO - 127.0.0.1 - - [29/May/2025 15:00:34] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:03:00,236 - INFO - Deleted URL id 2: quantumfitness.in
+2025-05-29 15:03:00,611 - INFO - 127.0.0.1 - - [29/May/2025 15:03:00] "POST /delete_url/2 HTTP/1.1" 200 -
+2025-05-29 15:03:02,443 - INFO - 127.0.0.1 - - [29/May/2025 15:03:02] "GET / HTTP/1.1" 200 -
+2025-05-29 15:03:03,134 - INFO - 127.0.0.1 - - [29/May/2025 15:03:03] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:03:03,175 - INFO - 127.0.0.1 - - [29/May/2025 15:03:03] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:03:17,150 - INFO - 127.0.0.1 - - [29/May/2025 15:03:17] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-29 15:03:18,084 - INFO - 127.0.0.1 - - [29/May/2025 15:03:18] "GET / HTTP/1.1" 200 -
+2025-05-29 15:03:20,057 - INFO - 127.0.0.1 - - [29/May/2025 15:03:20] "GET / HTTP/1.1" 200 -
+2025-05-29 15:03:20,727 - INFO - 127.0.0.1 - - [29/May/2025 15:03:20] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:03:20,873 - INFO - 127.0.0.1 - - [29/May/2025 15:03:20] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:14:24,476 - INFO - 127.0.0.1 - - [29/May/2025 15:14:24] "GET / HTTP/1.1" 200 -
+2025-05-29 15:14:25,235 - INFO - 127.0.0.1 - - [29/May/2025 15:14:25] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:14:25,254 - INFO - 127.0.0.1 - - [29/May/2025 15:14:25] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:14:38,162 - INFO - 127.0.0.1 - - [29/May/2025 15:14:38] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-29 15:14:39,029 - INFO - 127.0.0.1 - - [29/May/2025 15:14:39] "GET / HTTP/1.1" 200 -
+2025-05-29 15:14:44,680 - INFO - 127.0.0.1 - - [29/May/2025 15:14:44] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-29 15:14:45,464 - INFO - 127.0.0.1 - - [29/May/2025 15:14:45] "GET / HTTP/1.1" 200 -
+2025-05-29 15:14:52,413 - INFO - 127.0.0.1 - - [29/May/2025 15:14:52] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-29 15:14:53,298 - INFO - 127.0.0.1 - - [29/May/2025 15:14:53] "GET / HTTP/1.1" 200 -
+2025-05-29 15:16:41,120 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
+2025-05-29 15:16:41,218 - INFO -  * Restarting with stat
+2025-05-29 15:17:03,213 - INFO -  * Restarting with stat
+2025-05-29 15:17:04,784 - INFO - package: mysql.connector.plugins
+2025-05-29 15:17:04,784 - INFO - plugin_name: mysql_native_password
+2025-05-29 15:17:04,786 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 15:17:06,083 - WARNING -  * Debugger is active!
+2025-05-29 15:17:06,088 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 15:17:06,892 - INFO - 127.0.0.1 - - [29/May/2025 15:17:06] "GET / HTTP/1.1" 200 -
+2025-05-29 15:17:07,543 - INFO - 127.0.0.1 - - [29/May/2025 15:17:07] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:17:07,652 - INFO - 127.0.0.1 - - [29/May/2025 15:17:07] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:17:29,339 - INFO - Device id 1 selection toggled to deselected
+2025-05-29 15:17:29,819 - INFO - 127.0.0.1 - - [29/May/2025 15:17:29] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
+2025-05-29 15:17:30,344 - INFO - 127.0.0.1 - - [29/May/2025 15:17:30] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:17:30,390 - INFO - 127.0.0.1 - - [29/May/2025 15:17:30] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:17:31,098 - INFO - URL id 1 selection toggled to deselected
+2025-05-29 15:17:31,480 - INFO - 127.0.0.1 - - [29/May/2025 15:17:31] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 15:17:32,053 - INFO - 127.0.0.1 - - [29/May/2025 15:17:32] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:17:32,202 - INFO - 127.0.0.1 - - [29/May/2025 15:17:32] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:19:11,013 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
+2025-05-29 15:19:11,105 - INFO -  * Restarting with stat
+2025-05-29 15:19:12,485 - INFO - package: mysql.connector.plugins
+2025-05-29 15:19:12,486 - INFO - plugin_name: mysql_native_password
+2025-05-29 15:19:12,487 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 15:19:13,675 - WARNING -  * Debugger is active!
+2025-05-29 15:19:13,679 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 15:19:15,330 - INFO - 127.0.0.1 - - [29/May/2025 15:19:15] "GET / HTTP/1.1" 200 -
+2025-05-29 15:19:16,003 - INFO - 127.0.0.1 - - [29/May/2025 15:19:16] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:19:16,200 - INFO - 127.0.0.1 - - [29/May/2025 15:19:16] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:23:08,422 - INFO - 127.0.0.1 - - [29/May/2025 15:23:08] "GET / HTTP/1.1" 200 -
+2025-05-29 15:23:09,063 - INFO - 127.0.0.1 - - [29/May/2025 15:23:09] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:23:09,153 - INFO - 127.0.0.1 - - [29/May/2025 15:23:09] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:23:13,695 - INFO - URL id 1 selection toggled to selected
+2025-05-29 15:23:14,076 - INFO - 127.0.0.1 - - [29/May/2025 15:23:14] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 15:23:14,705 - INFO - 127.0.0.1 - - [29/May/2025 15:23:14] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:23:14,745 - INFO - 127.0.0.1 - - [29/May/2025 15:23:14] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:23:16,372 - INFO - Device id 1 selection toggled to selected
+2025-05-29 15:23:16,700 - INFO - 127.0.0.1 - - [29/May/2025 15:23:16] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
+2025-05-29 15:23:17,231 - INFO - 127.0.0.1 - - [29/May/2025 15:23:17] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:23:17,242 - INFO - 127.0.0.1 - - [29/May/2025 15:23:17] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:23:20,796 - INFO - Script started
+2025-05-29 15:23:20,796 - INFO - 127.0.0.1 - - [29/May/2025 15:23:20] "POST /run-script HTTP/1.1" 200 -
+2025-05-29 15:23:33,565 - INFO - Script stopped
+2025-05-29 15:23:33,571 - INFO - 127.0.0.1 - - [29/May/2025 15:23:33] "POST /stop-script HTTP/1.1" 200 -
+2025-05-29 15:23:46,084 - INFO - 127.0.0.1 - - [29/May/2025 15:23:46] "GET / HTTP/1.1" 200 -
+2025-05-29 15:23:46,892 - INFO - 127.0.0.1 - - [29/May/2025 15:23:46] "GET /used_devices HTTP/1.1" 200 -
+2025-05-29 15:23:47,248 - INFO - 127.0.0.1 - - [29/May/2025 15:23:47] "GET /used_urls HTTP/1.1" 200 -
+2025-05-29 15:24:16,211 - INFO - 127.0.0.1 - - [29/May/2025 15:24:16] "POST / HTTP/1.1" 200 -
+2025-05-29 15:24:22,344 - INFO - 127.0.0.1 - - [29/May/2025 15:24:22] "POST / HTTP/1.1" 200 -
+2025-05-29 15:24:29,235 - INFO - 127.0.0.1 - - [29/May/2025 15:24:29] "POST / HTTP/1.1" 200 -
+2025-05-29 15:26:18,470 - INFO - 127.0.0.1 - - [29/May/2025 15:26:18] "GET / HTTP/1.1" 200 -
+2025-05-29 15:26:33,407 - INFO - Added new URL: hello.google.com with campaign: 1222, ID: 4
+2025-05-29 15:26:33,735 - INFO - 127.0.0.1 - - [29/May/2025 15:26:33] "POST / HTTP/1.1" 200 -
+2025-05-29 15:26:37,493 - INFO - 127.0.0.1 - - [29/May/2025 15:26:37] "GET / HTTP/1.1" 200 -
+2025-05-29 15:26:40,773 - INFO - 127.0.0.1 - - [29/May/2025 15:26:40] "GET / HTTP/1.1" 200 -
+2025-05-29 15:26:40,864 - INFO - 127.0.0.1 - - [29/May/2025 15:26:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-29 15:26:50,124 - INFO - Deleted URL id 4: hello.google.com
+2025-05-29 15:26:50,444 - INFO - 127.0.0.1 - - [29/May/2025 15:26:50] "POST /delete_url/4 HTTP/1.1" 200 -
+2025-05-29 15:26:54,769 - INFO - 127.0.0.1 - - [29/May/2025 15:26:54] "GET / HTTP/1.1" 200 -
+2025-05-29 15:29:51,743 - INFO - 127.0.0.1 - - [29/May/2025 15:29:51] "GET / HTTP/1.1" 200 -
+2025-05-29 15:30:29,499 - INFO - Added new URL: hello.google.com with campaign: 100, ID: 5
+2025-05-29 15:30:29,825 - INFO - 127.0.0.1 - - [29/May/2025 15:30:29] "POST / HTTP/1.1" 200 -
+2025-05-29 15:30:32,806 - INFO - 127.0.0.1 - - [29/May/2025 15:30:32] "GET / HTTP/1.1" 200 -
+2025-05-29 15:30:37,015 - INFO - Deleted URL id 5: hello.google.com
+2025-05-29 15:30:37,326 - INFO - 127.0.0.1 - - [29/May/2025 15:30:37] "POST /delete_url/5 HTTP/1.1" 200 -
+2025-05-29 15:30:42,186 - INFO - 127.0.0.1 - - [29/May/2025 15:30:42] "GET / HTTP/1.1" 200 -
+2025-05-29 15:30:52,966 - INFO - Device id 3 selection toggled to selected
+2025-05-29 15:30:53,236 - INFO - 127.0.0.1 - - [29/May/2025 15:30:53] "POST /toggle_device_selection/3 HTTP/1.1" 200 -
+2025-05-29 15:31:13,944 - INFO - 127.0.0.1 - - [29/May/2025 15:31:13] "GET / HTTP/1.1" 200 -
+2025-05-29 15:31:40,559 - INFO - 127.0.0.1 - - [29/May/2025 15:31:40] "GET / HTTP/1.1" 200 -
+2025-05-29 15:31:46,194 - INFO - URL id 1 selection toggled to deselected
+2025-05-29 15:31:46,480 - INFO - 127.0.0.1 - - [29/May/2025 15:31:46] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 15:31:47,187 - INFO - URL id 1 selection toggled to selected
+2025-05-29 15:31:47,481 - INFO - 127.0.0.1 - - [29/May/2025 15:31:47] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 15:31:50,576 - INFO - Device id 3 selection toggled to deselected
+2025-05-29 15:31:50,855 - INFO - 127.0.0.1 - - [29/May/2025 15:31:50] "POST /toggle_device_selection/3 HTTP/1.1" 200 -
+2025-05-29 15:32:09,494 - INFO - Added new device: asdf, ID: 5
+2025-05-29 15:32:09,865 - INFO - 127.0.0.1 - - [29/May/2025 15:32:09] "POST / HTTP/1.1" 200 -
+2025-05-29 15:32:12,650 - INFO - 127.0.0.1 - - [29/May/2025 15:32:12] "GET / HTTP/1.1" 200 -
+2025-05-29 15:32:18,130 - INFO - Deleted device id 5: asdf
+2025-05-29 15:32:18,463 - INFO - 127.0.0.1 - - [29/May/2025 15:32:18] "POST /delete_device/5 HTTP/1.1" 200 -
+2025-05-29 15:32:24,543 - INFO - 127.0.0.1 - - [29/May/2025 15:32:24] "GET / HTTP/1.1" 200 -
+2025-05-29 15:32:48,315 - INFO - 127.0.0.1 - - [29/May/2025 15:32:48] "GET / HTTP/1.1" 200 -
+2025-05-29 15:33:02,311 - INFO - Script started
+2025-05-29 15:33:02,311 - INFO - 127.0.0.1 - - [29/May/2025 15:33:02] "POST /run-script HTTP/1.1" 200 -
+2025-05-29 15:33:08,608 - INFO - Script stopped
+2025-05-29 15:33:08,608 - INFO - 127.0.0.1 - - [29/May/2025 15:33:08] "POST /stop-script HTTP/1.1" 200 -
+2025-05-29 15:33:34,007 - INFO - 127.0.0.1 - - [29/May/2025 15:33:34] "GET / HTTP/1.1" 200 -
+2025-05-29 15:38:49,062 - INFO - package: mysql.connector.plugins
+2025-05-29 15:38:49,063 - INFO - plugin_name: mysql_native_password
+2025-05-29 15:38:49,068 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 15:38:50,228 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.127:5000
+2025-05-29 15:38:50,228 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-29 15:38:50,230 - INFO -  * Restarting with stat
+2025-05-29 15:38:51,079 - INFO - package: mysql.connector.plugins
+2025-05-29 15:38:51,081 - INFO - plugin_name: mysql_native_password
+2025-05-29 15:38:51,084 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 15:38:52,111 - WARNING -  * Debugger is active!
+2025-05-29 15:38:52,114 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 15:38:55,991 - INFO - 127.0.0.1 - - [29/May/2025 15:38:55] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-29 15:38:56,152 - INFO - 127.0.0.1 - - [29/May/2025 15:38:56] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-05-29 15:38:56,177 - INFO - 127.0.0.1 - - [29/May/2025 15:38:56] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-05-29 15:38:56,203 - INFO - 127.0.0.1 - - [29/May/2025 15:38:56] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=KRULouBAOXiSf9XMnVRp HTTP/1.1" 200 -
+2025-05-29 15:38:56,218 - INFO - 127.0.0.1 - - [29/May/2025 15:38:56] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-05-29 15:39:22,777 - INFO - 127.0.0.1 - - [29/May/2025 15:39:22] "GET / HTTP/1.1" 200 -
+2025-05-29 15:39:41,178 - INFO - Device id 3 selection toggled to selected
+2025-05-29 15:39:41,421 - INFO - 127.0.0.1 - - [29/May/2025 15:39:41] "POST /toggle_device_selection/3 HTTP/1.1" 200 -
+2025-05-29 15:39:42,272 - INFO - Device id 1 selection toggled to deselected
+2025-05-29 15:39:42,586 - INFO - 127.0.0.1 - - [29/May/2025 15:39:42] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
+2025-05-29 15:39:44,541 - INFO - Device id 1 selection toggled to selected
+2025-05-29 15:39:44,811 - INFO - 127.0.0.1 - - [29/May/2025 15:39:44] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
+2025-05-29 15:39:48,152 - INFO - 127.0.0.1 - - [29/May/2025 15:39:48] "GET / HTTP/1.1" 200 -
+2025-05-29 15:39:51,631 - INFO - Device id 3 selection toggled to deselected
+2025-05-29 15:39:51,932 - INFO - 127.0.0.1 - - [29/May/2025 15:39:51] "POST /toggle_device_selection/3 HTTP/1.1" 200 -
+2025-05-29 15:39:53,810 - INFO - 127.0.0.1 - - [29/May/2025 15:39:53] "GET / HTTP/1.1" 200 -
+2025-05-29 15:40:12,708 - INFO - 127.0.0.1 - - [29/May/2025 15:40:12] "POST / HTTP/1.1" 200 -
+2025-05-29 15:40:34,270 - INFO - 127.0.0.1 - - [29/May/2025 15:40:34] "POST / HTTP/1.1" 200 -
+2025-05-29 15:40:34,664 - INFO - 127.0.0.1 - - [29/May/2025 15:40:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-29 15:40:43,928 - INFO - 127.0.0.1 - - [29/May/2025 15:40:43] "POST / HTTP/1.1" 200 -
+2025-05-29 15:40:53,295 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
+2025-05-29 15:40:53,373 - INFO -  * Restarting with stat
+2025-05-29 15:40:54,362 - INFO - package: mysql.connector.plugins
+2025-05-29 15:40:54,363 - INFO - plugin_name: mysql_native_password
+2025-05-29 15:40:54,367 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 15:40:55,232 - WARNING -  * Debugger is active!
+2025-05-29 15:40:55,237 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 15:45:49,600 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\app.py', reloading
+2025-05-29 15:45:49,732 - INFO -  * Restarting with stat
+2025-05-29 15:45:50,705 - INFO - package: mysql.connector.plugins
+2025-05-29 15:45:50,705 - INFO - plugin_name: mysql_native_password
+2025-05-29 15:45:50,709 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 15:45:51,947 - WARNING -  * Debugger is active!
+2025-05-29 15:45:51,951 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 15:51:13,442 - INFO - 127.0.0.1 - - [29/May/2025 15:51:13] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-29 15:51:14,775 - INFO - 127.0.0.1 - - [29/May/2025 15:51:14] "GET / HTTP/1.1" 200 -
+2025-05-29 15:51:24,056 - INFO - 127.0.0.1 - - [29/May/2025 15:51:24] "GET /get_device/1 HTTP/1.1" 200 -
+2025-05-29 15:51:30,164 - INFO - Updated device id 1: irylmfo755vosshi
+2025-05-29 15:51:30,445 - INFO - 127.0.0.1 - - [29/May/2025 15:51:30] "POST /update_device/1 HTTP/1.1" 200 -
+2025-05-29 15:51:31,360 - INFO - 127.0.0.1 - - [29/May/2025 15:51:31] "GET / HTTP/1.1" 200 -
+2025-05-29 15:52:07,500 - INFO - Added new device: adb
+2025-05-29 15:52:07,858 - INFO - 127.0.0.1 - - [29/May/2025 15:52:07] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-29 15:52:08,577 - INFO - 127.0.0.1 - - [29/May/2025 15:52:08] "GET / HTTP/1.1" 200 -
+2025-05-29 15:52:08,920 - INFO - Added new device: adb
+2025-05-29 15:52:09,259 - INFO - 127.0.0.1 - - [29/May/2025 15:52:09] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-05-29 15:52:09,459 - INFO - 127.0.0.1 - - [29/May/2025 15:52:09] "GET / HTTP/1.1" 200 -
+2025-05-29 15:52:10,232 - INFO - 127.0.0.1 - - [29/May/2025 15:52:10] "GET / HTTP/1.1" 200 -
+2025-05-29 15:52:16,937 - INFO - Device id 6 selection toggled to selected
+2025-05-29 15:52:17,344 - INFO - 127.0.0.1 - - [29/May/2025 15:52:17] "POST /toggle_device_selection/6 HTTP/1.1" 200 -
+2025-05-29 15:52:19,014 - INFO - Device id 6 selection toggled to deselected
+2025-05-29 15:52:19,546 - INFO - 127.0.0.1 - - [29/May/2025 15:52:19] "POST /toggle_device_selection/6 HTTP/1.1" 200 -
+2025-05-29 15:52:24,813 - INFO - URL id 1 selection toggled to deselected
+2025-05-29 15:52:25,241 - INFO - 127.0.0.1 - - [29/May/2025 15:52:25] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 15:52:35,252 - INFO - Deleted device id 7: adb
+2025-05-29 15:52:35,567 - INFO - 127.0.0.1 - - [29/May/2025 15:52:35] "POST /delete_device/7 HTTP/1.1" 200 -
+2025-05-29 15:52:36,439 - INFO - 127.0.0.1 - - [29/May/2025 15:52:36] "GET / HTTP/1.1" 200 -
+2025-05-29 15:52:42,955 - INFO - Deleted device id 6: adb
+2025-05-29 15:52:43,298 - INFO - 127.0.0.1 - - [29/May/2025 15:52:43] "POST /delete_device/6 HTTP/1.1" 200 -
+2025-05-29 15:52:44,131 - INFO - 127.0.0.1 - - [29/May/2025 15:52:44] "GET / HTTP/1.1" 200 -
+2025-05-29 16:04:42,686 - INFO - 127.0.0.1 - - [29/May/2025 16:04:42] "GET / HTTP/1.1" 200 -
+2025-05-29 16:04:45,956 - INFO - 127.0.0.1 - - [29/May/2025 16:04:45] "GET / HTTP/1.1" 200 -
+2025-05-29 16:04:59,769 - INFO - 127.0.0.1 - - [29/May/2025 16:04:59] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-29 16:06:22,097 - INFO - 127.0.0.1 - - [29/May/2025 16:06:22] "GET / HTTP/1.1" 200 -
+2025-05-29 16:06:22,177 - INFO - 127.0.0.1 - - [29/May/2025 16:06:22] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-29 16:07:44,493 - INFO - 127.0.0.1 - - [29/May/2025 16:07:44] "GET / HTTP/1.1" 200 -
+2025-05-29 16:07:44,580 - INFO - 127.0.0.1 - - [29/May/2025 16:07:44] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-29 16:08:15,662 - INFO - package: mysql.connector.plugins
+2025-05-29 16:08:15,662 - INFO - plugin_name: mysql_native_password
+2025-05-29 16:08:15,664 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 16:08:17,672 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.35:5000
+2025-05-29 16:08:17,672 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-29 16:08:17,676 - INFO -  * Restarting with stat
+2025-05-29 16:08:22,124 - INFO - package: mysql.connector.plugins
+2025-05-29 16:08:22,124 - INFO - plugin_name: mysql_native_password
+2025-05-29 16:08:22,128 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 16:08:25,884 - WARNING -  * Debugger is active!
+2025-05-29 16:08:25,888 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 16:08:27,659 - INFO - 127.0.0.1 - - [29/May/2025 16:08:27] "GET / HTTP/1.1" 200 -
+2025-05-29 16:08:27,889 - INFO - 127.0.0.1 - - [29/May/2025 16:08:27] "GET / HTTP/1.1" 200 -
+2025-05-29 16:08:27,974 - INFO - 127.0.0.1 - - [29/May/2025 16:08:27] "[33mGET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1[0m" 404 -
+2025-05-29 16:08:32,374 - INFO - 127.0.0.1 - - [29/May/2025 16:08:32] "GET / HTTP/1.1" 200 -
+2025-05-29 16:09:10,910 - INFO - 127.0.0.1 - - [29/May/2025 16:09:10] "GET / HTTP/1.1" 200 -
+2025-05-29 16:10:10,180 - INFO - 127.0.0.1 - - [29/May/2025 16:10:10] "GET / HTTP/1.1" 200 -
+2025-05-29 16:11:14,093 - INFO - 127.0.0.1 - - [29/May/2025 16:11:14] "GET / HTTP/1.1" 200 -
+2025-05-29 16:12:01,784 - ERROR - Database error: 2055: Lost connection to MySQL server at '82.180.144.17:3306', system error: Errno 10053: An established connection was aborted by the software in your host machine
+2025-05-29 16:12:01,785 - INFO - 127.0.0.1 - - [29/May/2025 16:12:01] "[35m[1mGET / HTTP/1.1[0m" 500 -
+2025-05-29 16:12:12,370 - INFO - 127.0.0.1 - - [29/May/2025 16:12:12] "GET / HTTP/1.1" 200 -
