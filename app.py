@@ -125,14 +125,12 @@ def toggle_device_selection(id):
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
 
-        # Check current selection state
         cursor.execute("SELECT is_selected FROM device WHERE id = %s", (id,))
         device = cursor.fetchone()
         if not device:
             app.logger.warning(f"Device id {id} not found")
             return jsonify({'error': 'Device not found'}), 404
 
-        # Toggle the is_selected value
         new_state = 0 if device['is_selected'] else 1
         cursor.execute("UPDATE device SET is_selected = %s WHERE id = %s", (new_state, id))
         conn.commit()
@@ -155,14 +153,12 @@ def toggle_url_selection(id):
         conn = get_db_connection()
         cursor = conn.cursor(dictionary=True)
 
-        # Check current selection state
         cursor.execute("SELECT is_selected FROM url_clicks WHERE id = %s", (id,))
         url = cursor.fetchone()
         if not url:
             app.logger.warning(f"URL id {id} not found")
             return jsonify({'error': 'URL not found'}), 404
 
-        # Toggle the is_selected value
         new_state = 0 if url['is_selected'] else 1
         cursor.execute("UPDATE url_clicks SET is_selected = %s WHERE id = %s", (new_state, id))
         conn.commit()
@@ -256,6 +252,77 @@ def used_devices():
         return jsonify(devices)
     except Error as e:
         app.logger.error(f"Database error fetching used devices: {str(e)}")
+        return jsonify({'error': 'Database error occurred'}), 500
+    finally:
+        if cursor:
+            cursor.close()
+        if conn and conn.is_connected():
+            conn.close()
+
+@app.route('/used_urls', methods=['GET'])
+def used_urls():
+    conn = None
+    cursor = None
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT * FROM url_clicks WHERE is_selected = 1")
+        urls = cursor.fetchall()
+        return jsonify(urls)
+    except Error as e:
+        app.logger.error(f"Database error fetching used URLs: {str(e)}")
+        return jsonify({'error': 'Database error occurred'}), 500
+    finally:
+        if cursor:
+            cursor.close()
+        if conn and conn.is_connected():
+            conn.close()
+
+@app.route('/delete_url/<int:id>', methods=['POST'])
+def delete_url(id):
+    conn = None
+    cursor = None
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT url FROM url_clicks WHERE id = %s", (id,))
+        url = cursor.fetchone()
+        if not url:
+            app.logger.warning(f"URL id {id} not found")
+            return jsonify({'error': 'URL not found'}), 404
+
+        cursor.execute("DELETE FROM url_clicks WHERE id = %s", (id,))
+        conn.commit()
+        app.logger.info(f"Deleted URL id {id}: {url['url']}")
+        return jsonify({'message': 'URL deleted successfully!'})
+    except Error as e:
+        app.logger.error(f"Database error deleting URL id {id}: {str(e)}")
+        return jsonify({'error': 'Database error occurred'}), 500
+    finally:
+        if cursor:
+            cursor.close()
+        if conn and conn.is_connected():
+            conn.close()
+
+@app.route('/delete_device/<int:id>', methods=['POST'])
+def delete_device(id):
+    conn = None
+    cursor = None
+    try:
+        conn = get_db_connection()
+        cursor = conn.cursor(dictionary=True)
+        cursor.execute("SELECT adb_id FROM device WHERE id = %s", (id,))
+        device = cursor.fetchone()
+        if not device:
+            app.logger.warning(f"Device id {id} not found")
+            return jsonify({'error': 'Device not found'}), 404
+
+        cursor.execute("DELETE FROM device WHERE id = %s", (id,))
+        conn.commit()
+        app.logger.info(f"Deleted device id {id}: {device['adb_id']}")
+        return jsonify({'message': 'Device deleted successfully!'})
+    except Error as e:
+        app.logger.error(f"Database error deleting device id {id}: {str(e)}")
         return jsonify({'error': 'Database error occurred'}), 500
     finally:
         if cursor:

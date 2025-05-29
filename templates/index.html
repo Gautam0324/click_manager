@@ -3,100 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URL & Device Management Dashboard</title>
+    <title>URL & Device Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <!-- Google Fonts for Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        html, body { height: 100%; margin: 0; overflow: hidden; }
-        .dashboard-container { height: 100vh; display: grid; grid-template: "header header" 60px "urls devices" 1fr "used script" 200px / 1fr 1fr; gap: 10px; padding: 10px; }
-        .pulse { animation: pulse 2s infinite; }
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.7; }
-            100% { transform: scale(1); opacity: 1; }
+        body {
+            background: linear-gradient(135deg, #8696b6, #000000);
+            min-height: 100vh;
+            font-family: 'Poppins', sans-serif;
+            color: #e2e8f0;
         }
-        .fade-in { animation: fadeIn 0.5s; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-        .theme-dark { background-color: #1f2937; color: #f9fafb; }
-        .theme-dark .bg-white { background-color: #374151; }
-        .theme-dark .text-gray-700 { color: #d1d5db; }
-        .theme-dark .bg-gray-200 { background-color: #4b5563; }
-        .theme-dark .hover\:bg-gray-50:hover { background-color: #4b5563; }
-        .table-container { max-height: calc(100vh - 200px); overflow-y: auto; }
-        .used-devices-container { max-height: 180px; overflow-y: auto; }
+        .container {
+            max-width: 1200px;
+        }
+        .card {
+            background: rgba(128, 18, 18, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border-color: #a855f7;
+        }
+        .selected-row {
+            background-color: rgba(59, 130, 246, 0.2);
+        }
+        .btn-primary {
+            background: linear-gradient(90deg, #a855f7, #ec4899);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(168, 85, 247, 0.5);
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.8);
+        }
+        .btn-danger {
+            background: linear-gradient(90deg, #ef4444, #b91c1c);
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+        }
+        .btn-danger:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(239, 68, 68, 0.8);
+        }
+        .alert {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            animation: slideInRight 0.5s ease-in-out;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes popIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        tr {
+            animation: slideInLeft 0.5s ease-in-out;
+        }
+        .action-btn {
+            transition: all 0.3s ease;
+        }
+        .action-btn:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+        .modal-content {
+            animation: popIn 0.3s ease-in-out;
+        }
+        input, select {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        input:focus, select:focus {
+            border-color: #a855f7;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.3);
+        }
+        label {
+            color: #a0aec0;
+        }
+        table {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        th, td {
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        thead {
+            background: rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
-<body class="bg-gray-100 font-sans transition-colors duration-300" id="theme-body">
-    <div class="dashboard-container">
-        <!-- Header -->
-        <div class="bg-white p-4 shadow-md flex justify-between items-center" style="grid-area: header;">
-            <h1 class="text-xl font-bold text-gray-800">Management Dashboard</h1>
-            <button id="theme-toggle" class="bg-gray-300 text-gray-800 px-3 py-1 rounded hover:bg-gray-400 text-sm">Toggle Theme</button>
+<body class="py-8">
+    <div class="container mx-auto px-4">
+        <h1 class="text-4xl font-bold text-center mb-10 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600 animate-pulse">
+            URL & Device Management System
+        </h1>
+
+        <!-- Alert -->
+        <div id="alert" class="hidden fixed top-4 right-4 z-50 p-4 rounded-lg text-white alert">
+            <span id="alert-message"></span>
+            <button onclick="this.parentElement.classList.add('hidden')" class="ml-4 text-white">×</button>
         </div>
 
-        <!-- URLs Section -->
-        <div class="bg-white p-4 rounded-lg shadow-md fade-in" style="grid-area: urls;">
-            <h2 class="text-lg font-semibold text-gray-700 mb-2">URLs</h2>
-            <button onclick="openAddUrlModal()" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm mb-2">Add URL</button>
-            <form id="selection-form" method="POST">
-                <div class="table-container">
-                    <table class="w-full border-collapse text-sm">
-                        <thead>
-                            <tr class="bg-gray-200 sticky top-0">
-                                <th class="border p-2">Sel</th>
-                                <th class="border p-2">ID</th>
-                                <th class="border p-2">URL</th>
-                                <th class="border p-2">Target</th>
-                                <th class="border p-2">Update</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for url in urls %}
-                            <tr class="hover:bg-gray-50">
-                                <td class="border p-2">
-                                    <input type="checkbox" name="selected_urls" value="{{ url.id }}" {% if url.is_selected %}checked{% endif %}>
-                                </td>
-                                <td class="border p-2">{{ url.id }}</td>
-                                <td class="border p-2 truncate max-w-xs" title="{{ url.url }}">{{ url.url }}</td>
-                                <td class="border p-2">{{ url.target_clicks }}</td>
-                                <td class="border p-2">
-                                    <button type="button" onclick="openUpdateUrlModal({{ url.id }}, '{{ url.url | safe }}', {{ url.target_clicks }}, {{ url.unique_percent }}, {{ url.repeated_percent }}, '{{ url.campaign_name | safe }}')" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600 text-xs">Update</button>
-                                </td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+        <!-- Selected Items Summary -->
+        <div class="card shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Selected for Script</h2>
+            <div id="selected-summary" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <h3 class="text-lg font-medium text-gray-300" >Selected URLs</h3>
+                    <ul id="selected-urls" class="list-disc pl-5 text-gray-400"></ul>
                 </div>
-                <button type="button" onclick="confirmSelectionUpdate()" class="bg-blue-500 text-white px-3 py-1 rounded mt-2 hover:bg-blue-600 text-sm">Update Selections</button>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-300">Selected Devices</h3>
+                    <ul id="selected-devices" class="list-disc pl-5 text-gray-400"></ul>
+                </div>
+            </div>
+            <div class="mt-4 flex space-x-4">
+                <button class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2" onclick="runScript()">
+                    <i class="fas fa-play"></i>
+                    <span>Run Script</span>
+                </button>
+                <button class="btn-danger text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2" onclick="stopScript()">
+                    <i class="fas fa-stop"></i>
+                    <span>Stop Script</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Add URL Form -->
+        <div class="card shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Add New URL</h2>
+            <form id="url-form" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <label for="url" class="block text-sm font-medium">URL</label>
+                    <input type="text" id="url" name="url" class="mt-1 block w-full rounded-md shadow-sm" required>
+                </div>
+                <div>
+                    <label for="target" class="block text-sm font-medium">Target Clicks</label>
+                    <input type="number" id="target" name="target" class="mt-1 block w-full rounded-md shadow-sm" required>
+                </div>
+                <div>
+                    <label for="unique" class="block text-sm font-medium">Unique Percent</label>
+                    <input type="number" step="0.01" id="unique" name="unique" class="mt-1 block w-full rounded-md shadow-sm" required>
+                </div>
+                <div>
+                    <label for="repeated" class="block text-sm font-medium">Repeated Percent</label>
+                    <input type="number" step="0.01" id="repeated" name="repeated" class="mt-1 block w-full rounded-md shadow-sm" required>
+                </div>
+                <div>
+                    <label for="campaign_name" class="block text-sm font-medium">Campaign Name</label>
+                    <input type="text" id="campaign_name" name="campaign_name" class="mt-1 block w-full rounded-md shadow-sm">
+                </div>
+                <div class="md:col-span-2">
+                    <button type="submit" name="add_url" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2 mx-auto">
+                        <i class="fas fa-plus"></i>
+                        <span>Add URL</span>
+                    </button>
+                </div>
             </form>
         </div>
 
-        <!-- Devices Section -->
-        <div class="bg-white p-4 rounded-lg shadow-md fade-in" style="grid-area: devices;">
-            <h2 class="text-lg font-semibold text-gray-700 mb-2">Devices</h2>
-            <button onclick="openAddDeviceModal()" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm mb-2">Add Device</button>
-            <div class="table-container">
-                <table class="w-full border-collapse text-sm">
+        <!-- Add Device Form -->
+        <div class="card shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Add New Device</h2>
+            <form id="device-form" method="POST" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div>
+                    <label for="adb_id" class="block text-sm font-medium">ADB ID</label>
+                    <input type="text" id="adb_id" name="adb_id" class="mt-1 block w-full rounded-md shadow-sm" required>
+                </div>
+                <div>
+                    <label for="asset_no" class="block text-sm font-medium">Asset Number</label>
+                    <input type="text" id="asset_no" name="asset_no" class="mt-1 block w-full rounded-md shadow-sm" required>
+                </div>
+                <div>
+                    <label for="state" class="block text-sm font-medium">State</label>
+                    <input type="text" id="state" namerobot: state" class="mt-1 block w-full rounded-md shadow-sm" required>
+                </div>
+                <div class="md:col-span-3">
+                    <button type="submit" name="add_device" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2 mx-auto">
+                        <i class="fas fa-plus"></i>
+                        <span>Add Device</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- URLs Table -->
+        <div class="card shadow-lg p-6 mb-8">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">URLs</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
                     <thead>
-                        <tr class="bg-gray-200 sticky top-0">
-                            <th class="border p-2">Sel</th>
-                            <th class="border p-2">ID</th>
-                            <th class="border p-2">ADB ID</th>
-                            <th class="border p-2">State</th>
-                            <th class="border p-2">Update</th>
+                        <tr>
+                            <th class="p-3 text-sm font-semibold text-gray-300">ID</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300" style="width: 36%;">URL</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">Target Clicks</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">Unique %</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">Repeated %</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">Campaign</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">Selected</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {% for device in devices %}
-                        <tr class="hover:bg-gray-50">
-                            <td class="border p-2">
-                                <input type="checkbox" name="selected_devices" value="{{ device.id }}" {% if device.is_selected %}checked{% endif %}>
+                    <tbody id="urls-table">
+                        {% for url in urls %}
+                        <tr class="{% if url.is_selected %}selected-row{% endif %}">
+                            <td class="p-3 text-gray-400">{{ url.id }}</td>
+                            <td class="p-3 text-gray-400">{{ url.url }}</td>
+                            <td class="p-3 text-gray-400">{{ url.target_clicks }}</td>
+                            <td class="p-3 text-gray-400">{{ url.unique_percent }}</td>
+                            <td class="p-3 text-gray-400">{{ url.repeated_percent }}</td>
+                            <td class="p-3 text-gray-400">{{ url.campaign_name }}</td>
+                            <td class="p-3">
+                                <input type="checkbox" onchange="toggleUrlSelection({{ url.id }}, this)" {% if url.is_selected %}checked{% endif %}>
                             </td>
-                            <td class="border p-2">{{ device.id }}</td>
-                            <td class="border p-2 truncate max-w-xs" title="{{ device.adb_id }}">{{ device.adb_id }}</td>
-                            <td class="border p-2">{{ device.state }}</td>
-                            <td class="border p-2">
-                                <button type="button" onclick="openUpdateDeviceModal({{ device.id }}, '{{ device.adb_id | safe }}', '{{ device.asset_no | safe }}', '{{ device.state | safe }}')" class="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600 text-xs">Update</button>
+                            <td class="p-3">
+                                <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
+                                        onclick="openUrlModal({{ url.id }}, '{{ url.url | safe }}', {{ url.target_clicks }}, {{ url.unique_percent }}, {{ url.repeated_percent }}, '{{ url.campaign_name | safe }}')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
+                                        onclick="deleteUrl({{ url.id }})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
                         {% endfor %}
@@ -105,324 +254,327 @@
             </div>
         </div>
 
-        <!-- Used Devices Section -->
-        <div class="bg-white p-4 rounded-lg shadow-md fade-in" style="grid-area: used;">
-            <h2 class="text-lg font-semibold text-gray-700 mb-2">Used Devices</h2>
-            <div id="used-devices" class="used-devices-container text-sm"></div>
+        <!-- Devices Table -->
+        <div class="card shadow-lg p-6">
+            <h2 class="text-2xl font-semibold text-gray-100 mb-4">Devices</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr>
+                            <th class="p-3 text-sm font-semibold text-gray-300">ID</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">ADB ID</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">Asset No</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">State</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">Selected</th>
+                            <th class="p-3 text-sm font-semibold text-gray-300">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="devices-table">
+                        {% for device in devices %}
+                        <tr class="{% if device.is_selected %}selected-row{% endif %}">
+                            <td class="p-3 text-gray-400">{{ device.id }}</td>
+                            <td class="p-3 text-gray-400">{{ device.adb_id }}</td>
+                            <td class="p-3 text-gray-400">{{ device.asset_no }}</td>
+                            <td class="p-3 text-gray-400">{{ device.state }}</td>
+                            <td class="p-3">
+                                <input type="checkbox" onchange="toggleDeviceSelection({{ device.id }}, this)" {% if device.is_selected %}checked{% endif %}>
+                            </td>
+                            <td class="p-3">
+                                <button class="bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 rounded mr-2 action-btn" 
+                                        onclick="openDeviceModal({{ device.id }}, '{{ device.adb_id | safe }}', '{{ device.asset_no | safe }}', '{{ device.state | safe }}')">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="btn-danger text-white py-1 px-3 rounded action-btn" 
+                                        onclick="deleteDevice({{ device.id }})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
         </div>
 
-        <!-- Script Control Section -->
-        <div class="bg-white p-4 rounded-lg shadow-md fade-in" style="grid-area: script;">
-            <h2 class="text-lg font-semibold text-gray-700 mb-2">Script Control</h2>
-            <div class="flex space-x-2 mb-2">
-                <button onclick="runScript()" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 text-sm">Run Script</button>
-                <button onclick="stopScript()" class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 text-sm">Stop Script</button>
+        <!-- URL Update Modal -->
+        <div class="fixed inset-0 bg-black bg-opacity-70 hidden" id="urlModal">
+            <div class="modal-content bg-gray-800 rounded-lg p-6 max-w-lg mx-auto mt-20">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold text-gray-100">Update URL</h2>
+                    <button onclick="document.getElementById('urlModal').classList.add('hidden')" class="text-gray-400 hover:text-gray-200">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="update-url-form">
+                    <input type="hidden" id="update-url-id" name="id">
+                    <div class="mb-4">
+                        <label for="update-url" class="block text-sm font-medium text-gray-300">URL</label>
+                        <input type="text" id="update-url" name="url" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-target" class="block text-sm font-medium text-gray-300">Target Clicks</label>
+                        <input type="number" id="update-target" name="target" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-unique" class="block text-sm font-medium text-gray-300">Unique Percent</label>
+                        <input type="number" step="0.01" id="update-unique" name="unique" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-repeated" class="block text-sm font-medium text-gray-300">Repeated Percent</label>
+                        <input type="number" step="0.01" id="update-repeated" name="repeated" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-campaign_name" class="block text-sm font-medium text-gray-300">Campaign Name</label>
+                        <input type="text" id="update-campaign_name" name="campaign_name" class="mt-1 block w-full rounded-md shadow-sm">
+                    </div>
+                    <button type="submit" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2">
+                        <i class="fas fa-save"></i>
+                        <span>Update URL</span>
+                    </button>
+                </form>
             </div>
-            <div id="script-message" class="text-xs"></div>
+        </div>
+
+        <!-- Device Update Modal -->
+        <div class="fixed inset-0 bg-black bg-opacity-70 hidden" id="deviceModal">
+            <div class="modal-content bg-gray-800 rounded-lg p-6 max-w-lg mx-auto mt-20">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-xl font-semibold text-gray-100">Update Device</h2>
+                    <button onclick="document.getElementById('deviceModal').classList.add('hidden')" class="text-gray-400 hover:text-gray-200">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form id="update-device-form">
+                    <input type="hidden" id="update-device-id" name="id">
+                    <div class="mb-4">
+                        <label for="update-adb_id" class="block text-sm font-medium text-gray-300">ADB ID</label>
+                        <input type="text" id="update-adb_id" name="adb_id" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-asset_no" class="block text-sm font-medium text-gray-300">Asset Number</label>
+                        <input type="text" id="update-asset_no" name="asset_no" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    </div>
+                    <div class="mb-4">
+                        <label for="update-state" class="block text-sm font-medium text-gray-300">State</label>
+                        <input type="text" id="update-state" name="state" class="mt-1 block w-full rounded-md shadow-sm" required>
+                    </div>
+                    <button type="submit" class="btn-primary text-white font-medium py-2 px-6 rounded-lg flex items-center space-x-2">
+                        <i class="fas fa-save"></i>
+                        <span>Update Device</span>
+                    </button>
+                </form>
+            </div>
         </div>
     </div>
 
     <script>
-        // Theme Toggle
-        document.getElementById('theme-toggle').addEventListener('click', () => {
-            document.getElementById('theme-body').classList.toggle('theme-dark');
-            localStorage.setItem('theme', document.getElementById('theme-body').classList.contains('theme-dark') ? 'dark' : 'light');
+        function showAlert(message, type) {
+            const alert = document.getElementById('alert');
+            const alertMessage = document.getElementById('alert-message');
+            alert.className = `fixed top-4 right-4 z-50 p-4 rounded-lg text-white alert bg-${type === 'success' ? 'green' : 'red'}-600`;
+            alertMessage.textContent = message;
+            alert.classList.remove('hidden');
+            setTimeout(() => alert.classList.add('hidden'), 3000);
+        }
+
+        function updateSelectedSummary() {
+            fetch('/used_devices')
+                .then(response => response.json())
+                .then(devices => {
+                    const selectedDevices = document.getElementById('selected-devices');
+                    selectedDevices.innerHTML = devices.length ? devices.map(d => `<li>${d.asset_no}</li>`).join('') : '<li>No devices selected</li>';
+                });
+            fetch('/used_urls')
+                .then(response => response.json())
+                .then(urls => {
+                    const selectedUrls = document.getElementById('selected-urls');
+                    selectedUrls.innerHTML = urls.length ? urls.map(u => `<li>${u.campaign_name || 'No campaign'}</li>`).join('') : '<li>No URLs selected</li>';
+                });
+        }
+
+        function toggleUrlSelection(id, checkbox) {
+            fetch(`/toggle_url_selection/${id}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    showAlert(data.message, data.error ? 'danger' : 'success');
+                    if (!data.error) {
+                        const row = checkbox.closest('tr');
+                        if (checkbox.checked) {
+                            row.classList.add('selected-row');
+                        } else {
+                            row.classList.remove('selected-row');
+                        }
+                        updateSelectedSummary();
+                    } else {
+                        checkbox.checked = !checkbox.checked;
+                    }
+                })
+                .catch(error => {
+                    checkbox.checked = !checkbox.checked;
+                    showAlert('Error toggling URL selection', 'danger');
+                    console.error(error);
+                });
+        }
+
+        function toggleDeviceSelection(id, checkbox) {
+            fetch(`/toggle_device_selection/${id}`, { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    showAlert(data.message, data.error ? 'danger' : 'success');
+                    if (!data.error) {
+                        const row = checkbox.closest('tr');
+                        if (checkbox.checked) {
+                            row.classList.add('selected-row');
+                        } else {
+                            row.classList.remove('selected-row');
+                        }
+                        updateSelectedSummary();
+                    } else {
+                        checkbox.checked = !checkbox.checked;
+                    }
+                })
+                .catch(error => {
+                    checkbox.checked = !checkbox.checked;
+                    showAlert('Error toggling device selection', 'danger');
+                    console.error(error);
+                });
+        }
+
+        function deleteUrl(id) {
+            if (confirm('Are you sure you want to delete this URL?')) {
+                fetch(`/delete_url/${id}`, { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        showAlert(data.message, data.error ? 'danger' : 'success');
+                        if (!data.error) {
+                            setTimeout(() => location.reload(), 1000);
+                        }
+                    })
+                    .catch(error => {
+                        showAlert('Error deleting URL', 'danger');
+                        console.error(error);
+                    });
+            }
+        }
+
+        function deleteDevice(id) {
+            if (confirm('Are you sure you want to delete this device?')) {
+                fetch(`/delete_device/${id}`, { method: 'POST' })
+                    .then(response => response.json())
+                    .then(data => {
+                        showAlert(data.message, data.error ? 'danger' : 'success');
+                        if (!data.error) {
+                            setTimeout(() => location.reload(), 1000);
+                        }
+                    })
+                    .catch(error => {
+                        showAlert('Error deleting device', 'danger');
+                        console.error(error);
+                    });
+            }
+        }
+
+        function openUrlModal(id, url, target, unique, repeated, campaign_name) {
+            document.getElementById('update-url-id').value = id;
+            document.getElementById('update-url').value = url;
+            document.getElementById('update-target').value = target;
+            document.getElementById('update-unique').value = unique;
+            document.getElementById('update-repeated').value = repeated;
+            document.getElementById('update-campaign_name').value = campaign_name;
+            document.getElementById('urlModal').classList.remove('hidden');
+        }
+
+        function openDeviceModal(id, adb_id, asset_no, state) {
+            document.getElementById('update-device-id').value = id;
+            document.getElementById('update-adb_id').value = adb_id;
+            document.getElementById('update-asset_no').value = asset_no;
+            document.getElementById('update-state').value = state;
+            document.getElementById('deviceModal').classList.remove('hidden');
+        }
+
+        document.getElementById('url-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch('/', { method: 'POST', body: formData })
+                .then(response => {
+                    if (response.ok) {
+                        showAlert('URL added successfully!', 'success');
+                        setTimeout(() => location.reload(), 1000);
+                    } else {
+                        return response.json().then(data => { throw new Error(data.error); });
+                    }
+                })
+                .catch(error => {
+                    showAlert(error.message || 'Error adding URL', 'danger');
+                    console.error(error);
+                });
         });
-        if (localStorage.getItem('theme') === 'dark') {
-            document.getElementById('theme-body').classList.add('theme-dark');
-        }
 
-        // Modal for Adding URL
-        function openAddUrlModal() {
-            Swal.fire({
-                title: 'Add New URL',
-                html: `
-                    <div class="space-y-3 text-sm">
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">URL</label>
-                            <input id="url" type="text" class="border rounded p-1" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Target Clicks</label>
-                            <input id="target" type="number" class="border rounded p-1" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Unique Percent</label>
-                            <input id="unique" type="number" step="0.01" class="border rounded p-1" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Repeated Percent</label>
-                            <input id="repeated" type="number" step="0.01" class="border rounded p-1" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Campaign Name</label>
-                            <input id="campaign_name" type="text" class="border rounded p-1">
-                        </div>
-                    </div>
-                `,
-                showCancelButton: true,
-                confirmButtonText: 'Add URL',
-                preConfirm: () => {
-                    const url = document.getElementById('url').value;
-                    const target = document.getElementById('target').value;
-                    const unique = document.getElementById('unique').value;
-                    const repeated = document.getElementById('repeated').value;
-                    const campaign_name = document.getElementById('campaign_name').value;
-                    if (!url || !target || !unique || !repeated) {
-                        Swal.showValidationMessage('All required fields must be filled');
-                        return false;
+        document.getElementById('device-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            fetch('/', { method: 'POST', body: formData })
+                .then(response => {
+                    if (response.ok) {
+                        showAlert('Device added successfully!', 'success');
+                        setTimeout(() => location.reload(), 1000);
+                    } else {
+                        return response.json().then(data => { throw new Error(data.error); });
                     }
-                    return { url, target, unique, repeated, campaign_name };
-                }
-            }).then(result => {
-                if (result.isConfirmed) {
-                    const formData = new FormData();
-                    formData.append('url', result.value.url);
-                    formData.append('target', result.value.target);
-                    formData.append('unique', result.value.unique);
-                    formData.append('repeated', result.value.repeated);
-                    formData.append('campaign_name', result.value.campaign_name);
-                    formData.append('add_url', 'true');
-                    fetch('/', {
-                        method: 'POST',
-                        body: formData
-                    }).then(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'URL added successfully!',
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(() => location.reload());
-                    });
-                }
-            });
-        }
+                })
+                .catch(error => {
+                    showAlert(error.message || 'Error adding device', 'danger');
+                    console.error(error);
+                });
+        });
 
-        // Modal for Updating URL
-        function openUpdateUrlModal(id, url, target, unique, repeated, campaign_name) {
-            Swal.fire({
-                title: `Update URL ID: ${id}`,
-                html: `
-                    <div class="space-y-3 text-sm">
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">URL</label>
-                            <input id="url" type="text" class="border rounded p-1" value="${url.replace(/"/g, '&quot;')}" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Target Clicks</label>
-                            <input id="target" type="number" class="border rounded p-1" value="${target}" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Unique Percent</label>
-                            <input id="unique" type="number" step="0.01" class="border rounded p-1" value="${unique}" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Repeated Percent</label>
-                            <input id="repeated" type="number" step="0.01" class="border rounded p-1" value="${repeated}" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Campaign Name</label>
-                            <input id="campaign_name" type="text" class="border rounded p-1" value="${campaign_name.replace(/"/g, '&quot;')}">
-                        </div>
-                    </div>
-                `,
-                showCancelButton: true,
-                confirmButtonText: 'Update URL',
-                preConfirm: () => {
-                    const url = document.getElementById('url').value;
-                    const target = document.getElementById('target').value;
-                    const unique = document.getElementById('unique').value;
-                    const repeated = document.getElementById('repeated').value;
-                    const campaign_name = document.getElementById('campaign_name').value;
-                    if (!url || !target || !unique || !repeated) {
-                        Swal.showValidationMessage('All required fields must be filled');
-                        return false;
+        document.getElementById('update-url-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = document.getElementById('update-url-id').value;
+            const formData = new FormData(this);
+            fetch(`/update_url/${id}`, { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    showAlert(data.message, data.error ? 'danger' : 'success Aubergine');
+                    if (!data.error) {
+                        document.getElementById('urlModal').classList.add('hidden');
+                        setTimeout(() => location.reload(), 1000);
                     }
-                    return { url, target, unique, repeated, campaign_name };
-                }
-            }).then(result => {
-                if (result.isConfirmed) {
-                    const formData = new FormData();
-                    formData.append('url', result.value.url);
-                    formData.append('target', result.value.target);
-                    formData.append('unique', result.value.unique);
-                    formData.append('repeated', result.value.repeated);
-                    formData.append('campaign_name', result.value.campaign_name);
-                    fetch(`/update_url/${id}`, {
-                        method: 'POST',
-                        body: formData
-                    }).then(response => response.json()).then(data => {
-                        Swal.fire({
-                            icon: data.message ? 'success' : 'error',
-                            title: data.message || data.error,
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(() => {
-                            if (data.message) location.reload();
-                        });
-                    });
-                }
-            });
-        }
+                })
+                .catch(error => {
+                    showAlert('Error updating URL', 'danger');
+                    console.error(error);
+                });
+        });
 
-        // Modal for Adding Device
-        function openAddDeviceModal() {
-            Swal.fire({
-                title: 'Add New Device',
-                html: `
-                    <div class="space-y-3 text-sm">
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">ADB ID</label>
-                            <input id="adb_id" type="text" class="border rounded p-1" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Asset No</label>
-                            <input id="asset_no" type="text" class="border rounded p-1" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">State</label>
-                            <input id="state" type="text" class="border rounded p-1" required>
-                        </div>
-                    </div>
-                `,
-                showCancelButton: true,
-                confirmButtonText: 'Add Device',
-                preConfirm: () => {
-                    const adb_id = document.getElementById('adb_id').value;
-                    const asset_no = document.getElementById('asset_no').value;
-                    const state = document.getElementById('state').value;
-                    if (!adb_id || !asset_no || !state) {
-                        Swal.showValidationMessage('All required fields must be filled');
-                        return false;
+        document.getElementById('update-device-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const id = document.getElementById('update-device-id').value;
+            const formData = new FormData(this);
+            fetch(`/update_device/${id}`, { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    showAlert(data.message, data.error ? 'danger' : 'success');
+                    if (!data.error) {
+                        document.getElementById('deviceModal').classList.add('hidden');
+                        setTimeout(() => location.reload(), 1000);
                     }
-                    return { adb_id, asset_no, state };
-                }
-            }).then(result => {
-                if (result.isConfirmed) {
-                    const formData = new FormData();
-                    formData.append('adb_id', result.value.adb_id);
-                    formData.append('asset_no', result.value.asset_no);
-                    formData.append('state', result.value.state);
-                    formData.append('add_device', 'true');
-                    fetch('/', {
-                        method: 'POST',
-                        body: formData
-                    }).then(() => {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Device added successfully!',
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(() => location.reload());
-                    });
-                }
-            });
-        }
+                })
+                .catch(error => {
+                    showAlert('Error updating device', 'danger');
+                    console.error(error);
+                });
+        });
 
-        // Modal for Updating Device
-        function openUpdateDeviceModal(id, adb_id, asset_no, state) {
-            Swal.fire({
-                title: `Update Device ID: ${id}`,
-                html: `
-                    <div class="space-y-3 text-sm">
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">ADB ID</label>
-                            <input id="adb_id" type="text" class="border rounded p-1" value="${adb_id.replace(/"/g, '&quot;')}" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">Asset No</label>
-                            <input id="asset_no" type="text" class="border rounded p-1" value="${asset_no.replace(/"/g, '&quot;')}" required>
-                        </div>
-                        <div class="flex flex-col">
-                            <label class="text-gray-600">State</label>
-                            <input id="state" type="text" class="border rounded p-1" value="${state.replace(/"/g, '&quot;')}" required>
-                        </div>
-                    </div>
-                `,
-                showCancelButton: true,
-                confirmButtonText: 'Update Device',
-                preConfirm: () => {
-                    const adb_id = document.getElementById('adb_id').value;
-                    const asset_no = document.getElementById('asset_no').value;
-                    const state = document.getElementById('state').value;
-                    if (!adb_id || !asset_no || !state) {
-                        Swal.showValidationMessage('All required fields must be filled');
-                        return false;
-                    }
-                    return { adb_id, asset_no, state };
-                }
-            }).then(result => {
-                if (result.isConfirmed) {
-                    const formData = new FormData();
-                    formData.append('adb_id', result.value.adb_id);
-                    formData.append('asset_no', result.value.asset_no);
-                    formData.append('state', result.value.state);
-                    fetch(`/update_device/${id}`, {
-                        method: 'POST',
-                        body: formData
-                    }).then(response => response.json()).then(data => {
-                        Swal.fire({
-                            icon: data.message ? 'success' : 'error',
-                            title: data.message || data.error,
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(() => {
-                            if (data.message) location.reload();
-                        });
-                    });
-                }
-            });
-        }
-
-        // Confirm Selection Update
-        function confirmSelectionUpdate() {
-            Swal.fire({
-                title: 'Confirm Selection Update',
-                text: 'Are you sure you want to update the selected URLs and devices? Unchecked items will be deselected.',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonText: 'Update'
-            }).then(result => {
-                if (result.isConfirmed) {
-                    const formData = new FormData(document.getElementById('selection-form'));
-                    formData.append('update_selection', 'true');
-                    fetch('/', {
-                        method: 'POST',
-                        body: formData
-                    }).then(response => response.json()).then(data => {
-                        Swal.fire({
-                            icon: data.message ? 'success' : 'error',
-                            title: data.message || data.error,
-                            showConfirmButton: false,
-                            timer: 1500
-                        }).then(() => {
-                            if (data.message) location.reload();
-                        });
-                    }).catch(error => {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error updating selections',
-                            text: error.message,
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    });
-                }
-            });
-        }
-
-        // Script Control
         function runScript() {
             fetch('/run-script', { method: 'POST' })
                 .then(response => response.json())
                 .then(data => {
-                    Swal.fire({
-                        icon: data.message.includes('successfully') ? 'success' : 'error',
-                        title: data.message,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    document.getElementById('script-message').innerHTML = `<span class="${data.message.includes('successfully') ? 'text-green-500' : 'text-red-500'}">${data.message}</span>`;
+                    showAlert(data.message, data.message.includes('Failed') ? 'danger' : 'success');
+                })
+                .catch(error => {
+                    showAlert('Error running script', 'danger');
+                    console.error(error);
                 });
         }
 
@@ -430,58 +582,16 @@
             fetch('/stop-script', { method: 'POST' })
                 .then(response => response.json())
                 .then(data => {
-                    Swal.fire({
-                        icon: data.message.includes('successfully') ? 'success' : 'error',
-                        title: data.message,
-                        showConfirmButton: false,
-                        timer: 1500
-                    });
-                    document.getElementById('script-message').innerHTML = `<span class="${data.message.includes('successfully') ? 'text-green-500' : 'text-red-500'}">${data.message}</span>`;
+                    showAlert(data.message, data.message.includes('Failed') ? 'danger' : 'success');
+                })
+                .catch(error => {
+                    showAlert('Error stopping script', 'danger');
+                    console.error(error);
                 });
         }
 
-        // Fetch Used Devices
-        function fetchUsedDevices() {
-            fetch('/used_devices')
-                .then(response => response.json())
-                .then(data => {
-                    const container = document.getElementById('used-devices');
-                    if (data.error) {
-                        container.innerHTML = `<p class="text-red-500 text-xs text-center">${data.error}</p>`;
-                        return;
-                    }
-                    container.innerHTML = data.length ? data.map(device => `
-                        <div class="bg-gray-100 p-2 rounded flex items-center space-x-2 fade-in text-xs">
-                            <div class="w-3 h-3 bg-green-500 rounded-full pulse"></div>
-                            <div>
-                                <p><strong>ADB ID:</strong> ${device.adb_id}</p>
-                                <p><strong>Asset:</strong> ${device.asset_no}</p>
-                                <p><strong>State:</strong> <span class="${device.state === 'active' ? 'text-green-500' : 'text-gray-500'}">${device.state}</span></p>
-                            </div>
-                        </div>
-                    `).join('') : '<p class="text-gray-500 text-xs text-center">No devices in use.</p>';
-                    if (data.length) {
-                        Swal.fire({
-                            title: `${data.length} Device${data.length > 1 ? 's' : ''} Active`,
-                            html: data.map(device => `
-                                <div class="flex items-center space-x-2 text-xs">
-                                    <div class="w-2 h-2 bg-green-500 rounded-full pulse"></div>
-                                    <p>ADB ID: ${device.adb_id}, State: ${device.state}</p>
-                                </div>
-                            `).join(''),
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 3000,
-                            position: 'top-end',
-                            toast: true
-                        });
-                    }
-                });
-        }
-
-        // Fetch used devices initially and every 10 seconds
-        fetchUsedDevices();
-        setInterval(fetchUsedDevices, 10000);
+        // Initialize selected summary on page load
+        document.addEventListener('DOMContentLoaded', updateSelectedSummary);
     </script>
 </body>
 </html>
