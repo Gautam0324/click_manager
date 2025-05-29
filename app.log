@@ -389,3 +389,50 @@
 2025-05-29 16:12:01,784 - ERROR - Database error: 2055: Lost connection to MySQL server at '82.180.144.17:3306', system error: Errno 10053: An established connection was aborted by the software in your host machine
 2025-05-29 16:12:01,785 - INFO - 127.0.0.1 - - [29/May/2025 16:12:01] "[35m[1mGET / HTTP/1.1[0m" 500 -
 2025-05-29 16:12:12,370 - INFO - 127.0.0.1 - - [29/May/2025 16:12:12] "GET / HTTP/1.1" 200 -
+2025-05-29 17:33:30,611 - INFO - package: mysql.connector.plugins
+2025-05-29 17:33:30,612 - INFO - plugin_name: mysql_native_password
+2025-05-29 17:33:30,614 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 17:33:31,730 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.0.127:5000
+2025-05-29 17:33:31,731 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-29 17:33:31,734 - INFO -  * Restarting with stat
+2025-05-29 17:33:32,858 - INFO - package: mysql.connector.plugins
+2025-05-29 17:33:32,860 - INFO - plugin_name: mysql_native_password
+2025-05-29 17:33:32,874 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 17:33:33,899 - WARNING -  * Debugger is active!
+2025-05-29 17:33:33,905 - INFO -  * Debugger PIN: 235-029-131
+2025-05-29 17:33:41,378 - INFO - 127.0.0.1 - - [29/May/2025 17:33:41] "[31m[1mGET /run-script HTTP/1.1[0m" 405 -
+2025-05-29 17:33:46,914 - INFO - 127.0.0.1 - - [29/May/2025 17:33:46] "GET / HTTP/1.1" 200 -
+2025-05-29 17:33:49,721 - INFO - URL id 1 selection toggled to selected
+2025-05-29 17:33:50,030 - INFO - 127.0.0.1 - - [29/May/2025 17:33:50] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 17:33:50,841 - INFO - URL id 1 selection toggled to deselected
+2025-05-29 17:33:51,207 - INFO - 127.0.0.1 - - [29/May/2025 17:33:51] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 17:33:53,897 - INFO - URL id 1 selection toggled to selected
+2025-05-29 17:33:54,512 - INFO - 127.0.0.1 - - [29/May/2025 17:33:54] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 17:33:58,236 - INFO - 127.0.0.1 - - [29/May/2025 17:33:58] "GET / HTTP/1.1" 200 -
+2025-05-29 17:34:17,098 - INFO - URL id 1 selection toggled to deselected
+2025-05-29 17:34:17,548 - INFO - 127.0.0.1 - - [29/May/2025 17:34:17] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 17:41:00,300 - INFO - 127.0.0.1 - - [29/May/2025 17:41:00] "GET / HTTP/1.1" 200 -
+2025-05-29 17:41:12,779 - INFO - 127.0.0.1 - - [29/May/2025 17:41:12] "GET / HTTP/1.1" 200 -
+2025-05-29 17:41:23,697 - INFO - URL id 1 selection toggled to selected
+2025-05-29 17:41:23,988 - INFO - 127.0.0.1 - - [29/May/2025 17:41:23] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 17:44:19,208 - INFO - 127.0.0.1 - - [29/May/2025 17:44:19] "GET / HTTP/1.1" 200 -
+2025-05-29 17:44:26,944 - INFO - URL id 1 selection toggled to deselected
+2025-05-29 17:44:27,307 - INFO - 127.0.0.1 - - [29/May/2025 17:44:27] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 17:44:28,886 - INFO - URL id 1 selection toggled to selected
+2025-05-29 17:44:29,312 - INFO - 127.0.0.1 - - [29/May/2025 17:44:29] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 17:44:42,088 - INFO - URL id 1 selection toggled to deselected
+2025-05-29 17:44:42,443 - INFO - 127.0.0.1 - - [29/May/2025 17:44:42] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 17:45:18,213 - INFO - Script started
+2025-05-29 17:45:18,214 - INFO - 127.0.0.1 - - [29/May/2025 17:45:18] "POST /run-script HTTP/1.1" 200 -
+2025-05-29 17:45:27,387 - INFO - Script stopped
+2025-05-29 17:45:27,388 - INFO - 127.0.0.1 - - [29/May/2025 17:45:27] "POST /stop-script HTTP/1.1" 200 -
+2025-05-29 17:52:55,941 - INFO - 127.0.0.1 - - [29/May/2025 17:52:55] "GET / HTTP/1.1" 200 -
+2025-05-29 17:53:05,724 - INFO - 127.0.0.1 - - [29/May/2025 17:53:05] "[31m[1mGET /run-script HTTP/1.1[0m" 405 -
+2025-05-29 17:53:42,341 - INFO - 127.0.0.1 - - [29/May/2025 17:53:42] "GET / HTTP/1.1" 200 -
+2025-05-29 17:53:46,375 - INFO - URL id 1 selection toggled to selected
+2025-05-29 17:53:46,771 - INFO - 127.0.0.1 - - [29/May/2025 17:53:46] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-05-29 17:53:48,285 - INFO - URL id 1 selection toggled to deselected
+2025-05-29 17:53:48,637 - INFO - 127.0.0.1 - - [29/May/2025 17:53:48] "POST /toggle_url_selection/1 HTTP/1.1" 200 -

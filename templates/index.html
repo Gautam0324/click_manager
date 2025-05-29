@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Automation Dashboard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         :root {
@@ -137,8 +135,7 @@
             border-collapse: collapse;
         }
 
-        th,
-        td {
+        th, td {
             padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid #e0e0e0;
@@ -248,7 +245,6 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -341,6 +337,102 @@
             display: block;
         }
 
+        /* Log panel */
+        .log-panel {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+        }
+
+        .log-entry {
+            margin-bottom: 8px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #333;
+            word-break: break-all;
+        }
+
+        .log-time {
+            color: #6a9955;
+            margin-right: 10px;
+        }
+
+        .log-info {
+            color: #569cd6;
+        }
+
+        .log-error {
+            color: #f44747;
+        }
+
+        .log-success {
+            color: #4ec9b0;
+        }
+
+        .log-warning {
+            color: #d7ba7d;
+        }
+
+        /* Toast notifications */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .toast {
+            padding: 15px 20px;
+            border-radius: 6px;
+            color: white;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            animation: slideIn 0.3s, fadeOut 0.5s 2.5s forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+
+        .toast-success {
+            background-color: var(--success);
+        }
+
+        .toast-error {
+            background-color: var(--danger);
+        }
+
+        .toast-info {
+            background-color: var(--accent);
+        }
+
+        .toast-warning {
+            background-color: var(--warning);
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .panel-header {
@@ -366,7 +458,6 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <header>
@@ -384,6 +475,7 @@
         <div class="tabs">
             <div class="tab active" data-tab="urls">URL Management</div>
             <div class="tab" data-tab="devices">Device Management</div>
+            <div class="tab" data-tab="logs">Activity Logs</div>
         </div>
 
         <div class="tab-content active" id="urls-tab">
@@ -473,16 +565,30 @@
                             </td>
                             <td>
                                 <button class="action-btn edit-btn" onclick="editDevice({{ device.id }})">
-                                    <i class="fas fa-edit"></i> Edit
+                                    <i class="fas fa-edit"></i> 
                                 </button>
                                 <button class="action-btn delete-btn" onclick="deleteDevice({{ device.id }})">
-                                    <i class="fas fa-trash"></i> Delete
+                                    <i class="fas fa-trash"></i> 
                                 </button>
                             </td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        <div class="tab-content" id="logs-tab">
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">Activity Logs</h2>
+                    <button id="clearLogsBtn" class="add-btn" onclick="clearLogs()">
+                        <i class="fas fa-trash"></i> Clear Logs
+                    </button>
+                </div>
+                <div class="log-panel" id="logPanel">
+                    <!-- Logs will be added here dynamically -->
+                </div>
             </div>
         </div>
     </div>
@@ -560,17 +666,74 @@
         </div>
     </div>
 
+    <!-- Toast container -->
+    <div class="toast-container" id="toastContainer"></div>
+
     <script>
         // Tab functionality
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-
+                
                 tab.classList.add('active');
                 document.getElementById(`${tab.dataset.tab}-tab`).classList.add('active');
             });
         });
+
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            const toastContainer = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            
+            const toastMessage = document.createElement('span');
+            toastMessage.textContent = message;
+            
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'toast-close';
+            closeBtn.innerHTML = '&times;';
+            closeBtn.onclick = () => toast.remove();
+            
+            toast.appendChild(toastMessage);
+            toast.appendChild(closeBtn);
+            toastContainer.appendChild(toast);
+            
+            // Remove toast after animation
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Log functions
+        function addLog(message, type = 'info') {
+            const logPanel = document.getElementById('logPanel');
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry log-${type}`;
+            
+            const now = new Date();
+            const timeString = now.toLocaleTimeString();
+            
+            logEntry.innerHTML = `
+                <span class="log-time">[${timeString}]</span>
+                <span class="log-message">${message}</span>
+            `;
+            
+            logPanel.appendChild(logEntry);
+            logPanel.scrollTop = logPanel.scrollHeight;
+        }
+
+        function clearLogs() {
+            document.getElementById('logPanel').innerHTML = '';
+            addLog('Logs cleared', 'info');
+            showToast('Logs cleared', 'info');
+        }
+
+        // Initialize with some sample logs (you would replace this with real logs)
+        // addLog('System initialized', 'info');
+        // addLog('Connected to database', 'success');
+        // addLog('Loaded 15 URLs from database', 'info');
+        // addLog('Loaded 8 devices from database', 'info');
 
         // Modal functions
         function openModal(modalId, title = '') {
@@ -608,7 +771,8 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Failed to fetch URL details');
+                    addLog(`Failed to fetch URL details: ${error.message}`, 'error');
+                    showToast('Failed to fetch URL details', 'error');
                 });
         }
 
@@ -622,7 +786,7 @@
 
             const endpoint = id ? `/update_url/${id}` : '/';
             const method = id ? 'POST' : 'POST';
-
+            
             const formData = new FormData();
             if (id) formData.append('id', id);
             formData.append('url', url);
@@ -636,19 +800,23 @@
                 method: method,
                 body: formData
             })
-                .then(response => {
-                    if (response.ok) {
-                        window.location.reload();
-                    } else {
-                        return response.json().then(data => {
-                            throw new Error(data.error || 'Failed to save URL');
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert(error.message);
-                });
+            .then(response => {
+                if (response.ok) {
+                    const action = id ? 'updated' : 'added';
+                    addLog(`URL ${action}: ${url}`, 'success');
+                    showToast(`URL ${action} successfully!`, 'success');
+                    setTimeout(() => window.location.reload(), 1000);
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Failed to save URL');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                addLog(`Error saving URL: ${error.message}`, 'error');
+                showToast(error.message, 'error');
+            });
         }
 
         function deleteUrl(id) {
@@ -656,17 +824,20 @@
                 fetch(`/delete_url/${id}`, {
                     method: 'POST'
                 })
-                    .then(response => {
-                        if (response.ok) {
-                            window.location.reload();
-                        } else {
-                            throw new Error('Failed to delete URL');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert(error.message);
-                    });
+                .then(response => {
+                    if (response.ok) {
+                        addLog(`URL deleted with ID: ${id}`, 'warning');
+                        showToast('URL deleted successfully!', 'success');
+                        setTimeout(() => window.location.reload(), 1000);
+                    } else {
+                        throw new Error('Failed to delete URL');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    addLog(`Error deleting URL: ${error.message}`, 'error');
+                    showToast(error.message, 'error');
+                });
             }
         }
 
@@ -674,19 +845,23 @@
             fetch(`/toggle_url_selection/${id}`, {
                 method: 'POST'
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        button.classList.toggle('active');
-                        button.classList.toggle('inactive');
-                    } else {
-                        throw new Error(data.error || 'Failed to toggle selection');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert(error.message);
-                });
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    button.classList.toggle('active');
+                    button.classList.toggle('inactive');
+                    const action = button.classList.contains('active') ? 'selected' : 'deselected';
+                    addLog(`URL ${action} with ID: ${id}`, 'info');
+                    showToast(`URL ${action} successfully!`, 'success');
+                } else {
+                    throw new Error(data.error || 'Failed to toggle selection');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                addLog(`Error toggling URL selection: ${error.message}`, 'error');
+                showToast(error.message, 'error');
+            });
         }
 
         // Device functions
@@ -710,7 +885,8 @@
                 })
                 .catch(error => {
                     console.error('Error:', error);
-                    alert('Failed to fetch device details');
+                    addLog(`Failed to fetch device details: ${error.message}`, 'error');
+                    showToast('Failed to fetch device details', 'error');
                 });
         }
 
@@ -722,7 +898,7 @@
 
             const endpoint = id ? `/update_device/${id}` : '/';
             const method = id ? 'POST' : 'POST';
-
+            
             const formData = new FormData();
             if (id) formData.append('id', id);
             formData.append('adb_id', adb_id);
@@ -734,19 +910,23 @@
                 method: method,
                 body: formData
             })
-                .then(response => {
-                    if (response.ok) {
-                        window.location.reload();
-                    } else {
-                        return response.json().then(data => {
-                            throw new Error(data.error || 'Failed to save device');
-                        });
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert(error.message);
-                });
+            .then(response => {
+                if (response.ok) {
+                    const action = id ? 'updated' : 'added';
+                    addLog(`Device ${action}: ${adb_id}`, 'success');
+                    showToast(`Device ${action} successfully!`, 'success');
+                    setTimeout(() => window.location.reload(), 1000);
+                } else {
+                    return response.json().then(data => {
+                        throw new Error(data.error || 'Failed to save device');
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                addLog(`Error saving device: ${error.message}`, 'error');
+                showToast(error.message, 'error');
+            });
         }
 
         function deleteDevice(id) {
@@ -754,17 +934,20 @@
                 fetch(`/delete_device/${id}`, {
                     method: 'POST'
                 })
-                    .then(response => {
-                        if (response.ok) {
-                            window.location.reload();
-                        } else {
-                            throw new Error('Failed to delete device');
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert(error.message);
-                    });
+                .then(response => {
+                    if (response.ok) {
+                        addLog(`Device deleted with ID: ${id}`, 'warning');
+                        showToast('Device deleted successfully!', 'success');
+                        setTimeout(() => window.location.reload(), 1000);
+                    } else {
+                        throw new Error('Failed to delete device');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    addLog(`Error deleting device: ${error.message}`, 'error');
+                    showToast(error.message, 'error');
+                });
             }
         }
 
@@ -772,19 +955,23 @@
             fetch(`/toggle_device_selection/${id}`, {
                 method: 'POST'
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.message) {
-                        button.classList.toggle('active');
-                        button.classList.toggle('inactive');
-                    } else {
-                        throw new Error(data.error || 'Failed to toggle selection');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert(error.message);
-                });
+            .then(response => response.json())
+            .then(data => {
+                if (data.message) {
+                    button.classList.toggle('active');
+                    button.classList.toggle('inactive');
+                    const action = button.classList.contains('active') ? 'selected' : 'deselected';
+                    addLog(`Device ${action} with ID: ${id}`, 'info');
+                    showToast(`Device ${action} successfully!`, 'success');
+                } else {
+                    throw new Error(data.error || 'Failed to toggle selection');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                addLog(`Error toggling device selection: ${error.message}`, 'error');
+                showToast(error.message, 'error');
+            });
         }
 
         // Script control functions
@@ -792,30 +979,33 @@
             fetch('/run-script', {
                 method: 'POST'
             })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Failed to start script');
-                });
+            .then(response => response.json())
+            .then(data => {
+                addLog('Script started successfully', 'success');
+                showToast(data.message, 'success');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                addLog('Failed to start script', 'error');
+                showToast('Failed to start script', 'error');
+            });
         });
 
         document.getElementById('stopScriptBtn').addEventListener('click', () => {
             fetch('/stop-script', {
                 method: 'POST'
             })
-                .then(response => response.json())
-                .then(data => {
-                    alert(data.message);
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('Failed to stop script');
-                });
+            .then(response => response.json())
+            .then(data => {
+                addLog('Script stopped successfully', 'warning');
+                showToast(data.message, 'success');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                addLog('Failed to stop script', 'error');
+                showToast('Failed to stop script', 'error');
+            });
         });
     </script>
 </body>
-
 </html>

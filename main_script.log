@@ -202,3 +202,18 @@
 2025-05-29 15:33:06,138 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
 2025-05-29 15:33:07,238 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
 2025-05-29 15:33:08,370 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-05-29 17:45:19,948 INFO: package: mysql.connector.plugins
+2025-05-29 17:45:19,949 INFO: plugin_name: mysql_native_password
+2025-05-29 17:45:19,951 INFO: AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-05-29 17:45:20,214 INFO: Database tables checked/created successfully
+2025-05-29 17:45:20,499 INFO: Cleaned up old IPs
+2025-05-29 17:45:20,780 INFO: Found 0 selected devices: []
+2025-05-29 17:45:20,781 INFO: \u2139\ufe0f No selected devices found, waiting...
+2025-05-29 17:45:21,979 INFO: Found 0 selected devices: []
+2025-05-29 17:45:21,980 INFO: \u2139\ufe0f No selected devices found, waiting...
+2025-05-29 17:45:23,288 INFO: Found 0 selected devices: []
+2025-05-29 17:45:23,288 INFO: \u2139\ufe0f No selected devices found, waiting...
+2025-05-29 17:45:24,570 INFO: Found 0 selected devices: []
+2025-05-29 17:45:24,573 INFO: \u2139\ufe0f No selected devices found, waiting...
+2025-05-29 17:45:26,037 INFO: Found 0 selected devices: []
+2025-05-29 17:45:26,038 INFO: \u2139\ufe0f No selected devices found, waiting...
