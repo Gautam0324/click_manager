@@ -502,3 +502,100 @@
 2025-05-31 12:05:27,064 - INFO - 127.0.0.1 - - [31/May/2025 12:05:27] "GET / HTTP/1.1" 200 -
 2025-05-31 12:05:29,356 - INFO - 127.0.0.1 - - [31/May/2025 12:05:29] "GET / HTTP/1.1" 200 -
 2025-06-02 09:23:35,259 - INFO - 127.0.0.1 - - [02/Jun/2025 09:23:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-03 14:39:23,141 - INFO - package: mysql.connector.plugins
+2025-06-03 14:39:23,141 - INFO - plugin_name: mysql_native_password
+2025-06-03 14:39:23,141 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-06-03 14:39:26,236 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.2.65:5000
+2025-06-03 14:39:26,236 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-03 14:39:26,236 - INFO -  * Restarting with stat
+2025-06-03 14:39:27,144 - INFO - package: mysql.connector.plugins
+2025-06-03 14:39:27,144 - INFO - plugin_name: mysql_native_password
+2025-06-03 14:39:27,144 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-06-03 14:39:30,216 - WARNING -  * Debugger is active!
+2025-06-03 14:39:30,221 - INFO -  * Debugger PIN: 235-029-131
+2025-06-03 14:39:35,049 - INFO - 127.0.0.1 - - [03/Jun/2025 14:39:35] "GET / HTTP/1.1" 200 -
+2025-06-03 14:39:35,243 - INFO - 127.0.0.1 - - [03/Jun/2025 14:39:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-06-03 14:39:42,292 - INFO - URL id 6 selection toggled to selected
+2025-06-03 14:39:43,304 - INFO - 127.0.0.1 - - [03/Jun/2025 14:39:43] "POST /toggle_url_selection/6 HTTP/1.1" 200 -
+2025-06-03 14:39:50,932 - INFO - Device id 15 selection toggled to deselected
+2025-06-03 14:39:51,917 - INFO - 127.0.0.1 - - [03/Jun/2025 14:39:51] "POST /toggle_device_selection/15 HTTP/1.1" 200 -
+2025-06-03 14:39:52,922 - INFO - Device id 1 selection toggled to deselected
+2025-06-03 14:39:53,676 - INFO - 127.0.0.1 - - [03/Jun/2025 14:39:53] "POST /toggle_device_selection/1 HTTP/1.1" 200 -
+2025-06-03 14:39:59,244 - INFO - Device id 3 selection toggled to deselected
+2025-06-03 14:40:00,154 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:00] "POST /toggle_device_selection/3 HTTP/1.1" 200 -
+2025-06-03 14:40:08,445 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:08] "GET /get_device/1 HTTP/1.1" 200 -
+2025-06-03 14:40:09,895 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:09] "GET /get_device/1 HTTP/1.1" 200 -
+2025-06-03 14:40:13,590 - INFO - Updated device id 1: abcd
+2025-06-03 14:40:14,590 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:14] "POST /update_device/1 HTTP/1.1" 200 -
+2025-06-03 14:40:18,012 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:18] "GET / HTTP/1.1" 200 -
+2025-06-03 14:40:21,224 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:21] "GET /get_device/3 HTTP/1.1" 200 -
+2025-06-03 14:40:25,820 - INFO - Updated device id 3: klmkk
+2025-06-03 14:40:26,883 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:26] "POST /update_device/3 HTTP/1.1" 200 -
+2025-06-03 14:40:29,024 - INFO - Updated device id 3: klmkk
+2025-06-03 14:40:30,042 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:30] "POST /update_device/3 HTTP/1.1" 200 -
+2025-06-03 14:40:30,377 - INFO - Updated device id 3: klmkk
+2025-06-03 14:40:30,404 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:30] "GET / HTTP/1.1" 200 -
+2025-06-03 14:40:31,442 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:31] "POST /update_device/3 HTTP/1.1" 200 -
+2025-06-03 14:40:33,877 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:33] "GET /get_device/15 HTTP/1.1" 200 -
+2025-06-03 14:40:38,398 - INFO - Updated device id 15: adbid2
+2025-06-03 14:40:39,208 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:39] "POST /update_device/15 HTTP/1.1" 200 -
+2025-06-03 14:40:41,619 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:41] "GET / HTTP/1.1" 200 -
+2025-06-03 14:40:48,334 - INFO - Script started
+2025-06-03 14:40:48,334 - INFO - 127.0.0.1 - - [03/Jun/2025 14:40:48] "POST /run-script HTTP/1.1" 200 -
+2025-06-03 14:42:08,119 - INFO - Script stopped
+2025-06-03 14:42:08,119 - INFO - 127.0.0.1 - - [03/Jun/2025 14:42:08] "POST /stop-script HTTP/1.1" 200 -
+2025-06-03 14:42:14,134 - INFO - Script started
+2025-06-03 14:42:14,134 - INFO - 127.0.0.1 - - [03/Jun/2025 14:42:14] "POST /run-script HTTP/1.1" 200 -
+2025-06-03 14:43:25,460 - INFO - package: mysql.connector.plugins
+2025-06-03 14:43:25,460 - INFO - plugin_name: mysql_native_password
+2025-06-03 14:43:25,475 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-06-03 14:43:27,314 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.108.123:5000
+2025-06-03 14:43:27,314 - INFO - [33mPress CTRL+C to quit[0m
+2025-06-03 14:43:27,317 - INFO -  * Restarting with stat
+2025-06-03 14:43:28,377 - INFO - package: mysql.connector.plugins
+2025-06-03 14:43:28,377 - INFO - plugin_name: mysql_native_password
+2025-06-03 14:43:28,377 - INFO - AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-06-03 14:43:30,121 - WARNING -  * Debugger is active!
+2025-06-03 14:43:30,126 - INFO -  * Debugger PIN: 235-029-131
+2025-06-03 14:43:31,161 - INFO - Deleted URL id 6: https://google.com
+2025-06-03 14:43:31,543 - INFO - 127.0.0.1 - - [03/Jun/2025 14:43:31] "GET / HTTP/1.1" 200 -
+2025-06-03 14:43:31,637 - INFO - 127.0.0.1 - - [03/Jun/2025 14:43:31] "POST /delete_url/6 HTTP/1.1" 200 -
+2025-06-03 14:44:58,448 - INFO - Added new URL: http://www.phoenixads.net/track/click.asp?cid=26449&pid=1142&code=530038 with campaign: Pedia sure CPL
+2025-06-03 14:44:58,940 - INFO - 127.0.0.1 - - [03/Jun/2025 14:44:58] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-06-03 14:45:00,323 - INFO - 127.0.0.1 - - [03/Jun/2025 14:45:00] "GET /?tab=urls HTTP/1.1" 200 -
+2025-06-03 14:45:03,373 - INFO - 127.0.0.1 - - [03/Jun/2025 14:45:03] "GET / HTTP/1.1" 200 -
+2025-06-03 14:45:09,101 - INFO - URL id 8 selection toggled to selected
+2025-06-03 14:45:09,993 - INFO - 127.0.0.1 - - [03/Jun/2025 14:45:09] "POST /toggle_url_selection/8 HTTP/1.1" 200 -
+2025-06-03 14:45:10,071 - INFO - URL id 1 selection toggled to deselected
+2025-06-03 14:45:10,587 - INFO - 127.0.0.1 - - [03/Jun/2025 14:45:10] "POST /toggle_url_selection/1 HTTP/1.1" 200 -
+2025-06-03 14:47:20,108 - INFO - Added new URL: http://www.phoenixads.net/track/click.asp?cid=26686&pid=1142&code=1132083 with campaign: UPSTOX
+2025-06-03 14:47:20,407 - INFO - 127.0.0.1 - - [03/Jun/2025 14:47:20] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-06-03 14:47:21,404 - INFO - 127.0.0.1 - - [03/Jun/2025 14:47:21] "GET /?tab=urls HTTP/1.1" 200 -
+2025-06-03 14:47:23,344 - INFO - 127.0.0.1 - - [03/Jun/2025 14:47:23] "GET / HTTP/1.1" 200 -
+2025-06-03 14:47:34,259 - INFO - Script started
+2025-06-03 14:47:34,260 - INFO - 127.0.0.1 - - [03/Jun/2025 14:47:34] "POST /run-script HTTP/1.1" 200 -
+2025-06-03 14:47:41,337 - INFO - Script stopped
+2025-06-03 14:47:41,338 - INFO - 127.0.0.1 - - [03/Jun/2025 14:47:41] "POST /stop-script HTTP/1.1" 200 -
+2025-06-03 14:47:59,666 - INFO - Added new URL: http://www.phoenixads.net/track/click.asp?cid=26677&pid=1473&did=22925&code=8687091 with campaign: RUMMY NEW
+2025-06-03 14:48:00,306 - INFO - 127.0.0.1 - - [03/Jun/2025 14:48:00] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-06-03 14:48:01,858 - INFO - Added new URL: http://www.phoenixads.net/track/click.asp?cid=26677&pid=1473&did=22925&code=8687091 with campaign: RUMMY NEW
+2025-06-03 14:48:02,476 - INFO - 127.0.0.1 - - [03/Jun/2025 14:48:02] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-06-03 14:48:02,729 - INFO - 127.0.0.1 - - [03/Jun/2025 14:48:02] "GET /?tab=urls HTTP/1.1" 200 -
+2025-06-03 14:48:03,774 - INFO - 127.0.0.1 - - [03/Jun/2025 14:48:03] "GET /?tab=urls HTTP/1.1" 200 -
+2025-06-03 14:48:05,157 - INFO - 127.0.0.1 - - [03/Jun/2025 14:48:05] "GET / HTTP/1.1" 200 -
+2025-06-03 14:48:06,043 - INFO - 127.0.0.1 - - [03/Jun/2025 14:48:06] "GET / HTTP/1.1" 200 -
+2025-06-03 14:48:10,991 - INFO - Deleted URL id 11: http://www.phoenixads.net/track/click.asp?cid=26677&pid=1473&did=22925&code=8687091
+2025-06-03 14:48:11,257 - INFO - 127.0.0.1 - - [03/Jun/2025 14:48:11] "POST /delete_url/11 HTTP/1.1" 200 -
+2025-06-03 14:48:12,896 - INFO - 127.0.0.1 - - [03/Jun/2025 14:48:12] "GET / HTTP/1.1" 200 -
+2025-06-03 14:49:06,927 - INFO - Added new URL: http://www.phoenixads.net/track/click.asp?cid=26678&pid=1473&code=4595901 with campaign: RUMMY CIRCLE
+2025-06-03 14:49:07,657 - INFO - 127.0.0.1 - - [03/Jun/2025 14:49:07] "[32mPOST / HTTP/1.1[0m" 302 -
+2025-06-03 14:49:09,022 - INFO - 127.0.0.1 - - [03/Jun/2025 14:49:09] "GET /?tab=urls HTTP/1.1" 200 -
+2025-06-03 14:49:11,785 - INFO - 127.0.0.1 - - [03/Jun/2025 14:49:11] "GET / HTTP/1.1" 200 -
+2025-06-03 14:54:56,612 - INFO -  * Detected change in 'C:\\Users\\Admin\\Desktop\\click_manager_project\\main_script.py', reloading
+2025-06-03 14:54:56,962 - INFO -  * Restarting with stat

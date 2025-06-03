@@ -217,3 +217,79 @@
 2025-05-29 17:45:24,573 INFO: \u2139\ufe0f No selected devices found, waiting...
 2025-05-29 17:45:26,037 INFO: Found 0 selected devices: []
 2025-05-29 17:45:26,038 INFO: \u2139\ufe0f No selected devices found, waiting...
+2025-06-03 14:40:50,394 INFO: package: mysql.connector.plugins
+2025-06-03 14:40:50,396 INFO: plugin_name: mysql_native_password
+2025-06-03 14:40:50,397 INFO: AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-06-03 14:40:51,195 INFO: Database tables checked/created successfully
+2025-06-03 14:40:52,268 INFO: Cleaned up old IPs
+2025-06-03 14:40:53,181 INFO: Found 1 selected devices: ['irylmfo755vosshi']
+2025-06-03 14:40:53,181 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-06-03 14:40:54,204 INFO: Found 2 selected URLs
+2025-06-03 14:40:54,365 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-06-03 14:40:55,480 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-06-03 14:40:56,598 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-06-03 14:40:58,608 INFO: Rotated IP for irylmfo755vosshi
+2025-06-03 14:40:59,511 INFO: ADB command executed on irylmfo755vosshi: shell svc usb setFunctions rndis
+2025-06-03 14:41:01,015 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-06-03 14:41:01,597 INFO: Fetched public IP: 111.93.186.42
+2025-06-03 14:41:02,570 INFO: \u274c ADB error on irylmfo755vosshi: adb.exe: device 'irylmfo755vosshi' not found
+2025-06-03 14:41:03,593 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-06-03 14:41:03,598 INFO: IP 111.93.186.42 recently used, skipping
+2025-06-03 14:41:03,611 INFO: \u23f3 Sleeping for 2.22 seconds
+2025-06-03 14:41:05,913 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-06-03 14:41:06,992 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-06-03 14:41:08,083 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-06-03 14:41:10,089 INFO: Rotated IP for irylmfo755vosshi
+2025-06-03 14:41:10,944 INFO: ADB command executed on irylmfo755vosshi: shell svc usb setFunctions rndis
+2025-06-03 14:41:12,456 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-06-03 14:41:22,576 INFO: \u26a0\ufe0f Requests failed: HTTPSConnectionPool(host='ipinfo.io', port=443): Read timed out. (read timeout=10)
+2025-06-03 14:41:22,809 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-06-03 14:41:23,814 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-06-03 14:41:23,849 INFO: \u23f3 Sleeping for 1.49 seconds
+2025-06-03 14:41:25,416 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-06-03 14:41:26,484 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-06-03 14:41:27,577 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-06-03 14:41:29,582 INFO: Rotated IP for irylmfo755vosshi
+2025-06-03 14:41:29,948 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-06-03 14:41:31,458 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-06-03 14:41:31,865 INFO: Fetched public IP: 106.219.185.103
+2025-06-03 14:41:32,630 INFO: Inserted IP info for device irylmfo755vosshi
+2025-06-03 14:42:16,335 INFO: package: mysql.connector.plugins
+2025-06-03 14:42:16,335 INFO: plugin_name: mysql_native_password
+2025-06-03 14:42:16,335 INFO: AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-06-03 14:42:17,069 INFO: Database tables checked/created successfully
+2025-06-03 14:42:17,825 INFO: Cleaned up old IPs
+2025-06-03 14:42:18,406 INFO: Found 1 selected devices: ['irylmfo755vosshi']
+2025-06-03 14:42:18,406 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-06-03 14:42:19,414 INFO: Found 2 selected URLs
+2025-06-03 14:42:19,502 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-06-03 14:42:20,611 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-06-03 14:42:21,705 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-06-03 14:42:23,711 INFO: Rotated IP for irylmfo755vosshi
+2025-06-03 14:42:24,381 INFO: ADB command executed on irylmfo755vosshi: shell svc usb setFunctions rndis
+2025-06-03 14:42:25,893 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-06-03 14:42:26,339 INFO: Fetched public IP: 106.219.185.19
+2025-06-03 14:42:27,137 INFO: Inserted IP info for device irylmfo755vosshi
+2025-06-03 14:42:34,823 INFO: \u2705 Selenium click successful for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813
+2025-06-03 14:42:35,272 INFO: Updated click counts for http://www.phoenixads.net/track/click.asp?cid=26631&pid=912&did=22890&code=6299813: unique=63, repeated=20, total=83
+2025-06-03 14:42:35,559 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-06-03 14:42:36,642 INFO: Disabled USB tethering for irylmfo755vosshi
+2025-06-03 14:42:36,732 INFO: \u23f3 Sleeping for 1.07 seconds
+2025-06-03 14:42:37,918 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode enable
+2025-06-03 14:42:39,011 INFO: ADB command executed on irylmfo755vosshi: shell cmd connectivity airplane-mode disable
+2025-06-03 14:42:40,118 INFO: ADB command executed on irylmfo755vosshi: shell svc data enable
+2025-06-03 14:42:42,133 INFO: Rotated IP for irylmfo755vosshi
+2025-06-03 14:42:42,431 INFO: \u274c ADB error on irylmfo755vosshi: 
+2025-06-03 14:42:43,935 INFO: Enabled USB tethering for irylmfo755vosshi
+2025-06-03 14:42:44,877 INFO: Fetched public IP: 152.58.71.70
+2025-06-03 14:42:46,916 INFO: Inserted IP info for device irylmfo755vosshi
+2025-06-03 14:47:36,323 INFO: package: mysql.connector.plugins
+2025-06-03 14:47:36,324 INFO: plugin_name: mysql_native_password
+2025-06-03 14:47:36,326 INFO: AUTHENTICATION_PLUGIN_CLASS: MySQLNativePasswordAuthPlugin
+2025-06-03 14:47:37,172 INFO: Database tables checked/created successfully
+2025-06-03 14:47:38,017 INFO: Cleaned up old IPs
+2025-06-03 14:47:38,844 INFO: Found 1 selected devices: ['irylmfo755vosshi']
+2025-06-03 14:47:38,844 INFO: \U0001f504 Starting process for irylmfo755vosshi...
+2025-06-03 14:47:39,641 INFO: Found 1 selected URLs
+2025-06-03 14:47:39,740 INFO: \u274c ADB error on irylmfo755vosshi: adb.exe: device 'irylmfo755vosshi' not found
+2025-06-03 14:47:40,814 INFO: \u274c ADB error on irylmfo755vosshi: adb.exe: device 'irylmfo755vosshi' not found
