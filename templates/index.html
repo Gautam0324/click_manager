@@ -541,6 +541,7 @@
                             <th>Select</th>
                             <th>ADB ID</th>
                             <th>Asset No</th>
+                            <th>State</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -557,6 +558,7 @@
                             </td>
                             <td>{{ device.adb_id }}</td>
                             <td>{{ device.asset_no or '-' }}</td>
+                            <td>{{ device.network_state }}</td>
                             <td>
                                 <span
                                     class="status {% if device.state == 'active' %}status-active{% else %}status-inactive{% endif %}">
@@ -650,6 +652,11 @@
                         <label for="asset_no">Asset Number</label>
                         <input type="text" id="asset_no" class="form-control" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="network_state">Network State</label>
+                        <input type="text" id="network_state" class="form-control" required>
+                    </div>
                     <div class="form-group">
                         <label for="state">Status</label>
                         <select id="state" class="form-control" required>
@@ -670,16 +677,38 @@
     <div class="toast-container" id="toastContainer"></div>
 
     <script>
+
         // Tab functionality
         document.querySelectorAll('.tab').forEach(tab => {
             tab.addEventListener('click', () => {
+                const tabName = tab.dataset.tab;
+                console.log(`Tab clicked: ${tabName}`);
+
+
+        // Store selected tab in localStorage
+                localStorage.setItem('selectedTab', tabName);
+
+
                 document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
                 document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
                 
                 tab.classList.add('active');
-                document.getElementById(`${tab.dataset.tab}-tab`).classList.add('active');
+                document.getElementById(`${tabName}-tab`).classList.add('active');
+
             });
         });
+
+        window.addEventListener('DOMContentLoaded', () => {
+const savedTab = localStorage.getItem('selectedTab');
+        if (savedTab) {
+            
+            const targetTab = document.querySelector(`.tab[data-tab="${savedTab}"]`);
+            if (targetTab) {
+                targetTab.click(); 
+            }
+        }
+    });
+        
 
         // Toast notification function
         function showToast(message, type = 'info') {
@@ -880,6 +909,7 @@
                     document.getElementById('adb_id').value = data.adb_id;
                     document.getElementById('asset_no').value = data.asset_no || '';
                     document.getElementById('state').value = data.state || 'inactive';
+                    document.getElementById('network_state').value = data.network_state || '';
                     document.getElementById('deviceModalTitle').textContent = 'Edit Device';
                     openModal('deviceModal');
                 })
@@ -894,6 +924,7 @@
             const id = document.getElementById('deviceId').value;
             const adb_id = document.getElementById('adb_id').value;
             const asset_no = document.getElementById('asset_no').value;
+            const network_state = document.getElementById('network_state').value;
             const state = document.getElementById('state').value;
 
             const endpoint = id ? `/update_device/${id}` : '/';
@@ -903,6 +934,7 @@
             if (id) formData.append('id', id);
             formData.append('adb_id', adb_id);
             formData.append('asset_no', asset_no);
+            formData.append('network_state', network_state);
             formData.append('state', state);
             formData.append(id ? 'update_device' : 'add_device', '1');
 
