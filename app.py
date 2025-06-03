@@ -46,7 +46,7 @@ def validate_url_form(data):
     return all(data.get(field) for field in required_fields)
 
 def validate_device_form(data):
-    required_fields = ['adb_id', 'asset_no', 'state']
+    required_fields = ['adb_id', 'asset_no','network_state','state']
     return all(data.get(field) for field in required_fields)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -78,6 +78,9 @@ def index():
                 except ValueError as e:
                     app.logger.error(f"Invalid number format: {str(e)}")
                     return jsonify({'error': 'Invalid number format in form'}), 400
+                
+
+                return redirect('/?tab=urls')
 
             if 'add_device' in request.form:
                 if not validate_device_form(request.form):
@@ -85,13 +88,15 @@ def index():
                     return jsonify({'error': 'Missing required device fields'}), 400
 
                 cursor.execute("""
-                    INSERT INTO device (adb_id, asset_no, state)
-                    VALUES (%s, %s, %s)
-                """, (request.form['adb_id'], request.form['asset_no'], request.form['state']))
+                    INSERT INTO device (adb_id, asset_no,network_state, state)
+                    VALUES (%s, %s, %s,%s)
+                """, (request.form['adb_id'], request.form['asset_no'],request.form['network_state'], request.form['state']))
                 conn.commit()
                 app.logger.info(f"Added new device: {request.form['adb_id']}")
+               
 
-            return redirect('/')
+                return redirect('/?tab=devices')
+            
 
         # Ensure required columns exist
         cursor.execute("ALTER TABLE url_clicks ADD COLUMN IF NOT EXISTS is_selected BOOLEAN DEFAULT 0")
@@ -225,9 +230,9 @@ def update_device(id):
 
         cursor.execute("""
             UPDATE device
-            SET adb_id = %s, asset_no = %s, state = %s
+            SET adb_id = %s, asset_no = %s,network_state= %s, state = %s
             WHERE id = %s
-        """, (request.form['adb_id'], request.form['asset_no'], request.form['state'], id))
+        """, (request.form['adb_id'], request.form['asset_no'],request.form['network_state'], request.form['state'], id))
         conn.commit()
         app.logger.info(f"Updated device id {id}: {request.form['adb_id']}")
         return jsonify({'message': 'Device updated successfully!'})
